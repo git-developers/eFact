@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="true"></constant>
+	
+	<package name="default"  extends="struts-default">
+	
+		<action name="test" class="com.efact.action.TestAction" method="execute">
+			<result name="success">/test.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	
+		<action name="index" class="com.efact.action.IndexAction" method="execute">
+			<result name="success">/dashboard.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		
+		
+		<action name="comprobante-por-lote" class="com.efact.action.VoucherAction" method="index">
+			<result name="success">/voucher/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="voucher-search" class="com.efact.action.VoucherAction" method="search">
+			<result name="success">/voucher/search.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	
+		<action name="voucher-process" class="com.efact.action.VoucherAction" method="process">
+			<result name="success">/voucher/process-result.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="voucher-view-tr-data" class="com.efact.action.VoucherAction" method="viewTrData">
+			<result name="success">/voucher/view-tr-data.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	
+
+	
+	
+		<action name="devengados-conciliacion" class="com.efact.action.AccruedAction" method="conciliation">
+			<result name="success">/accrued/conciliation/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="accrued-conciliacion-search" class="com.efact.action.AccruedAction" method="conciliationSearch">
+			<result name="success">/accrued/conciliation/search.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="accrued-conciliacion-process" class="com.efact.action.AccruedAction" method="conciliationProcess">
+			<result name="success">/accrued/conciliation/process-result.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		<action name="devengados-emision" class="com.efact.action.AccruedAction" method="issue">
+			<result name="success">/accrued/issue/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="accrued-issue-dropdown" class="com.efact.action.AccruedAction" method="issueDropdown">
+			<result name="success">/accrued/issue/dropdown.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="accrued-issue-search" class="com.efact.action.AccruedAction" method="issueSearch">
+			<result name="success">/accrued/issue/search.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="accrued-issue-export" class="com.efact.action.AccruedAction" method="issueExport">
+			<result name="success"></result>
+			<result name="error">/error.jsp</result>
+			<result type="stream">
+				<param name="contentType">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
+				<param name="inputName">excelStream</param>
+				<param name="contentDisposition">attachment;filename="emitir-devengado.xlsx"</param>
+				<param name="bufferSize">1024</param>
+			</result>		
+		</action>
+		
+		<action name="accrued-issue-process" class="com.efact.action.AccruedAction" method="issueProcess">
+			<result name="success">/accrued/issue/process-result.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		
+		
+		<action name="reporte-registro-de-ventas" class="com.efact.action.ReportAction" method="salesRecord">
+			<result name="success">/report/sales-record/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="report-sales-record-search" class="com.efact.action.ReportAction" method="salesRecordSearch">
+			<result name="success">/report/sales-record/search.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="report-sales-record-export" class="com.efact.action.ReportAction" method="salesRecordExport">
+			<result name="success"></result>
+			<result name="error">/error.jsp</result>
+			<result type="stream">
+				<param name="contentType">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
+				<param name="inputName">excelStream</param>
+				<param name="contentDisposition">attachment;filename="efact-registro-de-ventas.xlsx"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+
+
+
+
+		<action name="reporte-resumen-de-ventas" class="com.efact.action.ReportAction" method="salesSummary">
+			<result name="success">/report/sales-summary/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="report-sales-summary-search" class="com.efact.action.ReportAction" method="salesSummarySearch">
+			<result name="success">/report/sales-summary/search.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="report-sales-summary-export" class="com.efact.action.ReportAction" method="salesSummaryExport">
+			<result name="success"></result>
+			<result name="error">/error.jsp</result>
+			<result type="stream">
+				<param name="contentType">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
+				<param name="inputName">excelStream</param>
+				<param name="contentDisposition">attachment;filename="efact-resumen-de-ventas.xlsx"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+		
+		
+		
+				
+		<action name="nota-de-credito" class="com.efact.action.NoteCreditAction" method="index">
+			<result name="success">/note-credit/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="note-credit-search" class="com.efact.action.NoteCreditAction" method="search">
+			<result name="success">/note-credit/search.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="note-credit-process" class="com.efact.action.NoteCreditAction" method="process">
+			<result name="success">/note-credit/process-result.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		
+		
+		
+		<action name="nota-de-debito" class="com.efact.action.NoteDebitAction" method="index">
+			<result name="success">/note-debit/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="note-debit-dropdown" class="com.efact.action.NoteDebitAction" method="dropdown">
+			<result name="success">/note-debit/dropdown.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="note-debit-search" class="com.efact.action.NoteDebitAction" method="search">
+			<result name="success">/note-debit/search.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="note-debit-process" class="com.efact.action.NoteDebitAction" method="process">
+			<result name="success">/note-debit/process-result.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="note-debit-export" class="com.efact.action.NoteDebitAction" method="export">
+			<result name="success"></result>
+			<result name="error">/error.jsp</result>
+			<result type="stream">
+				<param name="contentType">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
+				<param name="inputName">excelStream</param>
+				<param name="contentDisposition">attachment;filename="nota-debito.xlsx"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+
+
+		<action name="tipo-de-cambio" class="com.efact.action.ExchangeRateAction" method="index">
+			<result name="success">/exchange-rate/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="exchange-rate-process" class="com.efact.action.ExchangeRateAction" method="process">
+			<result name="success">/exchange-rate/process-result.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+				
+				
+	
+	</package>
+
+</struts>

@@ -60,7 +60,6 @@ public class ReportSalesSummaryImpDao extends OracleDaoFactory implements Report
             
         } catch (Exception e){
         	System.out.print("Exception ::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }

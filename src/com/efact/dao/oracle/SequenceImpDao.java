@@ -42,7 +42,6 @@ public class SequenceImpDao extends OracleDaoFactory implements SequenceDao  {
             
         } catch (Exception e){
         	System.out.print("findAll -- Exception ::::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }

@@ -45,7 +45,6 @@ public class NoteDebitImpDao extends OracleDaoFactory implements NoteDebitDao  {
         
         } catch (Exception e){
             System.out.println(":::: listNoteDebitDropdown ::::Exception:: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -99,7 +98,6 @@ public class NoteDebitImpDao extends OracleDaoFactory implements NoteDebitDao  {
             
         } catch (Exception e){
         	System.out.print("NoteDebit search -- Exception ::::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -130,15 +128,7 @@ public class NoteDebitImpDao extends OracleDaoFactory implements NoteDebitDao  {
             st.registerOutParameter(7, OracleTypes.VARCHAR);
             st.registerOutParameter(8, OracleTypes.FLOAT);            
 			
-            st.execute();
-           
-/*            
-            System.out.print("PROCESS RESULT -- DEBIT ::::: " + st.getString(7));
-            System.out.print("Exito -- DEBIT ::::: " + st.getFloat(8) );
-            System.out.print("Util.floatToBool(st.getFloat(8)) " + Util.floatToBool(st.getFloat(8)) );
-            
-            System.out.print("Fin pruebas" );
-*/            
+            st.execute();      
             
             ResultSet rs = (ResultSet) st.getObject(6);
             
@@ -173,7 +163,6 @@ public class NoteDebitImpDao extends OracleDaoFactory implements NoteDebitDao  {
                      
         } catch (Exception e){
         	System.out.print("process -- Exception ::::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }

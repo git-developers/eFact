@@ -83,7 +83,6 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
             
         } catch (Exception e){
         	System.out.print("salesRecordSearch ::: Exception ::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }

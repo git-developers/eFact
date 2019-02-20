@@ -42,7 +42,6 @@ public class BankImpDao extends OracleDaoFactory implements BankDao  {
 
         } catch (Exception e){
         	System.out.print("BANK findAll -- Exception ::::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -52,7 +51,6 @@ public class BankImpDao extends OracleDaoFactory implements BankDao  {
 
 	@Override
 	public Bank findOneById(String id) throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

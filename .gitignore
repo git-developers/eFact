@@ -6,3 +6,4 @@ target/
 target/m2e-wtp/web-resources/META-INF/maven/eFACT/eFACT/pom.properties
 pom.properties
 src/parameters.properties
+bin

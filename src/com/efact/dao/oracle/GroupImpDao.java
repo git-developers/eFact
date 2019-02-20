@@ -44,7 +44,6 @@ public class GroupImpDao extends OracleDaoFactory implements GroupDao  {
             
         } catch (Exception e){
         	System.out.print("GRUPO findAll -- Exception ::::: " + e.getMessage());
-            //throw e;
         } finally {
             this.closeConnection();
         }

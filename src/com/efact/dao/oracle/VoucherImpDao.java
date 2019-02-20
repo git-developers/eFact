@@ -82,7 +82,6 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
             
         } catch (Exception e){
         	System.out.print("search -- Exception ::::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -130,26 +129,16 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
                 	
             }
 
-            
-           while (rsAbo.next()){
-            	
-            	System.out.print("BANCO ::: " + rsAbo.getString("BANCO"));
-            	            	
+           while (rsAbo.next()){          	
             	objectOut.setBanco(rsAbo.getString("BANCO"));
             	objectOut.setCuentaBancaria(rsAbo.getString("CUENTA_BANCARIA"));    		    
             	objectOut.setFecDeposito(rsAbo.getInt("FEC_DEPOSITO"));
             	objectOut.setMoneda(rsAbo.getString("MONEDA"));
                 objectOut.setMonto(rsAbo.getFloat("MONTO"));    		    
-                objectOut.setSaldo(rsAbo.getFloat("SALDO"));  
-                	
+                objectOut.setSaldo(rsAbo.getFloat("SALDO"));  	
             }            
-            
-            
+
             while (rs.next()){
-            	
-            	
-            	System.out.print("RECAUDO ::: " + rs.getString("RECAUDO"));
-            	
             	VoucherTrDataDetail objD = new VoucherTrDataDetail();
             	objD.setRecaudo(rs.getString("RECAUDO"));
             	objD.setMontoProgramado(rs.getString("MONTO_PROGRAMADO"));    		    
@@ -158,8 +147,7 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
             }                
             
             objectOut.setListVoucherTrDataDetail(listDetail);            
-            
-            
+
             rs.close();
             rsReg.close();
             st.close();
@@ -167,17 +155,12 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
             
         } catch (Exception e){
         	System.out.print("VoucherTrData- Exception ::::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
         
         return objectOut;
 	}
-
-	
-	
-	
 	
     @Override
     public int getSequence() throws Exception {
@@ -201,7 +184,6 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
             
         } catch (Exception e){
             System.out.println("getSecuencia -- Exception  :::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -230,7 +212,6 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
         
         } catch (Exception e){
             System.out.println(":::: insertVoucher :::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -282,7 +263,6 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
             
         } catch (Exception e){
             System.out.println(":::: generateVoucher :::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -319,7 +299,6 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
         
         } catch (Exception e){
             System.out.println("listAccruedIssueDropdown :::: Exception :: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }

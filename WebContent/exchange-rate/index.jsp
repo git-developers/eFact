@@ -87,21 +87,10 @@
 
               </div>
 
-				<%--
-              <div class="box-footer text-right">
-              </div>
-               --%>
             </form>
           </div>
           </div>
           </div>
-    
-		<!-- MAIN DIV 
-		 <div id="main-box-body" class="row">
-		
-		</div>
-		MAIN DIV -->
-		
 
     
       <div class="row">
@@ -119,7 +108,6 @@
 		              <thead>
 						<tr>
 						   <th style="width: 15px">#</th>
-						   <!--  <th style="width: 15px"><input type="checkbox" id="check-all"></th> -->
 						   <th class="text-center">Fecha</th>
 						   <th class="text-center">Moneda</th>
 						   <th class="text-center">Compra</th>
@@ -129,15 +117,7 @@
 						 </tr>
 		              </thead>
 			            <tbody>
-			            
-			            <!--  
-				            <tr>
-							   	<td colspan="14" align="center">
-					   				No hay datos que mostrar.
-					   			</td>					   								   			
-				   			</tr>
-				   		-->	
-				   			
+
 		                  	<s:iterator value="listExchangeRate" var="tcambio" status="status">
 				            <tr> 
 				            	<td> 
@@ -176,12 +156,7 @@
 	              </table>
               
             </div>
-            
-            <%-- 
-            <div class="box-footer clearfix">
 
-            </div>
-            --%>
           </div>
        	</div>
      </div>		

@@ -19,8 +19,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 
-
-public class VoucherAction extends ActionSupportBase implements ServletRequestAware, ServletResponseAware  {
+public class PaymentVoucherAction extends ActionSupportBase implements ServletRequestAware, ServletResponseAware  {
 
 	private static final long serialVersionUID = 1L;
 	private DaoFactory dao;
@@ -38,7 +37,7 @@ public class VoucherAction extends ActionSupportBase implements ServletRequestAw
 	private HttpServletRequest request = null;
 	private HttpServletResponse response = null;
 	
-    public VoucherAction() {
+    public PaymentVoucherAction() {
 		dao = DaoFactory.getDAOFactory(DaoFactory.ORACLE);
 		gson = new GsonBuilder().setPrettyPrinting().create();
 		currentDate = Dates.getCurrentDate();

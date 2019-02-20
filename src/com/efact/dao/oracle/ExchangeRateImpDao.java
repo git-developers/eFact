@@ -49,29 +49,18 @@ public class ExchangeRateImpDao extends OracleDaoFactory implements ExchangeRate
         
         } catch (Exception e){
             System.out.println("listExchangeRate :: Exception :::: " + e.getMessage());
-//	            throw e;
         } finally {
             this.closeConnection();
         }
         
         return list;
 	}
-	
-	
-
     
 	@Override
 	public ExchangeRate process(ExchangeRate object) throws Exception {
 		
 		ExchangeRate objectOut = new ExchangeRate();
-		
 
-        System.out.print("object.getCompra() -- ::::: " + object.getCompra());
-        System.out.print("object.getVenta() -- ::::: " + object.getVenta());        
-        System.out.print("object.getUserCreacion() -- ::::: " + object.getUserCreacion());
-        System.out.print("object.getFecha() -- ::::: " + object.getFecha());
-        		
-		
         try{
     		
             String sql = "{ call FIN_PKG_TIPOCAMBIO.P_REGISTRA_TIPOCAMBIO(?, ?, ?, ?, ?, ?) } "; 
@@ -88,26 +77,16 @@ public class ExchangeRateImpDao extends OracleDaoFactory implements ExchangeRate
             
             st.registerOutParameter(5, OracleTypes.VARCHAR);
             st.registerOutParameter(6, OracleTypes.FLOAT);
-                    
-            
+
             st.execute();
-            
-            
+
             objectOut.setResultado(st.getString(5));            
             objectOut.setStatus(Util.floatToBool(st.getFloat(6)));
-            
-            
-        	System.out.print("PROCESS OUT ::::: " + 
-        	st.getString(5));
-        	
-            
-        	System.out.print("isStatus::::: "+ st.getFloat(6)); 
-        	
+
             st.close();
             
         } catch (Exception e){
         	System.out.print("TIPO CAMBIO :: process -- Exception ::::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }

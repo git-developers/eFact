@@ -33,12 +33,9 @@
                 },
                 success: function(data, textStatus, jqXHR) {
                 	
-                	//console.log("data NC :: "+data);
-                	
                 	$("div#main-box-body").html(data); 
                 	$("button.note-credit-process").prop("disabled", false);
-					
-					//console.log("run credittype()");
+
 					tipoNotaCredito();
 					
                 },
@@ -111,52 +108,6 @@
 					
 				}	
 			});						
-			
-			
-		/*	
-            if (!$('input[name="noAfecto-1"]').is(':disabled')) {
-                row ['noAfecto_1'] = $('input[name="noAfecto-1"]').val();
-                row ['afecto_1'] = $('input[name="afecto-1"]').val();
-            }
-
-			
-            if (!$('input[name="noAfecto-2"]').is(':disabled')) {
-                row ['noAfecto_2'] = $('input[name="noAfecto-2"]').val();
-                row ['afecto_2'] = $('input[name="afecto-2"]').val();
-            }
-
-            if (!$('input[name="noAfecto-3"]').is(':disabled')) {
-                row ['noAfecto_3'] = $('input[name="noAfecto-3"]').val();
-                row ['afecto_3'] = $('input[name="afecto-3"]').val();
-            }
-
-            if (!$('input[name="noAfecto-4"]').is(':disabled')) {
-                row ['noAfecto_4'] = $('input[name="noAfecto-4"]').val();
-                row ['afecto_4'] = $('input[name="afecto-4"]').val();
-            }
-
-            if (!$('input[name="noAfecto-5"]').is(':disabled')) {
-                row ['noAfecto_5'] = $('input[name="noAfecto-5"]').val();
-                row ['afecto_5'] = $('input[name="afecto-5"]').val();
-            }
-
-            if (!$('input[name="noAfecto-6"]').is(':disabled')) {
-                row ['noAfecto_6'] = $('input[name="noAfecto-6"]').val();
-                row ['afecto_6'] = $('input[name="afecto-6"]').val();
-            }
-
-            if (!$('input[name="noAfecto-7"]').is(':disabled')) {
-                row ['noAfecto_7'] = $('input[name="noAfecto-7"]').val();
-                row ['afecto_7'] = $('input[name="afecto-7"]').val();
-            }
-
-            if (!$('input[name="noAfecto-8"]').is(':disabled')) {
-                row ['noAfecto_8'] = $('input[name="noAfecto-8"]').val();
-                row ['afecto_8'] = $('input[name="afecto-8"]').val();
-            }
-			*/
-
-        	console.log("ROWS ::: " + JSON.stringify(row));
 
             $.ajax({
                 url: options.contextPath + '/note-credit-process',

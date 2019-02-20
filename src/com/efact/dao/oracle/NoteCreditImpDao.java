@@ -63,7 +63,6 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             
         } catch (Exception e){
         	System.out.print("HEADER -nota credito- Exception ::::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -134,7 +133,6 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             
         } catch (Exception e){
         	System.out.print("DETAIL -nota credito- Exception ::::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -171,7 +169,6 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             
         } catch (Exception e){
             System.out.println("listNoteCreditType -- Exception  :::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -270,23 +267,11 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             objectOut.setResultado(st.getString(31));
             
             objectOut.setStatus(Util.floatToBool(st.getFloat(32)));
-            
-            
-           // objectOut.setStatus(true);
-            
-            
-        	System.out.print("PROCESS OUT ::::: " + 
-        	st.getString(29) + "" + 
-			st.getString(30) + "" + 
-        	st.getString(31));
-            
-        	System.out.print("isStatus::::: "+ st.getFloat(32)); 
-        	
+
             st.close();
             
         } catch (Exception e){
         	System.out.print("NOTA CREDITO :: process -- Exception ::::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }
@@ -323,7 +308,6 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
         
         } catch (Exception e){
             System.out.println("listSeries :: Exception :::: " + e.getMessage());
-//            throw e;
         } finally {
             this.closeConnection();
         }

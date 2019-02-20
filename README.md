@@ -8,7 +8,7 @@
 
 ### What Is It?
 
-Electronic billing project
+Electronic billing project.
 
 ### Documentation
 

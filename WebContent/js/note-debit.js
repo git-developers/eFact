@@ -88,7 +88,6 @@
                 type: 'POST',
                 dataType: 'html',
                 data: {
-                	//fields: $(context).serialize() + '&' + $.param({ 'origen': origen })
                 	fields: $("form[name='form-note-debit']").serialize() + '&' + $.param({ 'origen': origen })
                 },
                 

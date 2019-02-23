@@ -40,6 +40,8 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.registerOutParameter(4, OracleTypes.CURSOR);
             st.registerOutParameter(5, OracleTypes.CURSOR);
             st.registerOutParameter(6, OracleTypes.CURSOR);
+            st.registerOutParameter(7, OracleTypes.INTEGER);
+            st.registerOutParameter(8, OracleTypes.VARCHAR);
             st.execute();
         	
             

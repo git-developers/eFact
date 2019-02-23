@@ -4,7 +4,7 @@
 
     <section class="content-header">
       <h1>
-        <i class="fa fa-hand-peace-o"></i> Comprobantes Manual
+        <i class="fa fa-fw fa-file-text-o"></i> Comprobantes Manual
         <small>grid</small>
       </h1>
       <ol class="breadcrumb">
@@ -30,7 +30,7 @@
                 
 					<div class="col-md-2">
 					    <div class="form-group">
-					      <label for="exampleInputEmail1">Contrato</label>
+					      <label for="">Contrato</label>
 					        <div class="input-group">
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
@@ -55,7 +55,7 @@
 
 					<div class="col-md-2">
 					    <div class="form-group">
-					      <label for="exampleInputEmail1">Contrato</label>
+					      <label for="">Numero DOI</label>
 					        <div class="input-group">
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
@@ -90,7 +90,6 @@
 	              <h3 class="box-title">
 	              	Detalle
 				  </h3>
-             	<small class="search-count label bg-green">0</small>
             </div>
             <div class="box-body">
             

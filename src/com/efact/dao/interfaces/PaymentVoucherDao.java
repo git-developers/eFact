@@ -7,6 +7,6 @@ public interface PaymentVoucherDao {
 
 	public List<PaymentHeader> findAll() throws Exception;
 	public PaymentHeader findOneById(String id) throws Exception;
-	public PaymentHeader findOneById() throws Exception;
+	public PaymentHeader getHeader() throws Exception;
 	
 }

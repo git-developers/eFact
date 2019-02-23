@@ -44,7 +44,7 @@ public class NoteDebitImpDao extends OracleDaoFactory implements NoteDebitDao  {
             }
         
         } catch (Exception e){
-            System.out.println(":::: listNoteDebitDropdown ::::Exception:: " + e.getMessage());
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -95,9 +95,8 @@ public class NoteDebitImpDao extends OracleDaoFactory implements NoteDebitDao  {
             rs.close();
             st.close();
             
-            
         } catch (Exception e){
-        	System.out.print("NoteDebit search -- Exception ::::: " + e.getMessage());
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -112,7 +111,6 @@ public class NoteDebitImpDao extends OracleDaoFactory implements NoteDebitDao  {
 
         try{
     		
-            //String sql = "{ call FIN_PKG_NOTADEBITO.USP_PROCESO_MORA(?, ?, ?, ?, ?) } "; 
             String sql = "{ call FIN_PKG_NOTADEBITO.USP_PROCESO_MORA(?, ?, ?, ?, ?, ?, ?, ?) } ";
             
             Connection connection = OracleDaoFactory.getMainConnection();
@@ -162,7 +160,7 @@ public class NoteDebitImpDao extends OracleDaoFactory implements NoteDebitDao  {
             st.close();            
                      
         } catch (Exception e){
-        	System.out.print("process -- Exception ::::: " + e.getMessage());
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }

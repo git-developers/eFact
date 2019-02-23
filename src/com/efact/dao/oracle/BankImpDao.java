@@ -41,7 +41,7 @@ public class BankImpDao extends OracleDaoFactory implements BankDao  {
             st.close();
 
         } catch (Exception e){
-        	System.out.print("BANK findAll -- Exception ::::: " + e.getMessage());
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }

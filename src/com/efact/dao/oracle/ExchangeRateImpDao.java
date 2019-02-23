@@ -48,7 +48,7 @@ public class ExchangeRateImpDao extends OracleDaoFactory implements ExchangeRate
             }
         
         } catch (Exception e){
-            System.out.println("listExchangeRate :: Exception :::: " + e.getMessage());
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -86,7 +86,7 @@ public class ExchangeRateImpDao extends OracleDaoFactory implements ExchangeRate
             st.close();
             
         } catch (Exception e){
-        	System.out.print("TIPO CAMBIO :: process -- Exception ::::: " + e.getMessage());
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }

@@ -43,7 +43,7 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 		
 		PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
 		
-		paymentHeader = daoPaymentVoucher.findOneById();
+		paymentHeader = daoPaymentVoucher.getHeader();
         
 		return SUCCESS;
 	}

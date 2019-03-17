@@ -95,14 +95,14 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             /**
              * Cursor: Cuota
              */
-            ResultSet rsCuota = (ResultSet) st.getObject(4);
-            List<PaymentCuota> listCuota = new ArrayList<PaymentCuota>();
-            while (rsCuota.next()) {
-            	PaymentCuota o = new PaymentCuota();
-            	//o.setXxxxxxxxxx(rsTipoMoneda.getString("XXXXXXXX")); 
-            	listCuota.add(o);
-            }                
-            objectOut.setListPaymentCuota(listCuota);  
+//            ResultSet rsCuota = (ResultSet) st.getObject(4);
+//            List<PaymentCuota> listCuota = new ArrayList<PaymentCuota>();
+//            while (rsCuota.next()) {
+//            	PaymentCuota o = new PaymentCuota();
+//            	//o.setXxxxxxxxxx(rsTipoMoneda.getString("XXXXXXXX")); 
+//            	listCuota.add(o);
+//            }                
+//            objectOut.setListPaymentCuota(listCuota);  
             
             
             /**
@@ -137,7 +137,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             /**
              * Close
              */
-            rsCuota.close();
+//            rsCuota.close();
             rsTipoDoi.close();
             rsRecaudo.close();
             rsConcepto.close();

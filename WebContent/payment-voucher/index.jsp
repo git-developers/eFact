@@ -280,15 +280,12 @@
 				                  <td>xxxx</td>
 				                  <td>xxxx</td>
 				                  <td>
-					                  <button type="button" class="btn btn-block btn-danger btn-xs">
+					                  <button type="button" class="btn btn-danger btn-xs">
 					                  	<i class="fa fa-trash"></i>
 					                  </button>
 				                  </td>
 				                </tr>
 	                  		</s:iterator>
-		                
-		                
-
 		              </tbody>
 					  <tfoot>
 					  </tfoot>

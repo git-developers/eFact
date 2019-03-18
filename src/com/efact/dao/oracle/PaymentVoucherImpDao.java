@@ -61,16 +61,44 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             }
             objectOut.setListPaymentTipoDoi(listTipoDoi);
 
+
+            /**
+             * Cursor: Tipo Comprobante
+             */
+            ResultSet rsTipoComprobante = (ResultSet) st.getObject(2);
+            List<PaymentTipoComprobante> listTipoComprobante = new ArrayList<PaymentTipoComprobante>();
+            while (rsTipoComprobante.next()) {
+            	PaymentTipoComprobante o = new PaymentTipoComprobante();
+            	o.setCscTipo(rsTipoComprobante.getInt("CSC_TIPO"));
+            	o.setCscTipoNombre(rsTipoComprobante.getString("CSC_TIPO_NOMBRE"));
+                listTipoComprobante.add(o);
+            }
+            objectOut.setListPaymentTipoComprobante(listTipoComprobante);
             
             
+            /**
+             * Cursor: Tipo Moneda
+             */
+            ResultSet rsTipoMoneda = (ResultSet) st.getObject(3);
+            List<PaymentTipoMoneda> listTipoMoneda = new ArrayList<PaymentTipoMoneda>();
+            while (rsTipoMoneda.next()) {
+            	PaymentTipoMoneda o = new PaymentTipoMoneda();
+            	o.setIdMoneda(rsTipoMoneda.getInt("ID_MONEDA"));
+            	o.setDescripcion(rsTipoMoneda.getString("DESCRIPCION"));    		    
+            	o.setNombreCorto(rsTipoMoneda.getString("NOMBRE_CORTO"));  
+            	listTipoMoneda.add(o);
+            }                
+            objectOut.setListPaymentTipoMoneda(listTipoMoneda);    
             
             /**
              * Close
              */
             rsTipoDoi.close();
+            rsTipoComprobante.close();
+            rsTipoMoneda.close();
 //            rsRecaudo.close();
 //            rsConcepto.close();
-//            rsTipoMoneda.close();
+//            
 //            rsTipoComprobante.close();
             st.close();
             

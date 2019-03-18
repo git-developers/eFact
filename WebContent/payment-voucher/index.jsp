@@ -239,31 +239,43 @@
             	<!-- FOURTH ROW -->
                 <div class="row">
                 
-				<table class="table table-bordered">
-					<thead>
-		                <tr>
-		                  <th style="width: 10px">#</th>
-		                  <th>Task</th>
-		                  <th>Progress</th>
-		                  <th style="width: 40px">Label</th>
-		                </tr>
-					</thead>
-	                <tbody>
-		                <tr>
-		                  <td>1.</td>
-		                  <td>Update software</td>
-		                  <td>
-		                    <div class="progress progress-xs">
-		                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-		                    </div>
-		                  </td>
-		                  <td><span class="badge bg-red">55%</span></td>
-		                </tr>
-	              </tbody>
-				  <tfoot>
-				  </tfoot>
-              </table>
-                
+                <div class="col-md-12">
+					<table class="table table-bordered">
+						<thead class="bg-light-blue-active">
+			                <tr>
+			                  <th>Recaudo</th>
+			                  <th>Concepto</th>
+			                  <th>No afecto</th>
+			                  <th>Afecto</th>
+			                  <th>IGV</th>
+			                  <th><i class="fa fa-money"></i> Total</th>
+			                  <th><span class="badge bg-green">agregar</span></th>
+			                </tr>
+						</thead>
+		                <tbody>
+		                  	<s:iterator value="paymentHeader.listPaymentRecaudo" var="obj">
+				                <tr>
+				                  <td><s:property value = "#obj.descripcion"/></td>
+				                  <td>xxxx</td>
+				                  <td>xxxx</td>
+				                  <td>xxxx</td>
+				                  <td>xxxx</td>
+				                  <td>xxxx</td>
+				                  <td>
+					                  <button type="button" class="btn btn-block btn-danger btn-xs">
+					                  	<i class="fa fa-trash"></i>
+					                  </button>
+				                  </td>
+				                </tr>
+	                  		</s:iterator>
+		                
+		                
+
+		              </tbody>
+					  <tfoot>
+					  </tfoot>
+	              </table>
+                </div>
                 
                 </div>
                 <!-- FOURTH ROW -->

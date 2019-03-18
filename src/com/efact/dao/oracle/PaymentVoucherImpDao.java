@@ -39,9 +39,8 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.registerOutParameter(3, OracleTypes.CURSOR);
             st.registerOutParameter(4, OracleTypes.CURSOR);
             st.registerOutParameter(5, OracleTypes.CURSOR);
-            st.registerOutParameter(6, OracleTypes.CURSOR);
-            st.registerOutParameter(7, OracleTypes.NUMBER);
-            st.registerOutParameter(8, OracleTypes.VARCHAR);
+            st.registerOutParameter(6, OracleTypes.NUMBER);
+            st.registerOutParameter(7, OracleTypes.VARCHAR);
             st.execute();
         	
             
@@ -108,7 +107,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             /**
              * Cursor: Recaudo
              */
-            ResultSet rsRecaudo = (ResultSet) st.getObject(5);
+            ResultSet rsRecaudo = (ResultSet) st.getObject(4);
             List<PaymentRecaudo> listRecaudo = new ArrayList<PaymentRecaudo>();
             while (rsRecaudo.next()) {
             	PaymentRecaudo o = new PaymentRecaudo();
@@ -122,7 +121,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             /**
              * Cursor: Concepto
              */
-            ResultSet rsConcepto = (ResultSet) st.getObject(6);
+            ResultSet rsConcepto = (ResultSet) st.getObject(5);
             List<PaymentConcepto> listConcepto = new ArrayList<PaymentConcepto>();
             while (rsConcepto.next()) {
             	PaymentConcepto o = new PaymentConcepto();

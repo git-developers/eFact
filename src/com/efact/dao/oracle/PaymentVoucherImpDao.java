@@ -88,18 +88,33 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             	o.setNombreCorto(rsTipoMoneda.getString("NOMBRE_CORTO"));  
             	listTipoMoneda.add(o);
             }                
-            objectOut.setListPaymentTipoMoneda(listTipoMoneda);    
+            objectOut.setListPaymentTipoMoneda(listTipoMoneda);
+            
+            
+            /**
+             * Cursor: Recaudo
+             */
+            ResultSet rsRecaudo = (ResultSet) st.getObject(4);
+            List<PaymentRecaudo> listRecaudo = new ArrayList<PaymentRecaudo>();
+            while (rsRecaudo.next()) {
+            	PaymentRecaudo o = new PaymentRecaudo();
+            	o.setIdRecaudo(rsRecaudo.getInt("ID_RECAUDO"));
+            	o.setDescripcion(rsRecaudo.getString("DESCRIPCION"));
+            	listRecaudo.add(o);
+            }                
+            objectOut.setListPaymentRecaudo(listRecaudo);  
+            
+
             
             /**
              * Close
              */
             rsTipoDoi.close();
+            rsRecaudo.close();
             rsTipoComprobante.close();
             rsTipoMoneda.close();
-//            rsRecaudo.close();
 //            rsConcepto.close();
-//            
-//            rsTipoComprobante.close();
+
             st.close();
             
         } catch (Exception e){

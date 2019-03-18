@@ -64,6 +64,24 @@
 					        </div>
 					    </div>
 					</div>
+					
+	        		<div class="col-md-2">
+		                <div class="form-group pull-right">
+		                  <label for="">&nbsp;</label>
+							<div class="input-group">
+			                  <button type="button" class="btn btn-default exchange-rate-process">Buscar</button>
+			                </div>
+		                </div>
+	        		</div>
+
+	        		<div class="col-md-2">
+		                <div class="form-group pull-right">
+		                  <label for="">&nbsp;</label>
+							<div class="input-group">
+			                  <button type="button" class="btn btn-default exchange-rate-new" >Procesar</button>
+			                </div>
+		                </div>
+	        		</div>
 
         		</div>
 

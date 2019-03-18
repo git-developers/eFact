@@ -71,14 +71,7 @@
 		                <div class="form-group pull-right">
 		                  <label for="">&nbsp;</label>
 							<div class="input-group">
-							
-			                  <!--  <button type="button" class="btn btn-default note-credit-process" disabled="disabled">Nuevo</button> -->
-			                  <!-- Botón nuevo debe resetear cabecera y habilitar botón guardar-->
-			                  
 			                  <button type="button" class="btn btn-default exchange-rate-new" >Nuevo</button>
-			                  
-			                  <!--  <button type="button" class="btn btn-default exchange-rate-new" disabled="disabled">Nuevo</button>-->
-			                  
 			                </div>
 		                </div>
 	        		</div>

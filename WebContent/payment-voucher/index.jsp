@@ -44,9 +44,9 @@
 		                <div class="form-group">
 		                  <label for="">Tipo Doi</label>
 		                  <select class="form-control" id="tipoDoi" name="queryTipoDoi" required="required">
-		                  	<s:iterator value="listProgram" var="program">
-		                  		<option value="<s:property value = "#program.id"/>">
-		                  			<s:property value = "#program.name"/>
+		                  	<s:iterator value="paymentHeader.listPaymentTipoDoi" var="paymentTipoDoi">
+		                  		<option value="<s:property value = "#paymentTipoDoi.idTipoDoi"/>">
+		                  			<s:property value = "#paymentTipoDoi.nombreCorto"/>
 	                  			</option>
 	                  		</s:iterator>
 		                  </select>

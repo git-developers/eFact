@@ -87,8 +87,6 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
                 
 		return SUCCESS;
 	}
-
-	
 	
 	@Override
 	public void setServletResponse(HttpServletResponse httpServletResponse) {
@@ -102,6 +100,14 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public PaymentHeader getPaymentHeader() {
+		return paymentHeader;
+	}
+
+	public void setPaymentHeader(PaymentHeader paymentHeader) {
+		this.paymentHeader = paymentHeader;
 	}
 
 }

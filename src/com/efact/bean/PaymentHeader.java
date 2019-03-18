@@ -10,7 +10,6 @@ public class PaymentHeader implements Serializable {
     private List<PaymentTipoDoi> listPaymentTipoDoi;
     private List<PaymentTipoComprobante> listPaymentTipoComprobante;
     private List<PaymentTipoMoneda> listPaymentTipoMoneda;
-    private List<PaymentCuota> listPaymentCuota;
     private List<PaymentRecaudo> listPaymentRecaudo;
     private List<PaymentConcepto> listPaymentConcepto;
     
@@ -31,12 +30,6 @@ public class PaymentHeader implements Serializable {
 	}
 	public void setListPaymentTipoMoneda(List<PaymentTipoMoneda> listPaymentTipoMoneda) {
 		this.listPaymentTipoMoneda = listPaymentTipoMoneda;
-	}
-	public List<PaymentCuota> getListPaymentCuota() {
-		return listPaymentCuota;
-	}
-	public void setListPaymentCuota(List<PaymentCuota> listPaymentCuota) {
-		this.listPaymentCuota = listPaymentCuota;
 	}
 	public List<PaymentRecaudo> getListPaymentRecaudo() {
 		return listPaymentRecaudo;

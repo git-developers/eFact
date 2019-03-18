@@ -44,9 +44,9 @@
 		                <div class="form-group">
 		                  <label for="">Tipo Doi</label>
 		                  <select class="form-control" id="tipoDoi" name="queryTipoDoi" required="required">
-		                  	<s:iterator value="paymentHeader.listPaymentTipoDoi" var="paymentTipoDoi">
-		                  		<option value="<s:property value = "#paymentTipoDoi.idTipoDoi"/>">
-		                  			<s:property value = "#paymentTipoDoi.nombreCorto"/>
+		                  	<s:iterator value="paymentHeader.listPaymentTipoDoi" var="obj">
+		                  		<option value="<s:property value = "#obj.idTipoDoi"/>">
+		                  			<s:property value = "#obj.nombreCorto"/>
 	                  			</option>
 	                  		</s:iterator>
 		                  </select>
@@ -93,13 +93,188 @@
             </div>
             <div class="box-body">
             
-				XXXXXXXXXXXXXXXX
+            	<!-- FIRST ROW -->
+                <div class="row">
+                
+					<div class="col-md-6">
+					    <div class="form-group">
+					      <label for="">Asociado</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-qrcode"></i>
+					          </div>
+					          <input type="text" class="form-control" name="queryAsociado">
+					        </div>
+					    </div>
+					</div>
+					
+					<div class="col-md-2">
+					    <div class="form-group">
+					      <label for="">Comprobante</label>
+		                  <select class="form-control" name="queryComprobante" required="required">
+		                  	<s:iterator value="paymentHeader.listPaymentTipoComprobante" var="obj">
+		                  		<option value="<s:property value = "#obj.cscTipo"/>">
+		                  			<s:property value = "#obj.cscTipoNombre"/>
+	                  			</option>
+	                  		</s:iterator>
+		                  </select>
+					    </div>
+					</div>
+					
+					<div class="col-md-2">
+					    <div class="form-group">
+					      <label for="">Serie</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-qrcode"></i>
+					          </div>
+					          <input type="number" class="form-control" name="querySerie">
+					        </div>
+					    </div>
+					</div>
+					
+					<div class="col-md-2">
+					    <div class="form-group">
+					      <label for="">Numero</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-qrcode"></i>
+					          </div>
+					          <input type="number" class="form-control" name="queryNumero">
+					        </div>
+					    </div>
+					</div>
+					
+				</div>
+				<!-- FIRST ROW -->
+				
+				
+            	<!-- SECOND ROW -->
+                <div class="row">
+                
+					<div class="col-md-3">
+					    <div class="form-group">
+					      <label for="">Cuota</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-qrcode"></i>
+					          </div>
+					          <input type="text" class="form-control" name="queryCuota">
+					        </div>
+					    </div>
+					</div>
+					
+					<div class="col-md-3">
+					    <div class="form-group">
+					      <label for="">Fecha de emisi&oacute;n</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-calendar"></i>
+					          </div>
+					          <input type="date" class="form-control" name="queryFechaEmision">
+					        </div>
+					    </div>
+					</div>
+					
+					<div class="col-md-3">
+					    <div class="form-group">
+					      <label for="">Fecha de vencimiento</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-calendar"></i>
+					          </div>
+					          <input type="date" class="form-control" name="queryFechaVencimiento">
+					        </div>
+					    </div>
+					</div>
+					
+					<div class="col-md-2">
+					    <div class="form-group">
+					      <label for="">Moneda</label>
+		                  <select class="form-control" name="queryMoneda" required="required">
+		                  	<s:iterator value="paymentHeader.listPaymentTipoMoneda" var="obj">
+		                  		<option value="<s:property value = "#obj.idMoneda"/>">
+		                  			<s:property value = "#obj.nombreCorto"/>
+	                  			</option>
+	                  		</s:iterator>
+		                  </select>
+					    </div>
+					</div>
+					
+				</div>
+				<!-- SECOND ROW -->
+				
+				
+            	<!-- THIRD ROW -->
+                <div class="row">
+                
+					<div class="col-md-4">
+					    <div class="form-group">
+					      <label for="">Total</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-money"></i>
+					          </div>
+					          <input type="text" class="form-control" name="queryTotal">
+					        </div>
+					    </div>
+					</div>
+					
+					<div class="col-md-8">
+					    <div class="form-group">
+					      <label for="">Total texto</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-money"></i>
+					          </div>
+					          <input type="text" class="form-control" name="queryTotal">
+					        </div>
+					    </div>
+					</div>
+					
+				</div>
+				<!-- THIRD ROW -->
+				
+				
+            	<!-- FOURTH ROW -->
+                <div class="row">
+                
+				<table class="table table-bordered">
+					<thead>
+		                <tr>
+		                  <th style="width: 10px">#</th>
+		                  <th>Task</th>
+		                  <th>Progress</th>
+		                  <th style="width: 40px">Label</th>
+		                </tr>
+					</thead>
+	                <tbody>
+		                <tr>
+		                  <td>1.</td>
+		                  <td>Update software</td>
+		                  <td>
+		                    <div class="progress progress-xs">
+		                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+		                    </div>
+		                  </td>
+		                  <td><span class="badge bg-red">55%</span></td>
+		                </tr>
+	              </tbody>
+				  <tfoot>
+				  </tfoot>
+              </table>
+                
+                
+                </div>
+                <!-- FOURTH ROW -->
               
             </div>
             
-            <%-- 
-            <div class="box-footer clearfix"></div>
-            --%>
+            
+            <div class="box-footer clearfix">
+            	footer
+            </div>
+            
           </div>
        	</div>
      </div>

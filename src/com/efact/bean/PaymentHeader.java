@@ -1,7 +1,6 @@
 package com.efact.bean;
 
 import java.io.Serializable;
-import java.sql.ResultSet;
 import java.util.List;
 
 public class PaymentHeader implements Serializable {

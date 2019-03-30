@@ -42,8 +42,6 @@
         };
         
         base.process = function(context) {
-        	
-        	console.log("PROCESS :: " + $("form[name='form-accrued-issue']").serialize());
 
             $.ajax({
                 url: options.contextPath + '/accrued-issue-process',

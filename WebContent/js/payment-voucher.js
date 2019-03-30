@@ -4,7 +4,7 @@
     // Global Variables
     var MAX_HEIGHT = 100;
 
-    $.formNoteCredit = function(el, options) {
+    $.PaymentVoucher = function(el, options) {
 
         // Global Private Variables
         var MAX_WIDTH = 200;
@@ -13,7 +13,7 @@
 
         base.$el = $(el);
         base.el = el;
-        base.$el.data('formNoteCredit', base);
+        base.$el.data('PaymentVoucher', base);
 
         base.init = function(){
             var totalButtons = 0;
@@ -131,166 +131,23 @@
                 }
             });
         };
+        
+        base.addRow = function(context) {
 
-        base.fechaEmisionChange = function(context) {
-        	var fechaEmision = $(context).val(); 
-        	$('input[name="fechaVencimiento"]').val(fechaEmision);
-        };
-
-        base.fechaVencimientoChange = function(context) {
-        	var fechaVencimiento = $(context).val(); 
-        	var fechaEmision = $('input[name="fechaEmision"]').val();
+        	$trClone = $("table.table-payment-voucher-clone tbody").closest('tr');
+        	$clone = $trClone.clone();
         	
-        	if(new Date(fechaVencimiento) < new Date(fechaEmision))
-        	{
-        		$('input[name="fechaVencimiento"]').val(fechaEmision);
-        		alert("La fecha de vencimiento no puede ser menor a la fecha de emision.");
-        	}
+        	$tableBody = $("table.table-payment-voucher tbody");
+        	$tableBody.after($clone);
+        	
         };
         
-        base.rowCheckbox = function(context) {
-        	
-        	var position = $(context).data('position');
-        	
-        	if (context.checked) {
-				$(context).closest('tr').find('input[type=number]').prop('disabled', true);
-        	} else {
-        		$(context).closest('tr').find('input[type=number]').prop('disabled', true);				
-        		asignaValoresIniciales(position); 											
-        	}
-        	
-            sumRowSubTotal(position);
-            sumTotalFooter();
+        base.removeRow = function(context) {
+
+        	$(context).closest('tr').remove();
+
         };
         
-        base.voucher = function(context) {
-            var id = $('#select-voucher').val();  
-            $('#select-series').prop('selectedIndex',0);
-            $('.select-series').hide();
-            $('.voucher-' + id).show();
-        };
-		
-        base.credittype = function(context) {
-
-			tipoNotaCredito();
-		
-        };		
-        		
-        base.rowNoAfecto = function(context) {
-        	
-            var value = $(context).val();
-            var position = $(context).data('position');
-            
-            sumRowSubTotal(position);
-            sumTotalFooter();
-        };
-        
-        base.rowAfecto = function(context) {
-        	
-            var value = validInt( $(context).val() );
-            var igv = validInt( $('input[name=igv]').val() );
-            var position = $(context).data('position');
-            var newIgv = parseFloat(value) * 0.18;	
-
-            $('.td-igv-' + position).html(newIgv.toFixed(2));
-            
-            sumRowSubTotal(position);
-            sumTotalFooter();
-        };
-		
-		function tipoNotaCredito(){
-            var id = $('#note-credit-type').val();  
-			
-			if( id == '6'){
-				$(".row-checkbox").prop( "checked", true );
-				$(".row-checkbox").prop('disabled', true);
-				sumTotalFooter();								
-			} else {
-				$(".row-checkbox").removeAttr("disabled");
-			}			
-		}
-		
-        function asignaValoresIniciales(position) {
-  
-        	var tableReg = document.getElementById('tablaComprobanteOrigen');
-        	var tableNotaCredito = document.getElementById('tablaComprobanteNotaCredito');
-        	var noAfecto = 0;
-        	var afecto = 0;
-        	var igv = 0;
-        	var stotal = 0;        	
-        	        	
-        	noAfecto = tableReg.rows[position].getElementsByTagName('td')[2].innerHTML;
-        	afecto   = tableReg.rows[position].getElementsByTagName('td')[3].innerHTML;
-        	igv      = tableReg.rows[position].getElementsByTagName('td')[4].innerHTML;
-        	stotal   = tableReg.rows[position].getElementsByTagName('td')[5].innerHTML;
-        	    	        	
-        	$('input[name=noAfecto-' + position + ']').val((parseFloat(noAfecto)).toFixed(2));
-        	$('input[name=afecto-' + position + ']').val((parseFloat(afecto)).toFixed(2));        	
-        	$('.td-igv-' + position ).html((parseFloat(igv)).toFixed(2));
-        	$('.sub-total-' + position ).html((parseFloat(stotal)).toFixed(2));		
-        }        
-        
-        function sumRowSubTotal(position) {
-        	
-        	console.log("::: sumRowSubTotal ::: " );
-        	console.log("position ::: " + position);
-        	console.log("noAfecto position ::: " + $('input[name=noAfecto-' + position + ']').val());
-        	console.log("afecto position ::: " + $('input[name=afecto-' + position + ']').val() );
-        	console.log("td-igv ::: " + $('.td-igv-' + position).html());
-        	
-        	
-        	
-            var noAfecto = validInt( $('input[name=noAfecto-' + position + ']').val() );
-            var afecto = validInt( $('input[name=afecto-' + position + ']').val() );
-            var igv = validInt( $('.td-igv-' + position).html() );
-
-            var newSubTotal = parseFloat(noAfecto) + parseFloat(afecto) + parseFloat(igv);
-            $('.sub-total-' + position).html(newSubTotal.toFixed(2));
-        }
-        
-        function sumTotalFooter() {
-			
-			console.log("sumTotalFooter");
-        	
-        	var noAfecto = 0;
-        	var afecto = 0;
-        	var igv = 0;
-        	var total = 0;
-			var position = 0;
-
-			$(".row-checkbox").each(function()
-			{
-				position=position+1;
-				if($(this).prop('checked')){ 					
-    				noAfecto += parseFloat(validInt( $('input[name=noAfecto-' + position + ']').val() ));
-    				afecto += parseFloat(validInt( $('input[name=afecto-' + position + ']').val() ));
-    				igv += parseFloat(validInt( $('.td-igv-' + position).html() ));
-    				total += parseFloat(validInt( $('.sub-total-' + position).html() ));
-				}	
-			});			
-
-    		$('.no-afecto-footer-sum').html(noAfecto.toFixed(2));
-    		$('.afecto-footer-sum').html(afecto.toFixed(2));
-    		$('.igv-footer-sum').html(igv.toFixed(2));
-        	$('.total-footer-sum').html(total.toFixed(2));
-        	$("input[name='queryTotal']").val(total.toFixed(2)).change();
-        }
-        
-        function validInt(number) {
-            if (typeof number == 'undefined' || isNaN(number) || number == ""){
-                return 0;
-            }
-
-            return number;
-        }
-        
-        function resetRowToZero(position) {
-            $('input[name=noAfecto-' + position + ']').val(0);
-            $('input[name=afecto-' + position + ']').val(0);
-            $('.td-igv-' + position).html(0);
-            $('.sub-total-' + position).html(0);
-        }
-
         // Private Functions
         function debug(e) {
           console.log(e);
@@ -299,12 +156,22 @@
         base.init();
     };
 
-    $.fn.formNoteCredit = function(options){
+    $.fn.PaymentVoucher = function(options){
 
         return this.each(function(){
 
-            var bp = new $.formNoteCredit(this, options);
+            var bp = new $.PaymentVoucher(this, options);
 
+            $("table.table-payment-voucher button.add-row").click(function( event ) {          	
+                bp.addRow(this);
+            });
+            
+         	$(document).on('click', 'button.remove-row', function(event) {
+                bp.removeRow(this);
+            });
+            
+ 
+            /*
             $("form[name='form-note-credit']").submit(function( event ) {
             	event.preventDefault();
                 bp.search(this);
@@ -317,7 +184,7 @@
             $("#select-voucher").change(function(event) {
             	bp.voucher(this);
         	});
-
+ 
          	$(document).on('change', '#note-credit-type', function(event) {
                 bp.credittype(this);
             });
@@ -345,6 +212,7 @@
         	$(document).on('change', 'input[name="fechaVencimiento"]', function(event) {
                 bp.fechaVencimientoChange(this);
             });
+			*/
 
         });
     };

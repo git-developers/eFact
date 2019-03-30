@@ -69,7 +69,7 @@
 		                <div class="form-group pull-right">
 		                  <label for="">&nbsp;</label>
 							<div class="input-group">
-			                  <button type="button" class="btn btn-default exchange-rate-process">Buscar</button>
+			                  <button type="button" class="btn btn-default payment-voucher-search">Buscar</button>
 			                </div>
 		                </div>
 	        		</div>
@@ -78,7 +78,7 @@
 		                <div class="form-group pull-right">
 		                  <label for="">&nbsp;</label>
 							<div class="input-group">
-			                  <button type="button" class="btn btn-default exchange-rate-new" >Procesar</button>
+			                  <button type="button" class="btn btn-default payment-voucher-process" >Procesar</button>
 			                </div>
 		                </div>
 	        		</div>
@@ -258,7 +258,7 @@
                 <div class="row">
                 
                 <div class="col-md-12">
-					<table class="table table-bordered">
+					<table class="table table-bordered table-payment-voucher">
 						<thead class="bg-light-blue-active">
 			                <tr>
 			                  <th>Recaudo</th>
@@ -267,26 +267,14 @@
 			                  <th>Afecto</th>
 			                  <th>IGV</th>
 			                  <th><i class="fa fa-money"></i> Total</th>
-			                  <th><span class="badge bg-green">agregar</span></th>
+			                  <th>
+			                  		<span class="badge bg-green add-row">
+			                  			<i class="fa fa-fw fa-plus"></i> agregar
+		                  			</span>
+	                  		  </th>
 			                </tr>
 						</thead>
-		                <tbody>
-		                  	<s:iterator value="paymentHeader.listPaymentRecaudo" var="obj">
-				                <tr>
-				                  <td><s:property value = "#obj.descripcion"/></td>
-				                  <td>xxxx</td>
-				                  <td>xxxx</td>
-				                  <td>xxxx</td>
-				                  <td>xxxx</td>
-				                  <td>xxxx</td>
-				                  <td>
-					                  <button type="button" class="btn btn-danger btn-xs">
-					                  	<i class="fa fa-trash"></i>
-					                  </button>
-				                  </td>
-				                </tr>
-	                  		</s:iterator>
-		              </tbody>
+		                <tbody></tbody>
 					  <tfoot>
 					  </tfoot>
 	              </table>
@@ -305,7 +293,56 @@
           </div>
        	</div>
      </div>
-     </section>
+     
+     
+  
+	<table class="table table-bordered table-payment-voucher-clone" style="display: none;">
+	   <tbody>
+	     <tr>
+	       <td>
+		        <select class="form-control" name="gridRecaudo" required="required">
+		        	<s:iterator value="paymentHeader.listPaymentRecaudo" var="obj">
+		        		<option value="<s:property value = "#obj.idRecaudo"/>">
+		        			<s:property value = "#obj.descripcion"/>
+		       			</option>
+		       		</s:iterator>
+		        </select>
+	        </td>
+	       <td>
+		        <select class="form-control" name="gridConcepto" required="required">
+		        	<s:iterator value="paymentHeader.listPaymentConcepto" var="obj">
+		        		<option value="<s:property value = "#obj.idConcepto"/>" data-id-recaudo="<s:property value = "#obj.idRecaudo"/>">
+		        			<s:property value = "#obj.descripcion"/>
+		       			</option>
+		       		</s:iterator>
+		        </select>
+	        </td>
+	         <td>
+	         	<input type="text" class="form-control" name="gridNoAfecto">
+	         </td>
+	         <td>
+	         	<input type="text" class="form-control" name="gridAfecto">
+	         </td>
+	         <td>
+	         	<input type="text" class="form-control" name="gridAfecto">
+	         </td>
+	         <td>
+	         	<input type="text" class="form-control" name="gridIgv">
+	         </td>
+	         <td>
+	         	<input type="text" class="form-control" name="gridTotal">
+	         </td>
+	         <td>
+	          <button type="button" class="btn btn-danger btn-xs remove-row">
+	          	<i class="fa fa-trash"></i>
+	          </button>
+	         </td>
+	       </tr>
+	   </tbody>
+	</table>
+     
+
+</section>
      
 
 <%-- <%@include file="../modal/info-dialog.jsp" %> --%>

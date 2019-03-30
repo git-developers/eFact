@@ -134,11 +134,11 @@
         
         base.addRow = function(context) {
 
-        	$trClone = $("table.table-payment-voucher-clone tbody").closest('tr');
-        	$clone = $trClone.clone();
+        	var trClone = $("table.table-payment-voucher-clone tbody").closest('tr');
+        	var clone = trClone.clone();
         	
-        	$tableBody = $("table.table-payment-voucher tbody");
-        	$tableBody.after($clone);
+        	var tableBody = $("table.table-payment-voucher tbody");
+        	tableBody.after(clone);
         	
         };
         

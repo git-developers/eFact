@@ -315,6 +315,7 @@
 		        		<option 
 		        			value="<s:property value = "#obj.idConcepto"/>" 
 		        			class="grid-concepto"
+		        			style="display: none;"
 		        			data-id-recaudo="<s:property value = "#obj.idRecaudo"/>">
 		        			<s:property value = "#obj.descripcion"/>
 		       			</option>

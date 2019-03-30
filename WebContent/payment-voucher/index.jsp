@@ -268,7 +268,7 @@
 			                  <th>IGV</th>
 			                  <th><i class="fa fa-money"></i> Total</th>
 			                  <th>
-			                  		<span class="badge bg-green add-row">
+			                  		<span class="badge bg-green add-row x-hand">
 			                  			<i class="fa fa-fw fa-plus"></i> agregar
 		                  			</span>
 	                  		  </th>

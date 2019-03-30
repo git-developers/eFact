@@ -148,7 +148,7 @@
         	
         	$('select[name=gridConcepto]').prop('selectedIndex', 0);
         	$("option.grid-concepto").hide();
-        	$(event.target).parent().find("select[name=gridConcepto]").find('*[data-id-recaudo="' + idRecaudo + '"]').show();
+        	$(context).parent().find("select[name=gridConcepto]").find('*[data-id-recaudo="' + idRecaudo + '"]').show();
         };
 
         // Private Functions

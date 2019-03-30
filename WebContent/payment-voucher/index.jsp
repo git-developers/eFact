@@ -301,6 +301,7 @@
 	     <tr>
 	       <td>
 		        <select class="form-control" name="gridRecaudo" required="required">
+		        	<option value="">[ seleccionar ]</option>
 		        	<s:iterator value="paymentHeader.listPaymentRecaudo" var="obj">
 		        		<option value="<s:property value = "#obj.idRecaudo"/>">
 		        			<s:property value = "#obj.descripcion"/>

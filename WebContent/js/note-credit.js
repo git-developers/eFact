@@ -152,13 +152,11 @@
         	
         	var position = $(context).data('position');
         	
-        	if (context.checked) {
-				$(context).closest('tr').find('input[type=number]').prop('disabled', true);
-        	} else {
-        		$(context).closest('tr').find('input[type=number]').prop('disabled', true);				
+        	if (!context.checked) {
         		asignaValoresIniciales(position); 											
         	}
         	
+        	$(context).closest('tr').find('input[type=number]').prop('disabled', true);
             sumRowSubTotal(position);
             sumTotalFooter();
         };
@@ -171,9 +169,7 @@
         };
 		
         base.credittype = function(context) {
-
 			tipoNotaCredito();
-		
         };		
         		
         base.rowNoAfecto = function(context) {

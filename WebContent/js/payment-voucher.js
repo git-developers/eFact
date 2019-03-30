@@ -141,6 +141,16 @@
         	$(context).closest('tr').remove();
         };
         
+        base.changeRecaudo = function(context) {
+        	var idRecaudo = $(context).val();
+        	
+        	console.log("idRecaudo :::: " + idRecaudo);
+        	
+        	$(context).closest("select").find("option[data-id-recaudo='" + idRecaudo + "']").prop('selected', true);
+        	
+        	
+        };
+
         // Private Functions
         function debug(e) {
           console.log(e);
@@ -164,10 +174,7 @@
             });
             
          	$(document).on('change', 'select[name=gridRecaudo]', function(event) {
-         		
-         		console.log("XXXXXXXXXXXXXXXXXXXX");
-         		
-                //bp.credittype(this);
+                bp.changeRecaudo(this);
             });
          	
  

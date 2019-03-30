@@ -144,7 +144,7 @@
         base.changeRecaudo = function(context, event) {
         	var idRecaudo = $(context).val();
         	
-        	console.log("idRecaudo 33 :::: " + idRecaudo);
+        	console.log("idRecaudo 55 :::: " + idRecaudo);
         	
         	$('*[data-id-recaudo="' + idRecaudo + '"]').prop('selected', true);
         	

@@ -133,9 +133,8 @@
         };
         
         base.addRow = function(context) {
-        	var trClone = $("table.table-payment-voucher-clone tbody").find('tr').clone();        	
-        	var tableBody = $("table.table-payment-voucher tbody");
-        	tableBody.after(clone);
+        	var clone = $("table.table-payment-voucher-clone tbody").find('tr').clone();        	
+        	$("table.table-payment-voucher tbody").append(clone);
         };
         
         base.removeRow = function(context) {
@@ -164,6 +163,13 @@
                 bp.removeRow(this);
             });
             
+         	$(document).on('change', 'select[name=gridRecaudo]', function(event) {
+         		
+         		console.log("XXXXXXXXXXXXXXXXXXXX");
+         		
+                //bp.credittype(this);
+            });
+         	
  
             /*
             $("form[name='form-note-credit']").submit(function( event ) {

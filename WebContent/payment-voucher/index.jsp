@@ -258,7 +258,7 @@
                 <div class="row">
                 
                 <div class="col-md-12">
-					<table class="table table-bordered table-payment-voucher">
+					<table class="table table-bordered table-striped table-payment-voucher">
 						<thead class="bg-light-blue-active">
 			                <tr>
 			                  <th>Recaudo</th>
@@ -267,7 +267,7 @@
 			                  <th>Afecto</th>
 			                  <th>IGV</th>
 			                  <th><i class="fa fa-money"></i> Total</th>
-			                  <th>
+			                  <th class="text-center">
 			                  		<span class="badge bg-green add-row x-hand">
 			                  			<i class="fa fa-fw fa-plus"></i> agregar
 		                  			</span>
@@ -329,7 +329,7 @@
 	         <td>
 	         	<input type="text" class="form-control" name="gridTotal">
 	         </td>
-	         <td>
+	         <td class="text-center">
 	          <button type="button" class="btn btn-danger btn-xs remove-row">
 	          	<i class="fa fa-trash"></i>
 	          </button>

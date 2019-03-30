@@ -141,12 +141,12 @@
         	$(context).closest('tr').remove();
         };
         
-        base.changeRecaudo = function(context) {
+        base.changeRecaudo = function(context, event) {
         	var idRecaudo = $(context).val();
         	
         	console.log("idRecaudo :::: " + idRecaudo);
         	
-        	$(context).closest("select[name=gridConcepto]").find("option[data-id-recaudo='" + idRecaudo + "']").prop('selected', true);
+        	$(event.target).closest("select[name=gridConcepto]").find("option[data-id-recaudo='" + idRecaudo + "']").prop('selected', true);
         	
         	
         };
@@ -174,7 +174,7 @@
             });
             
          	$(document).on('change', 'select[name=gridRecaudo]', function(event) {
-                bp.changeRecaudo(this);
+                bp.changeRecaudo(this, event);
             });
          	
  

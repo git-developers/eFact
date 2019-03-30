@@ -287,7 +287,7 @@
             
             
             <div class="box-footer clearfix">
-            	footer
+            	&nbsp;
             </div>
             
           </div>

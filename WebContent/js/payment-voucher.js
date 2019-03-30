@@ -162,7 +162,7 @@
 
             var bp = new $.PaymentVoucher(this, options);
 
-            $("table.table-payment-voucher button.add-row").click(function( event ) {          	
+            $("table.table-payment-voucher span.add-row").click(function( event ) {          	
                 bp.addRow(this);
             });
             

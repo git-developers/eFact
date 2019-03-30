@@ -46,6 +46,4 @@ public class PaymentHeader implements Serializable {
 		return serialVersionUID;
 	}
 
-    
-
 }

@@ -14,7 +14,6 @@ table.table-payment-voucher thead tr th:nth-child(1),
 table.table-payment-voucher thead tr th:nth-child(2)
 {
 	width: 15% !important;
-	background-color: yellow !important;
 }
 
 table.table-payment-voucher tbody tr td:nth-child(1)

@@ -324,9 +324,6 @@
 	         	<input type="text" class="form-control" name="gridAfecto">
 	         </td>
 	         <td>
-	         	<input type="text" class="form-control" name="gridAfecto">
-	         </td>
-	         <td>
 	         	<input type="text" class="form-control" name="gridIgv">
 	         </td>
 	         <td>

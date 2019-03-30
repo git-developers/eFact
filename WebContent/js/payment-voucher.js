@@ -133,21 +133,13 @@
         };
         
         base.addRow = function(context) {
-
-        	var trClone = $("table.table-payment-voucher-clone tbody").find('tr');
-        	var clone = trClone.clone();
-        	
-        	console.dir(clone);
-        	
+        	var trClone = $("table.table-payment-voucher-clone tbody").find('tr').clone();        	
         	var tableBody = $("table.table-payment-voucher tbody");
         	tableBody.after(clone);
-        	
         };
         
         base.removeRow = function(context) {
-
         	$(context).closest('tr').remove();
-
         };
         
         // Private Functions

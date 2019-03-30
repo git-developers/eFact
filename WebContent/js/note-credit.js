@@ -58,55 +58,56 @@
         	row ['queryMoneyIntoWords'] = $('input[name="queryMoneyIntoWords"]').val();
         	row ['queryNoteCreditType'] = $('select[name="queryNoteCreditType"]').val();
 
-        	var position=0;        	
-			
-			
-			$(".row-checkbox").each(function()
-			{
-				position=position+1;
-				if($(this).prop('checked')){
- 					
-					if( position == 1 ){
-						row ['noAfecto_1'] = $('input[name="noAfecto-1"]').val();
-						row ['afecto_1'] = $('input[name="afecto-1"]').val(); 
-					}
-					
-					if( position == 2 ){
-						row ['noAfecto_2'] = $('input[name="noAfecto-2"]').val();
-						row ['afecto_2'] = $('input[name="afecto-2"]').val();
-					}
+        	var position = 0;        	
 
-					if( position == 3 ){
-						row ['noAfecto_3'] = $('input[name="noAfecto-3"]').val();
-						row ['afecto_3'] = $('input[name="afecto-3"]').val();
-					}
-
-					if( position == 4 ){
-						row ['noAfecto_4'] = $('input[name="noAfecto-4"]').val();
-						row ['afecto_4'] = $('input[name="afecto-4"]').val();
-					}
-
-					if( position == 5 ){
-						row ['noAfecto_5'] = $('input[name="noAfecto-5"]').val();
-						row ['afecto_5'] = $('input[name="afecto-5"]').val();
-					}
-
-					if( position == 6 ){
-						row ['noAfecto_6'] = $('input[name="noAfecto-6"]').val();
-						row ['afecto_6'] = $('input[name="afecto-6"]').val();
-					}
-
-					if( position == 7 ){
-						row ['noAfecto_7'] = $('input[name="noAfecto-7"]').val();
-						row ['afecto_7'] = $('input[name="afecto-7"]').val();
-					}
-
-					if( position == 8 ){
-						row ['noAfecto_8'] = $('input[name="noAfecto-8"]').val();
-						row ['afecto_8'] = $('input[name="afecto-8"]').val();
-					}					
-					
+			$(".row-checkbox").each(function() {
+				
+				position = position + 1;
+				
+				if(!$(this).prop('checked')) {
+					continue;
 				}	
+ 					
+				if( position == 1 ){
+					row ['noAfecto_1'] = $('input[name="noAfecto-1"]').val();
+					row ['afecto_1'] = $('input[name="afecto-1"]').val(); 
+				}
+				
+				if( position == 2 ){
+					row ['noAfecto_2'] = $('input[name="noAfecto-2"]').val();
+					row ['afecto_2'] = $('input[name="afecto-2"]').val();
+				}
+
+				if( position == 3 ){
+					row ['noAfecto_3'] = $('input[name="noAfecto-3"]').val();
+					row ['afecto_3'] = $('input[name="afecto-3"]').val();
+				}
+
+				if( position == 4 ){
+					row ['noAfecto_4'] = $('input[name="noAfecto-4"]').val();
+					row ['afecto_4'] = $('input[name="afecto-4"]').val();
+				}
+
+				if( position == 5 ){
+					row ['noAfecto_5'] = $('input[name="noAfecto-5"]').val();
+					row ['afecto_5'] = $('input[name="afecto-5"]').val();
+				}
+
+				if( position == 6 ){
+					row ['noAfecto_6'] = $('input[name="noAfecto-6"]').val();
+					row ['afecto_6'] = $('input[name="afecto-6"]').val();
+				}
+
+				if( position == 7 ){
+					row ['noAfecto_7'] = $('input[name="noAfecto-7"]').val();
+					row ['afecto_7'] = $('input[name="afecto-7"]').val();
+				}
+
+				if( position == 8 ){
+					row ['noAfecto_8'] = $('input[name="noAfecto-8"]').val();
+					row ['afecto_8'] = $('input[name="afecto-8"]').val();
+				}					
+				
 			});						
 
             $.ajax({
@@ -161,10 +162,11 @@
             sumTotalFooter();
         };
         
-        base.voucher = function(context) {
-            var id = $('#select-voucher').val();  
+        base.voucher = function(context) { 
             $('#select-series').prop('selectedIndex', 0);
             $('.select-series').hide();
+            
+            var id = $('#select-voucher').val(); 
             $('.voucher-' + id).show();
         };
 		
@@ -197,7 +199,7 @@
 		function tipoNotaCredito(){
             var id = $('#note-credit-type').val();  
 			
-			if( id == '6'){
+			if (id == '6') {
 				$(".row-checkbox").prop( "checked", true );
 				$(".row-checkbox").prop('disabled', true);
 				sumTotalFooter();								
@@ -228,26 +230,16 @@
         
         function sumRowSubTotal(position) {
         	
-        	console.log("::: sumRowSubTotal ::: " );
-        	console.log("position ::: " + position);
-        	console.log("noAfecto position ::: " + $('input[name=noAfecto-' + position + ']').val());
-        	console.log("afecto position ::: " + $('input[name=afecto-' + position + ']').val() );
-        	console.log("td-igv ::: " + $('.td-igv-' + position).html());
-        	
-        	
-        	
             var noAfecto = validInt( $('input[name=noAfecto-' + position + ']').val() );
             var afecto = validInt( $('input[name=afecto-' + position + ']').val() );
             var igv = validInt( $('.td-igv-' + position).html() );
-
             var newSubTotal = parseFloat(noAfecto) + parseFloat(afecto) + parseFloat(igv);
+            
             $('.sub-total-' + position).html(newSubTotal.toFixed(2));
         }
         
         function sumTotalFooter() {
-			
-			console.log("sumTotalFooter");
-        	
+
         	var noAfecto = 0;
         	var afecto = 0;
         	var igv = 0;
@@ -256,13 +248,16 @@
 
 			$(".row-checkbox").each(function()
 			{
-				position=position+1;
-				if($(this).prop('checked')){ 					
-    				noAfecto += parseFloat(validInt( $('input[name=noAfecto-' + position + ']').val() ));
-    				afecto += parseFloat(validInt( $('input[name=afecto-' + position + ']').val() ));
-    				igv += parseFloat(validInt( $('.td-igv-' + position).html() ));
-    				total += parseFloat(validInt( $('.sub-total-' + position).html() ));
-				}	
+				position = position + 1;
+				
+				if(!$(this).prop('checked')) {
+					continue;
+				}
+				
+				noAfecto += parseFloat(validInt( $('input[name=noAfecto-' + position + ']').val() ));
+				afecto += parseFloat(validInt( $('input[name=afecto-' + position + ']').val() ));
+				igv += parseFloat(validInt( $('.td-igv-' + position).html() ));
+				total += parseFloat(validInt( $('.sub-total-' + position).html() ));
 			});			
 
     		$('.no-afecto-footer-sum').html(noAfecto.toFixed(2));

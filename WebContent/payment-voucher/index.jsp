@@ -60,7 +60,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
 					          </div>
-					          <input type="number" class="form-control" name="queryContrato">
+					          <input type="number" class="form-control" name="queryNumeroDoi">
 					        </div>
 					    </div>
 					</div>
@@ -99,8 +99,6 @@
           </div>
           </div>
     
-    
-    
       <div class="row">
         <div class="col-md-12">
 		<div class="box box-primary">
@@ -111,6 +109,7 @@
             </div>
             <div class="box-body">
             
+            
             	<!-- FIRST ROW -->
                 <div class="row">
                 
@@ -119,7 +118,7 @@
 					      <label for="">Asociado</label>
 					        <div class="input-group">
 					          <div class="input-group-addon">
-					            <i class="fa fa-qrcode"></i>
+					            <i class="fa fa-fw fa-file-text"></i>
 					          </div>
 					          <input type="text" class="form-control" name="queryAsociado">
 					        </div>
@@ -146,7 +145,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
 					          </div>
-					          <input type="number" class="form-control" name="querySerie">
+					          <input type="number" class="form-control" name="querySerieComprobante">
 					        </div>
 					    </div>
 					</div>
@@ -169,6 +168,25 @@
 				
             	<!-- SECOND ROW -->
                 <div class="row">
+                
+					<div class="col-md-12">
+					    <div class="form-group">
+					      <label for="">Direcci&oacute;n</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-fw fa-file-text-o"></i>
+					          </div>
+					          <input type="text" class="form-control" name="queryDireccion">
+					        </div>
+					    </div>
+					</div>
+					
+				</div>
+				<!-- SECOND ROW -->
+				
+				
+            	<!-- THIRD ROW -->
+				<div class="row">
                 
 					<div class="col-md-3">
 					    <div class="form-group">
@@ -220,11 +238,11 @@
 					</div>
 					
 				</div>
-				<!-- SECOND ROW -->
+				<!-- THIRD ROW -->
 				
 				
-            	<!-- THIRD ROW -->
-                <div class="row">
+            	<!-- FOURTH ROW -->
+				<div class="row">
                 
 					<div class="col-md-4">
 					    <div class="form-group">
@@ -245,19 +263,21 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-money"></i>
 					          </div>
-					          <input type="text" class="form-control" name="queryTotal">
+					          <input type="text" class="form-control" name="queryTotalTexto">
 					        </div>
 					    </div>
 					</div>
 					
 				</div>
-				<!-- THIRD ROW -->
-				
-				
-            	<!-- FOURTH ROW -->
-                <div class="row">
+                <!-- FOURTH ROW -->
                 
+                
+                
+                
+			<!-- FIFTH ROW -->
+			<div class="row">
                 <div class="col-md-12">
+                
 					<table class="table table-bordered table-striped table-payment-voucher">
 						<thead class="bg-light-blue-active">
 			                <tr>
@@ -279,13 +299,13 @@
 					  </tfoot>
 	              </table>
                 </div>
-                
                 </div>
-                <!-- FOURTH ROW -->
+				<!-- FIFTH ROW -->
+                
+
               
             </div>
-            
-            
+
             <div class="box-footer clearfix">
             	&nbsp;
             </div>
@@ -293,8 +313,6 @@
           </div>
        	</div>
      </div>
-     
-     
   
 	<table class="table table-bordered table-payment-voucher-clone" style="display: none;">
 	   <tbody>
@@ -336,7 +354,7 @@
 	         	<input type="text" class="form-control" name="gridTotal">
 	         </td>
 	         <td class="text-center">
-	          <button type="button" class="btn btn-danger btn-xs remove-row">
+	          <button type="button" class="btn btn-danger btn-sm remove-row">
 	          	<i class="fa fa-trash"></i>
 	          </button>
 	         </td>

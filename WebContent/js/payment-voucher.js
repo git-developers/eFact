@@ -139,6 +139,10 @@
                 bp.addRow(this);
             });
             
+            $("button.payment-voucher-process").click(function( event ) {          	
+                bp.process(this);
+            });
+            
          	$(document).on('click', 'button.remove-row', function(event) {
                 bp.removeRow(this);
             });
@@ -146,50 +150,6 @@
          	$(document).on('change', 'select[name=gridRecaudo]', function(event) {
                 bp.changeRecaudo(this, event);
             });
-         	
- 
-            /*
-            $("form[name='form-note-credit']").submit(function( event ) {
-            	event.preventDefault();
-                bp.search(this);
-            });
-            
-            $(".note-credit-process").click(function( event ) {          	
-                bp.process(this);
-            });
-            
-            $("#select-voucher").change(function(event) {
-            	bp.voucher(this);
-        	});
- 
-         	$(document).on('change', '#note-credit-type', function(event) {
-                bp.credittype(this);
-            });
- 
-        	$(document).on('change', 'input:checkbox.row-checkbox', function(event) {
-                bp.rowCheckbox(this);
-            });
-        	
-            $(document).ready(function(){
-            	bp.voucher(this);				
-            });
-            
-        	$(document).on('keyup', '.row-afecto', function(event) {
-                bp.rowAfecto(this);
-            });
-        	
-        	$(document).on('keyup', '.row-no-afecto', function(event) {
-                bp.rowNoAfecto(this);
-            });
-        	
-        	$(document).on('change', 'input[name="fechaEmision"]', function(event) {
-                bp.fechaEmisionChange(this);
-            });
-    		
-        	$(document).on('change', 'input[name="fechaVencimiento"]', function(event) {
-                bp.fechaVencimientoChange(this);
-            });
-			*/
 
         });
     };

@@ -146,9 +146,8 @@
         	
         	console.log("idRecaudo 55 :::: " + idRecaudo);
         	
-        	$('*[data-id-recaudo="' + idRecaudo + '"]').prop('selected', true);
-        	
-        	
+        	$("option.grid-concepto").hide();
+        	$('*[data-id-recaudo="' + idRecaudo + '"]').show();
         };
 
         // Private Functions

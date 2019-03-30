@@ -144,7 +144,7 @@
         base.changeRecaudo = function(context, event) {
         	var idRecaudo = $(context).val();
         	
-        	console.log("idRecaudo 777777 :::: " + idRecaudo);
+        	console.log("idRecaudo 6666 :::: " + idRecaudo);
         	
         	$('select[name=gridConcepto]').prop('selectedIndex', 0);
         	$("option.grid-concepto").hide();

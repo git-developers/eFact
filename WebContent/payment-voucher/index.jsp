@@ -310,6 +310,7 @@
 	        </td>
 	       <td>
 		        <select class="form-control" name="gridConcepto" required="required">
+	        		<option value="">[ seleccionar ]</option>
 		        	<s:iterator value="paymentHeader.listPaymentConcepto" var="obj">
 		        		<option 
 		        			value="<s:property value = "#obj.idConcepto"/>" 

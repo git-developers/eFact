@@ -146,6 +146,7 @@
         	
         	console.log("idRecaudo 55 :::: " + idRecaudo);
         	
+        	$('select[name=gridConcepto]').prop('selectedIndex', 0);
         	$("option.grid-concepto").hide();
         	$('*[data-id-recaudo="' + idRecaudo + '"]').show();
         };

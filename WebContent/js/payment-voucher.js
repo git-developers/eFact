@@ -146,7 +146,7 @@
         	
         	console.log("idRecaudo 33 :::: " + idRecaudo);
         	
-        	$(event.target).closest("select[name=gridConcepto]").find("option[data-id-recaudo='" + idRecaudo + "']").prop('selected', true);
+        	$('*[data-id-recaudo="' + idRecaudo + '"]').prop('selected', true);
         	
         	
         };

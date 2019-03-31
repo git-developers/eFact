@@ -34,7 +34,7 @@
                 success: function(data, textStatus, jqXHR) {
                 	
                 	console.log("***** search *********");
-                	console.dir(data);
+                	console.dir(JSON.parse(data));
                 	
                 	
                 	//$("div#main-box-body").html(data); 

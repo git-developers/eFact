@@ -36,13 +36,12 @@
                 	console.log("***** search *********");
                 	console.dir(JSON.parse(data));
                 	
-                	data = JSON.parse(data);
-                	
                 	let dropdown = $('select[name=queryCuota]');
                 	dropdown.empty();
                 	dropdown.append('<option selected="true" disabled>[ seleccionar ]</option>');
                 	dropdown.prop('selectedIndex', 0);
                 	
+                	data = JSON.parse(data);
                 	$.each(data.listPaymentCuota, function(key, value) {
                 		dropdown.append('<option value=' + value.recTipo + '>' + value.campo + '</option>');
                 	});

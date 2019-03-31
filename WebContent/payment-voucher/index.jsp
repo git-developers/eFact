@@ -120,7 +120,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-fw fa-file-text"></i>
 					          </div>
-					          <input type="text" class="form-control" name="queryAsociado">
+					          <input type="text" class="form-control" name="queryTitular">
 					        </div>
 					    </div>
 					</div>
@@ -366,7 +366,7 @@
 </section>
      
 
-<%-- <%@include file="../modal/info-dialog.jsp" %> --%>
+<%@include file="../modal/process-dialog.jsp" %>
 
      
 <%@include file="../themes/adminLTE/footer.jsp" %>

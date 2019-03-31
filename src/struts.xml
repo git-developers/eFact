@@ -206,7 +206,12 @@
 		<action name="payment-voucher" class="com.efact.action.PaymentVoucherAction" method="index">
 			<result name="success">/payment-voucher/index.jsp</result>
 			<result name="error">/error.jsp</result>
-		</action>		
+		</action>
+		
+		<action name="payment-voucher-process" class="com.efact.action.PaymentVoucherAction" method="process">
+			<result name="success">/payment-voucher/process-result.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 	
 	</package>
 

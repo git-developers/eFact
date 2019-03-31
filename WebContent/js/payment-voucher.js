@@ -51,7 +51,7 @@
         	row.queryContrato = $('input[name="queryContrato"]').val();
         	row.queryTipoDoi = $('select[name="queryTipoDoi"]').val();
         	row.queryNumeroDoi = $('input[name="queryNumeroDoi"]').val();
-        	row.queryAsociado = $('input[name="queryAsociado"]').val();
+        	row.queryTitular = $('input[name="queryTitular"]').val();
         	row.queryDireccion = $('input[name="queryDireccion"]').val();
         	row.queryComprobante = $('select[name="queryComprobante"]').val();
         	row.querySerieComprobante = $('input[name="querySerieComprobante"]').val();
@@ -82,7 +82,7 @@
 			return false;
 
             $.ajax({
-                url: options.contextPath + '/note-credit-process',
+                url: options.contextPath + '/payment-voucher-process',
                 type: 'POST',
                 dataType: 'html',
                 data: {

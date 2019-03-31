@@ -22,6 +22,54 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
 	public PaymentHeader findOneById(String id) throws Exception {
 		return null;
 	}
+	
+	@Override
+	public PaymentProcess insert(PaymentProcess paymentProcess, PaymentDetailProcess paymentDetailProcess) throws Exception {
+		
+		PaymentProcess objectOut = new PaymentProcess();
+
+        try{
+    		
+            String sql = "{ call FIN_PKG_COMPROBANTEMANUAL.USP_EMITIR_COMPROBANTEMANUAL(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) } "; 
+            
+            Connection connection = OracleDaoFactory.getMainConnection();
+			CallableStatement st = connection.prepareCall(sql);
+			st.setString(1, paymentProcess.getQueryContrato());
+            st.setInt(2, paymentProcess.getQueryTipoDoi());
+            st.setString(3, paymentProcess.getQueryNumeroDoi());
+            st.setString(4, paymentProcess.getQueryTitular());
+            st.setString(5, paymentProcess.getQueryDireccion());
+            st.setInt(6, paymentProcess.getQueryComprobante());
+            st.setInt(7, paymentProcess.getQuerySerieComprobante());
+            st.setInt(8, paymentProcess.getQueryFechaEmision());
+            st.setInt(9, paymentProcess.getQueryFechaVencimiento());
+            st.setInt(10, paymentProcess.getQueryTotal());
+            st.setString(11, paymentProcess.getQueryTotalTexto());
+            st.setString(12, paymentProcess.getQueryTipoMoneda());
+            st.setString(13, paymentProcess.getQueryDescripcionMoneda());
+            st.setString(14, paymentDetailProcess.getDetail());
+            st.setString(15, "EZANABRIA");
+            st.execute();
+        	
+            ResultSet rs = (ResultSet) st.getObject(4);
+            
+            while (rs.next()){
+            	objectOut.setNumeroComprobante(rs.getString("P_NUMERO_COMPROBANTE"));
+            	objectOut.setExito(rs.getInt("P_EXITO"));
+            	objectOut.setMensaje(rs.getString("P_MENSAJE"));
+            }
+            
+            rs.close();
+            st.close();
+            
+        } catch (Exception e){
+        	e.getStackTrace();
+        } finally {
+            this.closeConnection();
+        }
+        
+        return objectOut;
+	}
 
 	@Override
 	public PaymentHeader getHeader() throws Exception {	

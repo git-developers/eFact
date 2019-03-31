@@ -49,10 +49,13 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	public String search() throws Exception {
 		
         String fields = request.getParameter("fields");
+        
+        /*
         Voucher vs = gson.fromJson(serializeToJSON(fields), Voucher.class);
         
         VoucherDao voucherDao = dao.getVoucherDao();
-        //listVoucher = voucherDao.search(vs);
+        listVoucher = voucherDao.search(vs);
+        */
         
         return SUCCESS;
 	}
@@ -60,21 +63,31 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	public String process() throws Exception {
 		
         String fields = request.getParameter("fields");
-        Type listType = new TypeToken<List<Voucher>>(){}.getType();
-        List<Voucher> list = new Gson().fromJson(fields, listType);
+        Type listType = new TypeToken<PaymentProcess>(){}.getType();
+        PaymentProcess paymentProcess = new Gson().fromJson(fields, listType);
         
+        PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
+        
+        for (PaymentDetailProcess paymentDetailProcess : paymentProcess.getPaymentDetailProcess()) {
+        	daoPaymentVoucher.insert(paymentProcess, paymentDetailProcess); 
+        }
+        
+        
+        /*
         VoucherDao voucherDao = dao.getVoucherDao();
         int sequence = voucherDao.getSequence();
         
         for (Voucher voucher : list) {
             voucherDao.insertVoucher(voucher, sequence); 
         }
+        */
         
         //listVoucherResult = voucherDao.generateVoucher(sequence);
         
 		return SUCCESS;
 	}
 	
+	/*
 	public String viewTrData() throws Exception {
 		
         String recId = request.getParameter("recId");
@@ -87,6 +100,7 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
                 
 		return SUCCESS;
 	}
+	*/
 	
 	@Override
 	public void setServletResponse(HttpServletResponse httpServletResponse) {

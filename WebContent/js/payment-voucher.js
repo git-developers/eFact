@@ -23,7 +23,7 @@
             $.ajax({
                 url: options.contextPath + '/payment-voucher-search',
                 type: 'POST',
-                dataType: 'html',
+                dataType: 'json',
                 data: {
                 	fields: $(context).serialize()
                 },

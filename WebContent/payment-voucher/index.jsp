@@ -23,7 +23,7 @@
               <h3 class="box-title">Quick Example</h3>
             </div>
             --%>
-            <form role="form" name="form-voucher">
+            <form role="form" name="form-payment-voucher">
               <div class="box-body">
               
                 <div class="row">
@@ -69,7 +69,7 @@
 		                <div class="form-group pull-right">
 		                  <label for="">&nbsp;</label>
 							<div class="input-group">
-			                  <button type="button" class="btn btn-default payment-voucher-search">Buscar</button>
+			                  <button type="submit" class="btn btn-default payment-voucher-search">Buscar</button>
 			                </div>
 		                </div>
 	        		</div>

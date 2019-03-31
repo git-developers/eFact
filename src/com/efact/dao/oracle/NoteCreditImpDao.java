@@ -111,10 +111,7 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             	obj.setNCtotal(rs.getString("NC_RVB_TOTAL"));
             	
             	obj.setFlagUso(rs.getString("FLAG_USO"));
-            	
-            	System.out.print("FLAG_USO ::::: "+ rs.getString("FLAG_USO"));
-            	
-            	
+
             	afectoSum += rs.getFloat("CO_RVB_AFECTO");
             	igvSum += rs.getFloat("CO_RVB_IGV");
             	noAfectoSum += rs.getFloat("CO_RVB_NOAFECTO");
@@ -229,10 +226,8 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             st.setFloat(24, object.getNoAfecto_8());
             
             st.setInt(25, 0);
-            //st.setString(25, object.getQueryNoteCreditType());
             st.setString(26, "");
             st.setString(27, "EFACT");
-            
             st.setInt(28, Integer.parseInt( object.getQueryNoteCreditType()));
             
             st.registerOutParameter(29, OracleTypes.VARCHAR);
@@ -245,7 +240,6 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             objectOut.setNumeroOut(st.getString(29));
             objectOut.setSerieOut(st.getString(30));
             objectOut.setResultado(st.getString(31));
-            
             objectOut.setStatus(Util.floatToBool(st.getFloat(32)));
 
             st.close();

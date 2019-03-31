@@ -24,9 +24,86 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
 	}
 	
 	@Override
-	public PaymentProcess insert(PaymentProcess paymentProcess, PaymentDetailProcess paymentDetailProcess) throws Exception {
+	public PaymentBody search(PaymentForm paymentForm) throws Exception {
 		
-		PaymentProcess objectOut = new PaymentProcess();
+		PaymentBody objectOut = new PaymentBody();
+
+        try{
+    		
+            String sql = "{ call FIN_PKG_COMPROBANTEMANUAL.USP_LISTAR_DETALLE(?, ?, ?, ?, ?, ?, ?) } "; 
+            
+            Connection connection = OracleDaoFactory.getMainConnection();
+			CallableStatement st = connection.prepareCall(sql);
+			st.setString(1, paymentForm.getQueryContrato());
+            st.setInt(2, paymentForm.getQueryTipoDoi());
+            st.setString(3, paymentForm.getQueryNumeroDoi());
+            st.registerOutParameter(4, OracleTypes.CURSOR);
+            st.registerOutParameter(5, OracleTypes.CURSOR);
+            st.registerOutParameter(6, OracleTypes.NUMBER);
+            st.registerOutParameter(7, OracleTypes.VARCHAR);
+            st.execute();
+        	
+            
+            /**
+             * Cursor: Detail
+             */
+            ResultSet rsDetail = (ResultSet) st.getObject(4);
+            List<PaymentDetail> listPaymentDetail = new ArrayList<PaymentDetail>();
+            while (rsDetail.next()) {
+            	
+            	PaymentDetail o = new PaymentDetail();
+            	o.setTitular(rsDetail.getString("TITULAR"));
+            	o.setDireccion(rsDetail.getString("DIRECCION"));
+            	o.setTipoComprobante(rsDetail.getInt("TIPOCOMPROBANTE"));
+            	o.setSerie(rsDetail.getInt("SERIE"));
+            	o.setSerieNombre(rsDetail.getString("SERIENOMBRE"));
+            	o.setMoneda(rsDetail.getInt("MONEDA"));
+            	o.setFechaEmision(rsDetail.getInt("FECHAEMISION"));
+            	o.setFechaVencimiento(rsDetail.getInt("FECHAVENCIMIENTO"));
+            	listPaymentDetail.add(o);
+            }
+            objectOut.setListPaymentDetail(listPaymentDetail);
+            
+            
+            /**
+             * Cursor: Cuota
+             */
+            ResultSet rsCuota = (ResultSet) st.getObject(5);
+            List<PaymentCuota> listPaymentCuota = new ArrayList<PaymentCuota>();
+            while (rsCuota.next()) {
+            	
+            	PaymentCuota o = new PaymentCuota();
+            	o.setCampo(rsCuota.getString("CAMPO"));
+            	o.setRecId(rsCuota.getString("REC_ID"));
+            	o.setConId(rsCuota.getString("CON_ID"));
+            	o.setRecTipo(rsCuota.getString("REC_TIPO"));
+            	o.setRecNCuota(rsCuota.getString("REC_NCUOTA"));
+            	o.setCieFCierreMes(rsCuota.getString("CIE_FCIERREMES"));
+            	o.setDescripcion(rsCuota.getString("DESCRIPCION"));
+            	listPaymentCuota.add(o);
+            }
+            objectOut.setListPaymentCuota(listPaymentCuota);
+            
+
+            
+            rsCuota.close();
+            rsDetail.close();
+            st.close();
+            
+        } catch (Exception e){
+        	e.getStackTrace();
+        } finally {
+            this.closeConnection();
+        }
+        
+        return objectOut;
+		
+	}
+	
+	@Override
+	public PaymentForm insert(PaymentForm paymentForm, PaymentDetailProcess paymentDetailProcess) throws Exception {
+		
+		PaymentForm objectOut = new PaymentForm();
 
         try{
     		
@@ -34,32 +111,30 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             
             Connection connection = OracleDaoFactory.getMainConnection();
 			CallableStatement st = connection.prepareCall(sql);
-			st.setString(1, paymentProcess.getQueryContrato());
-            st.setInt(2, paymentProcess.getQueryTipoDoi());
-            st.setString(3, paymentProcess.getQueryNumeroDoi());
-            st.setString(4, paymentProcess.getQueryTitular());
-            st.setString(5, paymentProcess.getQueryDireccion());
-            st.setInt(6, paymentProcess.getQueryComprobante());
-            st.setInt(7, paymentProcess.getQuerySerieComprobante());
-            st.setInt(8, paymentProcess.getQueryFechaEmision());
-            st.setInt(9, paymentProcess.getQueryFechaVencimiento());
-            st.setInt(10, paymentProcess.getQueryTotal());
-            st.setString(11, paymentProcess.getQueryTotalTexto());
-            st.setString(12, paymentProcess.getQueryTipoMoneda());
-            st.setString(13, paymentProcess.getQueryDescripcionMoneda());
+			st.setString(1, paymentForm.getQueryContrato());
+            st.setInt(2, paymentForm.getQueryTipoDoi());
+            st.setString(3, paymentForm.getQueryNumeroDoi());
+            st.setString(4, paymentForm.getQueryTitular());
+            st.setString(5, paymentForm.getQueryDireccion());
+            st.setInt(6, paymentForm.getQueryComprobante());
+            st.setInt(7, paymentForm.getQuerySerieComprobante());
+            st.setInt(8, paymentForm.getQueryFechaEmision());
+            st.setInt(9, paymentForm.getQueryFechaVencimiento());
+            st.setInt(10, paymentForm.getQueryTotal());
+            st.setString(11, paymentForm.getQueryTotalTexto());
+            st.setString(12, paymentForm.getQueryTipoMoneda());
+            st.setString(13, paymentForm.getQueryDescripcionMoneda());
             st.setString(14, paymentDetailProcess.getDetail());
             st.setString(15, "EZANABRIA");
+            st.registerOutParameter("P_NUMERO_COMPROBANTE", OracleTypes.VARCHAR);
+            st.registerOutParameter("P_EXITO", OracleTypes.NUMBER);
+            st.registerOutParameter("P_MENSAJE", OracleTypes.VARCHAR);  
             st.execute();
+            
+            objectOut.setNumeroComprobante(st.getString("P_NUMERO_COMPROBANTE"));
+            objectOut.setExito(st.getInt("P_EXITO"));
+            objectOut.setMensaje(st.getString("P_MENSAJE"));
         	
-            ResultSet rs = (ResultSet) st.getObject(4);
-            
-            while (rs.next()){
-            	objectOut.setNumeroComprobante(rs.getString("P_NUMERO_COMPROBANTE"));
-            	objectOut.setExito(rs.getInt("P_EXITO"));
-            	objectOut.setMensaje(rs.getString("P_MENSAJE"));
-            }
-            
-            rs.close();
             st.close();
             
         } catch (Exception e){

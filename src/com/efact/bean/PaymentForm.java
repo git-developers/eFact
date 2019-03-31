@@ -3,12 +3,13 @@ package com.efact.bean;
 import java.io.Serializable;
 import java.util.List;
 
-public class PaymentProcess implements Serializable {
+public class PaymentForm implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String queryContrato;
 	private int queryTipoDoi;
 	private String queryNumeroDoi;
+	
 	private String queryTitular;
 	private String queryDireccion;
 	private int queryComprobante;

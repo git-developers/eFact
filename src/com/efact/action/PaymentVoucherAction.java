@@ -23,6 +23,8 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	private DaoFactory dao;
 	private Gson gson;
 	private PaymentHeader paymentHeader;
+	private PaymentForm paymentProcess;
+	private PaymentBody paymentBody;
 	
 	private HttpServletRequest request = null;
 	private HttpServletResponse response = null;
@@ -50,12 +52,10 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 		
         String fields = request.getParameter("fields");
         
-        /*
-        Voucher vs = gson.fromJson(serializeToJSON(fields), Voucher.class);
-        
-        VoucherDao voucherDao = dao.getVoucherDao();
-        listVoucher = voucherDao.search(vs);
-        */
+        PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
+        PaymentForm pp = gson.fromJson(serializeToJSON(fields), PaymentForm.class);
+
+        paymentBody = daoPaymentVoucher.search(pp);
         
         return SUCCESS;
 	}
@@ -63,8 +63,8 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	public String process() throws Exception {
 		
         String fields = request.getParameter("fields");
-        Type listType = new TypeToken<PaymentProcess>(){}.getType();
-        PaymentProcess paymentProcess = new Gson().fromJson(fields, listType);
+        Type listType = new TypeToken<PaymentForm>(){}.getType();
+        PaymentForm paymentProcess = new Gson().fromJson(fields, listType);
         
         PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
         
@@ -87,21 +87,6 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 		return SUCCESS;
 	}
 	
-	/*
-	public String viewTrData() throws Exception {
-		
-        String recId = request.getParameter("recId");
-        float recIdFloat = Util.strToFloat(recId);
-        
-        System.out.print("recIdFloat ::: " + recIdFloat);
-                
-        VoucherDao voucherDao = dao.getVoucherDao();
-        //listTrData = voucherDao.viewTrData(recIdFloat);
-                
-		return SUCCESS;
-	}
-	*/
-	
 	@Override
 	public void setServletResponse(HttpServletResponse httpServletResponse) {
 		this.response = httpServletResponse;
@@ -122,6 +107,14 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 
 	public void setPaymentHeader(PaymentHeader paymentHeader) {
 		this.paymentHeader = paymentHeader;
+	}
+
+	public PaymentForm getPaymentProcess() {
+		return paymentProcess;
+	}
+
+	public void setPaymentProcess(PaymentForm paymentProcess) {
+		this.paymentProcess = paymentProcess;
 	}
 
 }

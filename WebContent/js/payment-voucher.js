@@ -21,7 +21,7 @@
 
         base.search = function(context) {
             $.ajax({
-                url: options.contextPath + '/note-credit-search',
+                url: options.contextPath + '/payment-voucher-search',
                 type: 'POST',
                 dataType: 'html',
                 data: {
@@ -33,10 +33,13 @@
                 },
                 success: function(data, textStatus, jqXHR) {
                 	
-                	$("div#main-box-body").html(data); 
+                	console.dir(data);
+                	
+                	
+                	//$("div#main-box-body").html(data); 
                 	$("button.note-credit-process").prop("disabled", false);
 
-					tipoNotaCredito();
+					//tipoNotaCredito();
 					
                 },
                 error: function(jqXHR, exception) {
@@ -116,6 +119,7 @@
         base.changeRecaudo = function(context, event) {
         	var idRecaudo = $(context).val();
         	var select = $(context).closest("tr").find("select[name=gridConcepto]");
+        	
         	select.prop('selectedIndex', 0);
         	select.find("option.grid-concepto").hide();
         	select.find('*[data-id-recaudo="' + idRecaudo + '"]').show();
@@ -139,12 +143,17 @@
                 bp.addRow(this);
             });
             
-            $("button.payment-voucher-process").click(function( event ) {          	
-                bp.process(this);
-            });
-            
          	$(document).on('click', 'button.remove-row', function(event) {
                 bp.removeRow(this);
+            });
+            
+            $("form[name='form-payment-voucher']").submit(function(event) {
+            	event.preventDefault();
+                bp.search(this);
+            });
+            
+            $("button.payment-voucher-process").click(function(event) {          	
+                bp.process(this);
             });
             
          	$(document).on('change', 'select[name=gridRecaudo]', function(event) {

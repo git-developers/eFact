@@ -12,16 +12,6 @@ import com.efact.dao.factory.OracleDaoFactory;
 import oracle.jdbc.OracleTypes;
 
 public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVoucherDao  {
-
-	@Override
-	public List<PaymentHeader> findAll() throws Exception {
-		return null;
-	}
-
-	@Override
-	public PaymentHeader findOneById(String id) throws Exception {
-		return null;
-	}
 	
 	@Override
 	public PaymentBody search(PaymentForm paymentForm) throws Exception {

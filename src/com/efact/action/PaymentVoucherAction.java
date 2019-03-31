@@ -24,7 +24,7 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	private Gson gson;
 	private PaymentHeader paymentHeader;
 	private PaymentForm paymentProcess;
-	private PaymentBody paymentBody;
+	private String paymentBodyJson;
 	
 	private HttpServletRequest request = null;
 	private HttpServletResponse response = null;
@@ -55,7 +55,9 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
         PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
         PaymentForm pp = gson.fromJson(serializeToJSON(fields), PaymentForm.class);
 
-        paymentBody = daoPaymentVoucher.search(pp);
+    	PaymentBody paymentBody = daoPaymentVoucher.search(pp);
+        
+        paymentBodyJson = gson.toJson(paymentBody);
         
         return SUCCESS;
 	}
@@ -71,18 +73,6 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
         for (PaymentDetailProcess paymentDetailProcess : paymentProcess.getPaymentDetailProcess()) {
         	daoPaymentVoucher.insert(paymentProcess, paymentDetailProcess); 
         }
-        
-        
-        /*
-        VoucherDao voucherDao = dao.getVoucherDao();
-        int sequence = voucherDao.getSequence();
-        
-        for (Voucher voucher : list) {
-            voucherDao.insertVoucher(voucher, sequence); 
-        }
-        */
-        
-        //listVoucherResult = voucherDao.generateVoucher(sequence);
         
 		return SUCCESS;
 	}
@@ -117,12 +107,14 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 		this.paymentProcess = paymentProcess;
 	}
 
-	public PaymentBody getPaymentBody() {
-		return paymentBody;
+	public String getPaymentBodyJson() {
+		return paymentBodyJson;
 	}
 
-	public void setPaymentBody(PaymentBody paymentBody) {
-		this.paymentBody = paymentBody;
+	public void setPaymentBodyJson(String paymentBodyJson) {
+		this.paymentBodyJson = paymentBodyJson;
 	}
+
+
 
 }

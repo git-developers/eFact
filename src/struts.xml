@@ -209,11 +209,8 @@
 		</action>
 		
 		<action name="payment-voucher-search" class="com.efact.action.PaymentVoucherAction" method="search">
-			<result type="json">
-			    <param name="noCache">true</param>
-			    <param name="excludeNullProperties">true</param>
-			    <param name="root">paymentBody</param>
-			</result>
+			<result name="success">/payment-voucher/search.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
 		
 		<action name="payment-voucher-process" class="com.efact.action.PaymentVoucherAction" method="process">

@@ -36,11 +36,18 @@
                 	console.log("***** search *********");
                 	console.dir(JSON.parse(data));
                 	
+                	data = JSON.parse(data);
                 	
-                	//$("div#main-box-body").html(data); 
+                	let dropdown = $('select[name=queryCuota]');
+                	dropdown.empty();
+                	dropdown.append('<option selected="true" disabled>[ seleccionar ]</option>');
+                	dropdown.prop('selectedIndex', 0);
+                	
+                	$.each(data.listPaymentCuota, function(key, value) {
+                		dropdown.append('<option value=' + value.recTipo + '>' + value.campo + '</option>');
+                	});
+                	
                 	$("button.note-credit-process").prop("disabled", false);
-
-					//tipoNotaCredito();
 					
                 },
                 error: function(jqXHR, exception) {

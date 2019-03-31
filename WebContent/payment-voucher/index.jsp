@@ -195,7 +195,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
 					          </div>
-					          <input type="text" class="form-control" name="queryCuota">
+					          <select class="form-control" name="queryCuota"></select>
 					        </div>
 					    </div>
 					</div>

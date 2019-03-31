@@ -64,12 +64,12 @@
         	var detalle = new Array();
 			$("table.table-payment-voucher tbody tr").each(function(row, tr) {
 				var obj = {};
-				obj.gridRecaudo = $(tr).find("td:eq(0)").val();
-				obj.gridConcepto = $(tr).find("td:eq(1)").val();
-				obj.gridNoAfecto = $(tr).find("td:eq(2)").val();
-				obj.gridAfecto = $(tr).find("td:eq(3)").val();
-				obj.gridIgv = $(tr).find("td:eq(4)").val();
-				obj.gridTotal = $(tr).find("td:eq(5)").val();
+				obj.gridRecaudo = $(tr).find("td:eq(0)").find('select[name="gridRecaudo"]').val();
+				obj.gridConcepto = $(tr).find("td:eq(1)").find('select[name="gridConcepto"]').val();
+				obj.gridNoAfecto = $(tr).find("td:eq(2)").find('input[name="gridNoAfecto"]').val();
+				obj.gridAfecto = $(tr).find("td:eq(3)").find('input[name="gridAfecto"]').val();
+				obj.gridIgv = $(tr).find("td:eq(4)").find('input[name="gridIgv"]').val();
+				obj.gridTotal = $(tr).find("td:eq(5)").find('input[name="gridTotal"]').val();
 				detalle.push(obj);
 			});
 			

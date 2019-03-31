@@ -117,4 +117,12 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 		this.paymentProcess = paymentProcess;
 	}
 
+	public PaymentBody getPaymentBody() {
+		return paymentBody;
+	}
+
+	public void setPaymentBody(PaymentBody paymentBody) {
+		this.paymentBody = paymentBody;
+	}
+
 }

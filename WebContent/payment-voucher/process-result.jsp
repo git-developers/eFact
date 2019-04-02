@@ -5,22 +5,14 @@
 <table class="table table-condensed">
      <thead>
 		<tr>
-			<th style="width: 15px">#</th>
-		   <th><i class="fa fa-fw fa-align-justify"></i> Numero de comprobante</th>
+		   <th><i class="fa fa-fw fa-align-justify"></i> Resultado</th>
 		 </tr>
     </thead>
     <tbody>
-		<s:iterator value="listPaymentFormProcess" var="object" status="status">
-			<tr>
-				<td>
-					<span class="badge bg-olive margin">
-						<s:property value="%{#status.index + 1}"/>
-					</span>
-				</td>
-				<td>
-					<s:property value = "#object.numeroComprobante"/>
-				</td>
-			</tr>
-		</s:iterator>
+		<tr>
+			<td>
+				<s:property value = "paymentProcess.numeroComprobante"/>
+			</td>
+		</tr>
    </tbody>
 </table>

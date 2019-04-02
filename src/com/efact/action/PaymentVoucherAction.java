@@ -27,7 +27,6 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	private PaymentHeader paymentHeader;
 	private PaymentForm paymentProcess;
 	private String paymentBodyJson;
-	private List<PaymentForm> listPaymentFormProcess;
 	
 	private HttpServletRequest request = null;
 	private HttpServletResponse response = null;
@@ -69,13 +68,15 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
         PaymentForm paymentForm = new Gson().fromJson(fields, listType);
         paymentForm.setAppUser("EZANABRIA");
 
-        PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
-        
-        listPaymentFormProcess = new ArrayList<PaymentForm>();
+        int i = 0;
+        Object[] details = new Object[]{};
         for (PaymentDetailProcess paymentDetailProcess : paymentForm.getPaymentDetailProcess()) {
-        	PaymentForm o = daoPaymentVoucher.process(paymentForm, paymentDetailProcess);
-        	listPaymentFormProcess.add(o);
+        	details[i] = paymentDetailProcess.getDetail();
+        	i++;
         }
+        
+        PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
+        paymentProcess = daoPaymentVoucher.process(paymentForm, details);
         
 		return SUCCESS;
 	}

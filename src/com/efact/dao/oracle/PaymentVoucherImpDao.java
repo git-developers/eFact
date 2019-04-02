@@ -120,7 +120,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             
             String[] myStrings = { "One", "Two", "Three" };
             Array array = connection.createArrayOf("VARCHAR", myStrings);
-            st.setArray(14, array);
+            //st.setArray(14, array);
             
             st.setString(15, paymentForm.getAppUser());
             st.registerOutParameter(16, OracleTypes.VARCHAR);

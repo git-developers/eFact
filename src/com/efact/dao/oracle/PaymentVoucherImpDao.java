@@ -122,9 +122,13 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.registerOutParameter(18, OracleTypes.VARCHAR);  
             st.execute();
             
-            objectOut.setNumeroComprobante(st.getString(16));
-            objectOut.setExito(st.getInt(17));
-            objectOut.setMensaje(st.getString(18));
+            String xxx = st.getString(16);
+            int aaaaa = st.getInt(17);
+            String bbbb = st.getString(18);
+            
+            objectOut.setNumeroComprobante(xxx);
+            objectOut.setExito(aaaaa);
+            objectOut.setMensaje(bbbb);
         	
             st.close();
             

@@ -124,7 +124,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             Array array = connection.createArrayOf("VARCHAR", myStrings);
             */
             String[] content = { "v1", "v2", "v3", "v4" };
-            ArrayDescriptor arrayDescriptor = ArrayDescriptor.createDescriptor("VARCHAR", connection);
+            ArrayDescriptor arrayDescriptor = ArrayDescriptor.createDescriptor("TB_ARRAY_STRING", connection);
             java.sql.Array sqlArray = new oracle.sql.ARRAY(arrayDescriptor, connection, content);
 
             st.setArray(14, sqlArray);

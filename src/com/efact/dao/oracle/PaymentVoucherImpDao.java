@@ -13,6 +13,7 @@ import com.efact.util.Dates;
 import com.efact.dao.factory.OracleDaoFactory;
 import oracle.jdbc.OracleTypes;
 
+
 public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVoucherDao  {
 	
 	@Override
@@ -117,8 +118,10 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.setString(12, paymentForm.getQueryTipoMoneda());
             st.setString(13, paymentForm.getQueryDescripcionMoneda());
             
-            Array array = connection.createArrayOf("VARCHAR", details);
+            String[] myStrings = { "One", "Two", "Three" };
+            Array array = connection.createArrayOf("VARCHAR", myStrings);
             st.setArray(14, array);
+            
             st.setString(15, paymentForm.getAppUser());
             st.registerOutParameter(16, OracleTypes.VARCHAR);
             st.registerOutParameter(17, OracleTypes.NUMBER);

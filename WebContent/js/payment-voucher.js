@@ -73,12 +73,12 @@
         	var detail = new Array();
 			$("table.table-payment-voucher tbody tr").each(function(row, tr) {
 				var obj = {};
-				obj.gridRecaudo = $(tr).find("td:eq(0)").find('select[name="gridRecaudo"] option:selected').text();
-				obj.gridConcepto = $(tr).find("td:eq(1)").find('select[name="gridConcepto"] option:selected').text();
-				obj.gridNoAfecto = $(tr).find("td:eq(2)").find('input[name="gridNoAfecto"]').val();
-				obj.gridAfecto = $(tr).find("td:eq(3)").find('input[name="gridAfecto"]').val();
-				obj.gridIgv = $(tr).find("td:eq(4)").find('input[name="gridIgv"]').val();
-				obj.gridTotal = $(tr).find("td:eq(5)").find('input[name="gridTotal"]').val();
+				obj.gridRecaudo = $(tr).find("td:eq(0)").find('select[name="gridRecaudo"] option:selected').text().trim();
+				obj.gridConcepto = $(tr).find("td:eq(1)").find('select[name="gridConcepto"] option:selected').text().trim();
+				obj.gridNoAfecto = $(tr).find("td:eq(2)").find('input[name="gridNoAfecto"]').val().trim();
+				obj.gridAfecto = $(tr).find("td:eq(3)").find('input[name="gridAfecto"]').val().trim();
+				obj.gridIgv = $(tr).find("td:eq(4)").find('input[name="gridIgv"]').val().trim();
+				obj.gridTotal = $(tr).find("td:eq(5)").find('input[name="gridTotal"]').val().trim();
 				detail.push(obj);
 			});
 			

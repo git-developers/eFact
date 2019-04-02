@@ -43,7 +43,7 @@
 	        		<div class="col-md-2">
 		                <div class="form-group">
 		                  <label for="">Tipo Doi</label>
-		                  <select class="form-control" id="tipoDoi" name="queryTipoDoi" required="required">
+		                  <select class="form-control" id="tipoDoi" name="queryTipoDoi">
 		                  	<s:iterator value="paymentHeader.listPaymentTipoDoi" var="obj">
 		                  		<option value="<s:property value = "#obj.idTipoDoi"/>">
 		                  			<s:property value = "#obj.nombreCorto"/>
@@ -102,7 +102,7 @@
           
 	    <div class="row content-loading" style="display: none;">
 	        <div class="col-md-12">
-	            <div class="box box-solid">
+	            <div class="box box-primary">
 		            <div class="box-body">
 		                <div class="row">
 		                    <div class="col-md-12 text-center">
@@ -129,14 +129,26 @@
             	<!-- FIRST ROW -->
                 <div class="row">
                 
-					<div class="col-md-6">
+					<div class="col-md-6 div-type-contract">
 					    <div class="form-group">
 					      <label for="">Asociado</label>
 					        <div class="input-group">
 					          <div class="input-group-addon">
 					            <i class="fa fa-fw fa-file-text"></i>
 					          </div>
-					          <input type="text" class="form-control" name="queryTitular">
+					          <input type="text" class="form-control" name="queryAsociado" readonly="readonly">
+					        </div>
+					    </div>
+					</div>
+					
+					<div class="col-md-6 div-type-doi">
+					    <div class="form-group">
+					      <label for="">Titular</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-fw fa-file-text"></i>
+					          </div>
+					          <input type="text" class="form-control" name="queryTitular" readonly="readonly">
 					        </div>
 					    </div>
 					</div>
@@ -144,7 +156,7 @@
 					<div class="col-md-2">
 					    <div class="form-group">
 					      <label for="">Comprobante</label>
-		                  <select class="form-control" name="queryComprobante" required="required">
+		                  <select class="form-control" name="queryComprobante" readonly="readonly">
 		                  	<s:iterator value="paymentHeader.listPaymentTipoComprobante" var="obj">
 		                  		<option value="<s:property value = "#obj.cscTipo"/>">
 		                  			<s:property value = "#obj.cscTipoNombre"/>
@@ -161,7 +173,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
 					          </div>
-					          <input type="number" class="form-control" name="querySerieComprobante">
+					          <input type="number" class="form-control" name="querySerieComprobante" readonly="readonly">
 					        </div>
 					    </div>
 					</div>
@@ -173,7 +185,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
 					          </div>
-					          <input type="number" class="form-control" name="queryNumero">
+					          <input type="number" class="form-control" name="queryNumero" readonly="readonly">
 					        </div>
 					    </div>
 					</div>
@@ -183,28 +195,21 @@
 				
 				
             	<!-- SECOND ROW -->
-                <div class="row">
-                
-					<div class="col-md-12">
+				<div class="row">
+				
+					<div class="col-md-6 div-type-doi">
 					    <div class="form-group">
 					      <label for="">Direcci&oacute;n</label>
 					        <div class="input-group">
 					          <div class="input-group-addon">
 					            <i class="fa fa-fw fa-file-text-o"></i>
 					          </div>
-					          <input type="text" class="form-control" name="queryDireccion">
+					          <input type="text" class="form-control" name="queryDireccion" readonly="readonly">
 					        </div>
 					    </div>
 					</div>
-					
-				</div>
-				<!-- SECOND ROW -->
-				
-				
-            	<!-- THIRD ROW -->
-				<div class="row">
                 
-					<div class="col-md-3">
+					<div class="col-md-6 div-type-contract">
 					    <div class="form-group">
 					      <label for="">Cuota</label>
 					        <div class="input-group">
@@ -216,7 +221,7 @@
 					    </div>
 					</div>
 					
-					<div class="col-md-3">
+					<div class="col-md-2">
 					    <div class="form-group">
 					      <label for="">Fecha de emisi&oacute;n</label>
 					        <div class="input-group">
@@ -228,7 +233,7 @@
 					    </div>
 					</div>
 					
-					<div class="col-md-3">
+					<div class="col-md-2">
 					    <div class="form-group">
 					      <label for="">Fecha de vencimiento</label>
 					        <div class="input-group">
@@ -243,7 +248,7 @@
 					<div class="col-md-2">
 					    <div class="form-group">
 					      <label for="">Moneda</label>
-		                  <select class="form-control" name="queryMoneda" required="required">
+		                  <select class="form-control input-type-contract" name="queryMoneda" required="required">
 		                  	<s:iterator value="paymentHeader.listPaymentTipoMoneda" var="obj">
 		                  		<option value="<s:property value = "#obj.idMoneda"/>">
 		                  			<s:property value = "#obj.nombreCorto"/>
@@ -254,10 +259,11 @@
 					</div>
 					
 				</div>
-				<!-- THIRD ROW -->
+				<!-- SECOND ROW -->
 				
 				
-            	<!-- FOURTH ROW -->
+				
+            	<!-- THIRD ROW -->
 				<div class="row">
                 
 					<div class="col-md-4">
@@ -267,7 +273,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-money"></i>
 					          </div>
-					          <input type="text" class="form-control" name="queryTotal">
+					          <input type="text" class="form-control" name="queryTotal" readonly="readonly">
 					        </div>
 					    </div>
 					</div>
@@ -279,18 +285,17 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-money"></i>
 					          </div>
-					          <input type="text" class="form-control" name="queryTotalTexto">
+					          <input type="text" class="form-control" name="queryTotalTexto" readonly="readonly">
 					        </div>
 					    </div>
 					</div>
 					
 				</div>
-                <!-- FOURTH ROW -->
+                <!-- THIRD ROW -->
                 
                 
                 
-                
-			<!-- FIFTH ROW -->
+			<!-- FOURTH ROW -->
 			<div class="row">
                 <div class="col-md-12">
                 
@@ -316,7 +321,7 @@
 	              </table>
                 </div>
                 </div>
-				<!-- FIFTH ROW -->
+				<!-- FOURTH ROW -->
                 
 
               

@@ -20,6 +20,7 @@
         };
 
         base.search = function(context) {
+        	
             $.ajax({
                 url: options.contextPath + '/payment-voucher-search',
                 type: 'POST',
@@ -34,23 +35,24 @@
                 },
                 success: function(data, textStatus, jqXHR) {
                 	
-                	let dropdown = $('select[name=queryCuota]');
-                	dropdown.empty();
-                	dropdown.append('<option selected="true" disabled>[ seleccionar ]</option>');
-                	dropdown.prop('selectedIndex', 0);
                 	
-                	data = JSON.parse(data);
-                	$.each(data.listPaymentCuota, function(key, value) {
-                		dropdown.append('<option value=' + value.recTipo + '>' + value.campo + '</option>');
-                	});
+                	console.log(" ********* search ********** ");
+                	console.dir(data);
+                	
+                	
+                	hideShowForm(context);
+                	dropDownCuota(data);
                 	
                 	$('div.content-body').show();
                 	$('div.content-loading').hide();
                 	$("button.payment-voucher-search").prop("disabled", false);
-					
                 },
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: voucher search");
+                    
+                	$('div.content-body').show();
+                	$('div.content-loading').hide();
+                	$("button.payment-voucher-search").prop("disabled", false);
                 }
             });
         };
@@ -135,6 +137,44 @@
         // Private Functions
         function debug(e) {
           console.log(e);
+        }
+        
+        function dropDownCuota(data) {
+        	let dropdown = $('select[name=queryCuota]');
+        	dropdown.empty();
+        	dropdown.append('<option selected="true" disabled>[ seleccionar ]</option>');
+        	dropdown.prop('selectedIndex', 0);
+        	
+        	data = JSON.parse(data);
+        	$.each(data.listPaymentCuota, function(key, value) {
+        		dropdown.append('<option value=' + value.recTipo + '>' + value.campo + '</option>');
+        	});
+        }
+        
+        function hideShowForm(context) {
+    		
+        	if (isTypeContract(context)) {
+        		$("div.div-type-doi").hide();
+        		$("div.div-type-contract").show();
+        	} else {
+        		$("div.div-type-doi").show();
+        		$("div.div-type-contract").hide();
+        	}
+        }
+        
+        function isTypeContract(context) {
+    		
+        	var formdata = $(context).serializeArray();
+        	var data = {};
+        	$(formdata).each(function(index, obj){
+        	    data[obj.name] = obj.value;
+        	});
+        	
+        	if (data.queryContrato != "") {
+        		return true;
+        	}
+        	
+        	return false;
         }
 
         base.init();

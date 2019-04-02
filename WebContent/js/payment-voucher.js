@@ -96,12 +96,12 @@
                 beforeSend: function(jqXHR, settings) {
                 	$('#modal-process').find('.modal-body').html('<p><i class="fa fa-2x fa-refresh fa-spin"></i><span style="font-size: 16px; margin-left: 5px">Procesando...</span></p>');
                 	$('#modal-process').modal('show');
-                	$("button.payment-voucher-process").prop("disabled", false);
+                	$("button.payment-voucher-process").prop("disabled", true);
                 },
                 success: function(data, textStatus, jqXHR) {
             		$('#modal-process').modal('show');
             		$('#modal-process').find('.modal-body').html(data);
-            		$("button.payment-voucher-process").prop("disabled", true);
+            		$("button.payment-voucher-process").prop("disabled", false);
                 },
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: process");

@@ -8,6 +8,7 @@ import java.util.List;
 import java.sql.Connection;
 import com.efact.bean.*;
 import com.efact.dao.interfaces.*;
+import com.efact.util.Dates;
 import com.efact.dao.factory.OracleDaoFactory;
 import oracle.jdbc.OracleTypes;
 
@@ -48,8 +49,8 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             	o.setSerie(rsDetail.getInt("SERIE"));
             	o.setSerieNombre(rsDetail.getString("SERIENOMBRE"));
             	o.setMoneda(rsDetail.getInt("MONEDA"));
-            	o.setFechaEmision(rsDetail.getInt("FECHAEMISION"));
-            	o.setFechaVencimiento(rsDetail.getInt("FECHAVENCIMIENTO"));
+            	o.setFechaEmision(Dates.intToDate(rsDetail.getInt("FECHAEMISION")));
+            	o.setFechaVencimiento(Dates.intToDate(rsDetail.getInt("FECHAVENCIMIENTO")));
             	listPaymentDetail.add(o);
             }
             objectOut.setListPaymentDetail(listPaymentDetail);

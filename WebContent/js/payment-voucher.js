@@ -34,12 +34,7 @@
                 	$("button.payment-voucher-search").prop("disabled", true);
                 },
                 success: function(data, textStatus, jqXHR) {
-                	
-                	
-                	console.log(" ********* search ********** ");
-                	console.dir(data);
-                	
-                	
+
                 	hideShowForm(context);
                 	dropDownCuota(data);
                 	fillForm(data);

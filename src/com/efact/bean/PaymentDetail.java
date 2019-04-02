@@ -14,8 +14,8 @@ public class PaymentDetail implements Serializable {
     private int serie;
     private String serieNombre;
     private int moneda;
-    private int fechaEmision;
-    private int fechaVencimiento;
+    private String fechaEmision;
+    private String fechaVencimiento;
     
 	public String getTitular() {
 		return titular;
@@ -54,15 +54,15 @@ public class PaymentDetail implements Serializable {
 		this.moneda = moneda;
 	}
 	public String getFechaEmision() {
-		return Dates.intToDate(fechaEmision);
+		return fechaEmision;
 	}
-	public void setFechaEmision(int fechaEmision) {
+	public void setFechaEmision(String fechaEmision) {
 		this.fechaEmision = fechaEmision;
 	}
 	public String getFechaVencimiento() {
-		return Dates.intToDate(fechaVencimiento);
+		return fechaVencimiento;
 	}
-	public void setFechaVencimiento(int fechaVencimiento) {
+	public void setFechaVencimiento(String fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
 	public static long getSerialversionuid() {

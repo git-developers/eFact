@@ -70,7 +70,7 @@
         	row.queryTotalTexto = $('input[name="queryTotalTexto"]').val();
         	row.queryMoneda = parseInt($('select[name="queryMoneda"]').val());
 
-        	var detalle = new Array();
+        	var detail = new Array();
 			$("table.table-payment-voucher tbody tr").each(function(row, tr) {
 				var obj = {};
 				obj.gridRecaudo = $(tr).find("td:eq(0)").find('select[name="gridRecaudo"]').val();
@@ -79,10 +79,10 @@
 				obj.gridAfecto = $(tr).find("td:eq(3)").find('input[name="gridAfecto"]').val();
 				obj.gridIgv = $(tr).find("td:eq(4)").find('input[name="gridIgv"]').val();
 				obj.gridTotal = $(tr).find("td:eq(5)").find('input[name="gridTotal"]').val();
-				detalle.push(obj);
+				detail.push(obj);
 			});
 			
-			row.detalle = detalle;
+			row.paymentDetailProcess = detail;
 			
 			console.log(" **** process *** ");
 			console.dir(row);

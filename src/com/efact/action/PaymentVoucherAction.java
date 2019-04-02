@@ -69,7 +69,7 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
         paymentForm.setAppUser("EZANABRIA");
 
         int i = 0;
-        Object[] details = new Object[]{};
+        Object[] details = new Object[paymentForm.getPaymentDetailProcess().size()];
         for (PaymentDetailProcess paymentDetailProcess : paymentForm.getPaymentDetailProcess()) {
         	details[i] = paymentDetailProcess.getDetail();
         	i++;

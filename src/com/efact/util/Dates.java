@@ -66,6 +66,7 @@ public class Dates {
 	public static String intToDate(int s) {
 
 		try {
+			
 			SimpleDateFormat original = new SimpleDateFormat("yyyyMMdd");
 			Date date = original.parse(String.valueOf(s));
 			SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");

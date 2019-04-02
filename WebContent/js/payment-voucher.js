@@ -64,8 +64,8 @@
         	row.queryDireccion = $('input[name="queryDireccion"]').val();
         	row.queryComprobante = $('select[name="queryComprobante"]').val();
         	row.querySerieComprobante = $('input[name="querySerieNumero"]').val();
-        	row.queryFechaEmision = $('input[name="queryFechaEmision"]').val();
-        	row.queryFechaVencimiento = $('input[name="queryFechaVencimiento"]').val();
+        	row.queryFechaEmision = $('input[name="queryFechaEmision"]').val().replace(/-/g, "");
+        	row.queryFechaVencimiento = $('input[name="queryFechaVencimiento"]').val().replace(/-/g, "");
         	row.queryTotal = $('input[name="queryTotal"]').val();
         	row.queryTotalTexto = $('input[name="queryTotalTexto"]').val();
         	row.queryMoneda = $('select[name="queryMoneda"]').val();

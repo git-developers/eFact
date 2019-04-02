@@ -16,7 +16,7 @@ public class Util {
 	public static String intToStr(int s) {
         try {
         	return String.valueOf(s); 
-         } catch (NumberFormatException e) {
+         } catch (Exception e) {
         	 return "";
          }
 	}

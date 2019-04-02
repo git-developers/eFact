@@ -174,7 +174,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
 					          </div>
-					          <input type="number" class="form-control" name="queryNumero" readonly="readonly">
+					          <input type="number" class="form-control" name="querySerieNumero" readonly="readonly">
 					        </div>
 					    </div>
 					</div>

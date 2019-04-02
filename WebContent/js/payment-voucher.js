@@ -164,7 +164,16 @@
         	
 			console.log(" **** fillForm *** ");
 			console.dir(row);
-    		
+        	
+        	$("input[name=queryTitular]").val(row.titular);
+        	$("select[name=queryComprobante]").val(row.tipoComprobante);
+        	$("input[name=querySerieComprobante]").val(row.serieNombre);
+        	$("input[name=queryTitular]").val(row.titular);
+        	$("input[name=querySerieNumero]").val(row.serie);
+        	$("input[name=queryMoneda]").val(row.moneda);
+        	$("input[name=queryDireccion]").val(row.direccion);
+        	$("input[name=queryFechaEmision]").val(row.fechaEmision);
+        	$("input[name=queryFechaVencimiento]").val(row.fechaVencimiento);
         }
         
         function hideShowForm(context) {

@@ -44,7 +44,7 @@
                 	$("button.payment-voucher-search").prop("disabled", false);
                 },
                 error: function(jqXHR, exception) {
-                    console.log("error :: ajax :: voucher search");
+                    console.log("error :: ajax :: search");
                     
                 	$('div.content-body').show();
                 	$('div.content-loading').hide();
@@ -85,9 +85,6 @@
 			
 			console.log(" **** process *** ");
 			console.dir(row);
-			
-			
-			return false;
 
             $.ajax({
                 url: options.contextPath + '/payment-voucher-process',
@@ -99,15 +96,17 @@
                 beforeSend: function(jqXHR, settings) {
                 	$('#modal-process').find('.modal-body').html('<p><i class="fa fa-2x fa-refresh fa-spin"></i><span style="font-size: 16px; margin-left: 5px">Procesando...</span></p>');
                 	$('#modal-process').modal('show');
+                	$("button.payment-voucher-process").prop("disabled", false);
                 },
-                success: function(data, textStatus, jqXHR) {	
+                success: function(data, textStatus, jqXHR) {
             		$('#modal-process').modal('show');
             		$('#modal-process').find('.modal-body').html(data);
-            		$("div#main-box-body :input").prop("disabled", true);
-            		$("button.note-credit-process").prop("disabled", true);
+            		$("button.payment-voucher-process").prop("disabled", true);
                 },
                 error: function(jqXHR, exception) {
-                    console.log("error :: ajax :: voucher search");
+                    console.log("error :: ajax :: process");
+                    
+                    $("button.payment-voucher-process").prop("disabled", false);
                 }
             });
         };

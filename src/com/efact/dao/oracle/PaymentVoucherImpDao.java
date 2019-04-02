@@ -92,7 +92,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
 	}
 	
 	@Override
-	public PaymentForm insert(PaymentForm paymentForm, PaymentDetailProcess paymentDetailProcess) throws Exception {
+	public PaymentForm process(PaymentForm paymentForm, PaymentDetailProcess paymentDetailProcess) throws Exception {
 		
 		PaymentForm objectOut = new PaymentForm();
 

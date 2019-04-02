@@ -1,6 +1,8 @@
 package com.efact.action;
 
 import com.efact.dao.factory.DaoFactory;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +27,7 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	private PaymentHeader paymentHeader;
 	private PaymentForm paymentProcess;
 	private String paymentBodyJson;
+	private List<PaymentForm> listPaymentFormProcess;
 	
 	private HttpServletRequest request = null;
 	private HttpServletResponse response = null;
@@ -67,8 +70,10 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
         
         PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
         
+        listPaymentFormProcess = new ArrayList<PaymentForm>();
         for (PaymentDetailProcess paymentDetailProcess : paymentProcess.getPaymentDetailProcess()) {
-        	daoPaymentVoucher.insert(paymentProcess, paymentDetailProcess); 
+        	PaymentForm o = daoPaymentVoucher.process(paymentProcess, paymentDetailProcess);
+        	listPaymentFormProcess.add(o);
         }
         
 		return SUCCESS;

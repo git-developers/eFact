@@ -1,32 +1,26 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-
-<s:if test="%{exchangeRate.status}">
-	<%@include file="../../modal/success.jsp" %>
-</s:if>
-<s:else>
-	<%@include file="../../modal/error.jsp" %>
-</s:else>
-
+ 
+<%@include file="../../modal/success.jsp" %>
 
 <table class="table table-condensed">
      <thead>
 		<tr>
-		   <th><i class="fa fa-fw fa-align-justify"></i> Resultado</th>
+			<th style="width: 15px">#</th>
+		   <th><i class="fa fa-fw fa-align-justify"></i> Numero de comprobante</th>
 		 </tr>
     </thead>
     <tbody>
-		<tr>
-			<td>
-				<s:property value = "exchangeRate.resultado"/>
-			</td>
-		</tr>
-		<!--  
-		<tr>
-			<td>
-				<s:property value = "noteCredit.serieOut"/>-<s:property value = "noteCredit.numeroOut"/>
-			</td>
-		</tr>
-		-->
+		<s:iterator value="listPaymentFormProcess" var="object" status="status">
+			<tr>
+				<td>
+					<span class="badge bg-olive margin">
+						<s:property value="%{#status.index + 1}"/>
+					</span>
+				</td>
+				<td>
+					<s:property value = "#object.numeroComprobante"/>
+				</td>
+			</tr>
+		</s:iterator>
    </tbody>
 </table>

@@ -63,7 +63,7 @@
         	row.queryTitular = $('input[name="queryTitular"]').val();
         	row.queryDireccion = $('input[name="queryDireccion"]').val();
         	row.queryComprobante = $('select[name="queryComprobante"]').val();
-        	row.querySerieComprobante = $('input[name="querySerieComprobante"]').val();
+        	row.querySerieComprobante = $('input[name="querySerieNumero"]').val();
         	row.queryFechaEmision = $('input[name="queryFechaEmision"]').val();
         	row.queryFechaVencimiento = $('input[name="queryFechaVencimiento"]').val();
         	row.queryTotal = $('input[name="queryTotal"]').val();
@@ -162,8 +162,7 @@
         	
         	$("input[name=queryTitular]").val(row.titular);
         	$("select[name=queryComprobante]").val(row.tipoComprobante);
-        	$("input[name=querySerieComprobante]").val(row.serieNombre);
-        	$("input[name=queryTitular]").val(row.titular);
+        	$("input[name=querySerieNombre]").val(row.serieNombre);
         	$("input[name=querySerieNumero]").val(row.serie);
         	$("input[name=queryMoneda]").val(row.moneda);
         	$("input[name=queryDireccion]").val(row.direccion);

@@ -13,6 +13,14 @@ public class Util {
          }
 	}
 	
+	public static String intToStr(int s) {
+        try {
+        	return String.valueOf(s); 
+         } catch (NumberFormatException e) {
+        	 return "";
+         }
+	}
+	
 	public static float strToFloat(String s) {
         try {
         	return Float.parseFloat(s);

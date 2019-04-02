@@ -3,6 +3,8 @@ package com.efact.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import com.efact.util.Dates;
+
 public class PaymentDetail implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -51,14 +53,14 @@ public class PaymentDetail implements Serializable {
 	public void setMoneda(int moneda) {
 		this.moneda = moneda;
 	}
-	public int getFechaEmision() {
-		return fechaEmision;
+	public String getFechaEmision() {
+		return Dates.intToDate(fechaEmision);
 	}
 	public void setFechaEmision(int fechaEmision) {
 		this.fechaEmision = fechaEmision;
 	}
-	public int getFechaVencimiento() {
-		return fechaVencimiento;
+	public String getFechaVencimiento() {
+		return Dates.intToDate(fechaVencimiento);
 	}
 	public void setFechaVencimiento(int fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;

@@ -162,7 +162,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
 					          </div>
-					          <input type="number" class="form-control" name="querySerieComprobante" readonly="readonly">
+					          <input type="text" class="form-control" name="querySerieComprobante" readonly="readonly">
 					        </div>
 					    </div>
 					</div>

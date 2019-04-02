@@ -66,7 +66,7 @@ public class PaymentDetailProcess implements Serializable {
 			gridTotal
 		}, SEPARATOR);
 		
-		return detail;
+		return detailConcat.substring(1);
 	}
 	public void setDetail(String detail) {
 		this.detail = detail;

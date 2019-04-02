@@ -45,7 +45,7 @@
 		                  <label for="">Tipo Doi</label>
 		                  <select class="form-control" id="tipoDoi" name="queryTipoDoi">
 		                  	<s:iterator value="paymentHeader.listPaymentTipoDoi" var="obj">
-		                  		<option value="<s:property value = "#obj.idTipoDoi"/>">
+		                  		<option value="<s:property value = "#obj.idEquivalencia"/>">
 		                  			<s:property value = "#obj.nombreCorto"/>
 	                  			</option>
 	                  		</s:iterator>

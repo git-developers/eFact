@@ -66,9 +66,9 @@
         	row.querySerieComprobante = parseInt($('input[name="querySerieNumero"]').val());
         	row.queryFechaEmision = parseInt($('input[name="queryFechaEmision"]').val().replace(/-/g, ""));
         	row.queryFechaVencimiento = parseInt($('input[name="queryFechaVencimiento"]').val().replace(/-/g, ""));
-        	row.queryTotal = $('input[name="queryTotal"]').val();
+        	row.queryTotal = parseInt($('input[name="queryTotal"]').val());
         	row.queryTotalTexto = $('input[name="queryTotalTexto"]').val();
-        	row.queryMoneda = $('select[name="queryMoneda"]').val();
+        	row.queryMoneda = parseInt($('select[name="queryMoneda"]').val());
 
         	var detalle = new Array();
 			$("table.table-payment-voucher tbody tr").each(function(row, tr) {

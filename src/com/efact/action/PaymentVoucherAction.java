@@ -51,7 +51,6 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	public String search() throws Exception {
 		
         String fields = request.getParameter("fields");
-        
         PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
         PaymentForm pp = gson.fromJson(serializeToJSON(fields), PaymentForm.class);
     	PaymentBody paymentBody = daoPaymentVoucher.search(pp);

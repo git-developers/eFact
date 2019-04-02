@@ -128,22 +128,11 @@
             
             	<!-- FIRST ROW -->
                 <div class="row">
-                
-					<div class="col-md-6 div-type-contract">
+
+					<div class="col-md-6">
 					    <div class="form-group">
-					      <label for="">Asociado</label>
-					        <div class="input-group">
-					          <div class="input-group-addon">
-					            <i class="fa fa-fw fa-file-text"></i>
-					          </div>
-					          <input type="text" class="form-control" name="queryAsociado" readonly="readonly">
-					        </div>
-					    </div>
-					</div>
-					
-					<div class="col-md-6 div-type-doi">
-					    <div class="form-group">
-					      <label for="">Titular</label>
+					      <label for="" class="row-type-doi">Titular</label>
+					      <label for="" class="row-type-contract">Asociado</label>
 					        <div class="input-group">
 					          <div class="input-group-addon">
 					            <i class="fa fa-fw fa-file-text"></i>
@@ -197,7 +186,7 @@
             	<!-- SECOND ROW -->
 				<div class="row">
 				
-					<div class="col-md-6 div-type-doi">
+					<div class="col-md-6 row-type-doi">
 					    <div class="form-group">
 					      <label for="">Direcci&oacute;n</label>
 					        <div class="input-group">
@@ -209,7 +198,7 @@
 					    </div>
 					</div>
                 
-					<div class="col-md-6 div-type-contract">
+					<div class="col-md-6 row-type-contract">
 					    <div class="form-group">
 					      <label for="">Cuota</label>
 					        <div class="input-group">

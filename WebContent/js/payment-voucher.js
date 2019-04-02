@@ -42,6 +42,7 @@
                 	
                 	hideShowForm(context);
                 	dropDownCuota(data);
+                	fillForm(data);
                 	
                 	$('div.content-body').show();
                 	$('div.content-loading').hide();
@@ -151,14 +152,31 @@
         	});
         }
         
+        function fillForm(data) {
+        	
+        	data = JSON.parse(data);
+        	
+        	if (data.listPaymentDetail.length <= 0) {
+        		return false;
+        	}
+        	
+        	let row = data.listPaymentDetail.shift();
+        	
+			console.log(" **** fillForm *** ");
+			console.dir(row);
+    		
+        }
+        
         function hideShowForm(context) {
     		
         	if (isTypeContract(context)) {
-        		$("div.div-type-doi").hide();
-        		$("div.div-type-contract").show();
+        		$(".row-type-doi").hide();
+        		$(".row-type-contract").show();
+        		$("select[name=queryMoneda]").prop("readonly", true);
         	} else {
-        		$("div.div-type-doi").show();
-        		$("div.div-type-contract").hide();
+        		$(".row-type-doi").show();
+        		$(".row-type-contract").hide();
+        		$("select[name=queryMoneda]").prop("readonly", false);
         	}
         }
         

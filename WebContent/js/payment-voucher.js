@@ -42,6 +42,7 @@
                 	$('div.content-body').show();
                 	$('div.content-loading').hide();
                 	$("button.payment-voucher-search").prop("disabled", false);
+                	$("table.table-payment-voucher tbody").empty();
                 },
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: search");

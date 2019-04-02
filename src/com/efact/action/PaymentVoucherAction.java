@@ -66,13 +66,13 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 		
         String fields = request.getParameter("fields");
         Type listType = new TypeToken<PaymentForm>(){}.getType();
-        PaymentForm paymentProcess = new Gson().fromJson(fields, listType);
+        PaymentForm paymentForm = new Gson().fromJson(fields, listType);
         
         PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
         
         listPaymentFormProcess = new ArrayList<PaymentForm>();
-        for (PaymentDetailProcess paymentDetailProcess : paymentProcess.getPaymentDetailProcess()) {
-        	PaymentForm o = daoPaymentVoucher.process(paymentProcess, paymentDetailProcess);
+        for (PaymentDetailProcess paymentDetailProcess : paymentForm.getPaymentDetailProcess()) {
+        	PaymentForm o = daoPaymentVoucher.process(paymentForm, paymentDetailProcess);
         	listPaymentFormProcess.add(o);
         }
         

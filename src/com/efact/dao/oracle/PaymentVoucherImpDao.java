@@ -132,8 +132,10 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             
             
             oracle.jdbc.OracleDriver ora = new oracle.jdbc.OracleDriver();
-            java.sql.Connection connn = ora.defaultConnection();
-            OracleConnection oraCon = connn.unwrap(OracleConnection.class);
+            //java.sql.Connection connn = ora.defaultConnection();
+
+            
+            OracleConnection oraCon = connection.unwrap(OracleConnection.class);
             oracle.sql.ARRAY widgets = oraCon.createARRAY("widgets_t", details);
             
             st.setArray(14, widgets);

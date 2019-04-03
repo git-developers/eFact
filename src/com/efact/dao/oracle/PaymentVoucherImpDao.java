@@ -13,6 +13,7 @@ import com.efact.util.Dates;
 import com.efact.dao.factory.OracleDaoFactory;
 import oracle.jdbc.OracleTypes;
 import oracle.jdbc.driver.OracleConnection;
+import oracle.jdbc.pool.OracleDataSource;
 import oracle.sql.ArrayDescriptor;
 
 
@@ -133,9 +134,25 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             
             oracle.jdbc.OracleDriver ora = new oracle.jdbc.OracleDriver();
             //java.sql.Connection connn = ora.defaultConnection();
+            
+            OracleDataSource dataSource = new OracleDataSource();
+            dataSource.setServerName("10.3.1.34");
+            dataSource.setUser("efact");
+            dataSource.setPassword("efact");
+            dataSource.setPortNumber(1521);
+            dataSource.setDriverType("thin");
+            dataSource.setDatabaseName("DBDEV");
+            java.sql.Connection connnXX = dataSource.getConnection();
+            
+            /*
+            db.jdbc.driver=oracle.jdbc.OracleDriver
+            		db.url=jdbc:oracle:thin:@10.3.1.34:1521:DBDEV
+            		db.user=efact
+            		db.pass=efact
+			*/
 
             
-            OracleConnection oraCon = connection.unwrap(OracleConnection.class);
+            OracleConnection oraCon = connnXX.unwrap(OracleConnection.class);
             oracle.sql.ARRAY widgets = oraCon.createARRAY("widgets_t", details);
             
             st.setArray(14, widgets);

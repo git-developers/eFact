@@ -121,38 +121,13 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.setString(12, paymentForm.getQueryTipoMoneda());
             st.setString(13, paymentForm.getQueryDescripcionMoneda());
             
-            
-            /*
-            String[] content = { "v1", "v2", "v3", "v4" };
-            ArrayDescriptor arrayDescriptor = ArrayDescriptor.createDescriptor("TB_ARRAY_STRING", connection);
-            java.sql.Array sqlArray = new oracle.sql.ARRAY(arrayDescriptor, connection, content);
-
-            st.setArray(14, sqlArray);
-            */
-            
-            
-            
-            oracle.jdbc.OracleDriver ora = new oracle.jdbc.OracleDriver();
-            //java.sql.Connection connn = ora.defaultConnection();
-            
-            OracleDataSource dataSource = new OracleDataSource();
-            dataSource.setServerName("10.3.1.34");
-            dataSource.setUser("efact");
-            dataSource.setPassword("efact");
-            dataSource.setPortNumber(1521);
-            dataSource.setDriverType("thin");
-            dataSource.setDatabaseName("DBDEV");
-            java.sql.Connection connnXX = dataSource.getConnection();
-            
-            /*
-            db.jdbc.driver=oracle.jdbc.OracleDriver
-            		db.url=jdbc:oracle:thin:@10.3.1.34:1521:DBDEV
-            		db.user=efact
-            		db.pass=efact
-			*/
 
             
-            OracleConnection oraCon = connnXX.unwrap(OracleConnection.class);
+            
+
+            
+            
+            OracleConnection oraCon = connection.unwrap(OracleConnection.class);
             oracle.sql.ARRAY widgets = oraCon.createARRAY("widgets_t", details);
             
             st.setArray(14, widgets);

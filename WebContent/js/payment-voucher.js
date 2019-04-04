@@ -149,9 +149,16 @@
         
         function fillForm(data) {
         	
+        	console.dir(" ***** fillForm ******* ");
+        	console.dir(data);
+        	
         	data = JSON.parse(data);
         	
-        	if (data.listPaymentDetail.length <= 0) {
+        	console.log(" ******** AFTER ******** ");
+        	console.dir(data);
+        	
+        	
+        	if (typeof data.listPaymentDetail === "undefined" || data.listPaymentDetail.length <= 0) {
         		return false;
         	}
         	

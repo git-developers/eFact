@@ -17,6 +17,7 @@ import com.efact.dao.factory.OracleDaoFactory;
 import oracle.jdbc.OracleTypes;
 import oracle.jdbc.driver.OracleConnection;
 import oracle.jdbc.pool.OracleDataSource;
+import oracle.sql.ARRAY;
 import oracle.sql.ArrayDescriptor;
 
 
@@ -126,27 +127,13 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             
             
             
-            DatabaseMetaData metadata = connection.getMetaData();
-            String uuuioo = "DB product:  " + metadata.getDatabaseProductName();
-            String hhhhh = "JDBC Driver: " + metadata.getDriverName();
+            
+            ArrayDescriptor oracleCollection2 = ArrayDescriptor.createDescriptor("XXXXXXXXXXX_TBL ".toUpperCase(), connection);
+            ARRAY oraArry2 = new ARRAY(oracleCollection2, connection, details);
+            st.setArray(14, oraArry2);
             
             
-
-            OracleConnection oconn = null;
-            try {
-                if (connection.isWrapperFor(oracle.jdbc.OracleConnection.class)) {
-                    oconn = (OracleConnection) connection.unwrap(oracle.jdbc.OracleConnection.class);
-                }
-            } catch (SQLException e) {
-                throw e;
-            }
-
             
-            
-            OracleConnection oraCon = oconn.unwrap(OracleConnection.class);
-            oracle.sql.ARRAY widgets = oraCon.createARRAY("widgets_t", details);
-            
-            st.setArray(14, widgets);
             
             
             st.setString(15, paymentForm.getAppUser());

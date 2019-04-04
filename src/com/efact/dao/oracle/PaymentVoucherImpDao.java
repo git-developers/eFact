@@ -127,7 +127,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             
             
             DatabaseMetaData metadata = connection.getMetaData();
-            String xxx = "DB product:  " + metadata.getDatabaseProductName();
+            String uuuioo = "DB product:  " + metadata.getDatabaseProductName();
             String hhhhh = "JDBC Driver: " + metadata.getDriverName();
             
             

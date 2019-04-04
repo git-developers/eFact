@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+
 import com.efact.bean.*;
 import com.efact.dao.interfaces.*;
 import com.efact.util.Dates;
@@ -121,6 +123,13 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.setString(11, paymentForm.getQueryTotalTexto());
             st.setString(12, paymentForm.getQueryTipoMoneda());
             st.setString(13, paymentForm.getQueryDescripcionMoneda());
+            
+            
+            
+            DatabaseMetaData metadata = connection.getMetaData();
+            String xxx = "DB product:  " + metadata.getDatabaseProductName();
+            String hhhhh = "JDBC Driver: " + metadata.getDriverName();
+            
             
 
             OracleConnection oconn = null;

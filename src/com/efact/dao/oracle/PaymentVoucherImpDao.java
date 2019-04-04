@@ -3,6 +3,7 @@ package com.efact.dao.oracle;
 import java.sql.Array;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,12 +123,18 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.setString(13, paymentForm.getQueryDescripcionMoneda());
             
 
-            
-            
+            OracleConnection oconn = null;
+            try {
+                if (connection.isWrapperFor(oracle.jdbc.OracleConnection.class)) {
+                    oconn = (OracleConnection) connection.unwrap(oracle.jdbc.OracleConnection.class)._getPC();
+                }
+            } catch (SQLException e) {
+                throw e;
+            }
 
             
             
-            OracleConnection oraCon = connection.unwrap(OracleConnection.class);
+            OracleConnection oraCon = oconn.unwrap(OracleConnection.class);
             oracle.sql.ARRAY widgets = oraCon.createARRAY("widgets_t", details);
             
             st.setArray(14, widgets);

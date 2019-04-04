@@ -128,9 +128,8 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             
             
             
-            ArrayDescriptor oracleCollection2 = ArrayDescriptor.createDescriptor("VARCHAR".toUpperCase(), connection);
-            ARRAY oraArry2 = new ARRAY(oracleCollection2, connection, details);
-            st.setArray(14, oraArry2);
+            Array array = connection.createArrayOf("VARCHAR", details);
+            st.setArray(14, array);
             
             
             

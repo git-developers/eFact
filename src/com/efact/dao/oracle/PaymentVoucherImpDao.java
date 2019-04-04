@@ -126,7 +126,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             OracleConnection oconn = null;
             try {
                 if (connection.isWrapperFor(oracle.jdbc.OracleConnection.class)) {
-                    oconn = (OracleConnection) connection.unwrap(oracle.jdbc.OracleConnection.class)._getPC();
+                    oconn = (OracleConnection) connection.unwrap(oracle.jdbc.OracleConnection.class);
                 }
             } catch (SQLException e) {
                 throw e;

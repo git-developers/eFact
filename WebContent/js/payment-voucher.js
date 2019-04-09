@@ -137,7 +137,9 @@
             var value = validInt($(context).val());
             //var igv = validInt($('input[name=igv]').val());
             //var position = $(context).data('position');
-            var newIgv = parseFloat(value) * 0.18;	
+            var newIgv = parseFloat(value) * 0.18;
+            
+            console.log("value::: " + value + " --- newIgv ::: " + newIgv);
 
             $(context).closest("tr").find("input[name=gridIgv]").val(newIgv.toFixed(2));
             

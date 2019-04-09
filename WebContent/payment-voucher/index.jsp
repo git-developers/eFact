@@ -352,10 +352,10 @@
 		        </select>
 	        </td>
 	         <td>
-	         	<input type="text" class="form-control" name="gridNoAfecto">
+	         	<input type="text" class="form-control row-no-afecto" name="gridNoAfecto">
 	         </td>
 	         <td>
-	         	<input type="text" class="form-control" name="gridAfecto">
+	         	<input type="text" class="form-control row-afecto" name="gridAfecto">
 	         </td>
 	         <td>
 	         	<input type="text" class="form-control" name="gridIgv" readonly="readonly">

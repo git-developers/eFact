@@ -66,7 +66,7 @@
         	row.querySerieComprobante = parseInt($('input[name="querySerieNumero"]').val());
         	row.queryFechaEmision = parseInt($('input[name="queryFechaEmision"]').val().replace(/-/g, ""));
         	row.queryFechaVencimiento = parseInt($('input[name="queryFechaVencimiento"]').val().replace(/-/g, ""));
-        	row.queryTotal = parseInt($('input[name="queryTotal"]').val());
+        	row.queryTotal = $('input[name="queryTotal"]').val();
         	row.queryMoneyIntoWords = $('input[name="queryMoneyIntoWords"]').val().trim();
         	row.queryMonedaTipo = parseInt($('select[name="queryMoneda"]').val());
         	row.queryMonedaDescripcion = $('select[name="queryMoneda"]').text().trim();

@@ -1,6 +1,7 @@
 package com.efact.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class PaymentForm implements Serializable {
@@ -16,7 +17,7 @@ public class PaymentForm implements Serializable {
 	private int querySerieComprobante;
 	private int queryFechaEmision;
 	private int queryFechaVencimiento;
-	private int queryTotal;
+	private BigDecimal queryTotal;
 	private String queryMoneyIntoWords;
 	private String queryMonedaTipo;
 	private String queryMonedaDescripcion;
@@ -82,10 +83,10 @@ public class PaymentForm implements Serializable {
 	public void setQueryFechaVencimiento(int queryFechaVencimiento) {
 		this.queryFechaVencimiento = queryFechaVencimiento;
 	}
-	public int getQueryTotal() {
+	public BigDecimal getQueryTotal() {
 		return queryTotal;
 	}
-	public void setQueryTotal(int queryTotal) {
+	public void setQueryTotal(BigDecimal queryTotal) {
 		this.queryTotal = queryTotal;
 	}
 	public String getQueryMoneyIntoWords() {

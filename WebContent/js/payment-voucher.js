@@ -68,7 +68,8 @@
         	row.queryFechaVencimiento = parseInt($('input[name="queryFechaVencimiento"]').val().replace(/-/g, ""));
         	row.queryTotal = parseInt($('input[name="queryTotal"]').val());
         	row.queryTotalTexto = $('input[name="queryTotalTexto"]').val();
-        	row.queryMoneda = parseInt($('select[name="queryMoneda"]').val());
+        	row.queryMonedaTipo = parseInt($('select[name="queryMoneda"]').val());
+        	row.queryMonedaDescripcion = $('select[name="queryMoneda"]').text();
 
         	var detail = new Array();
 			$("table.table-payment-voucher tbody tr").each(function(index, tr) {
@@ -87,6 +88,8 @@
 			
 			console.log(" **** process *** ");
 			console.dir(row);
+			
+			return false;
 
             $.ajax({
                 url: options.contextPath + '/payment-voucher-process',

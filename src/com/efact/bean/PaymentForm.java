@@ -18,8 +18,8 @@ public class PaymentForm implements Serializable {
 	private int queryFechaVencimiento;
 	private int queryTotal;
 	private String queryTotalTexto;
-	private String queryTipoMoneda;
-	private String queryDescripcionMoneda;
+	private String queryMonedaTipo;
+	private String queryMonedaDescripcion;
 	private String appUser;
 	private String paymentDetailProcessStr;
 	private List<PaymentDetailProcess> paymentDetailProcess;
@@ -94,17 +94,17 @@ public class PaymentForm implements Serializable {
 	public void setQueryTotalTexto(String queryTotalTexto) {
 		this.queryTotalTexto = queryTotalTexto;
 	}
-	public String getQueryTipoMoneda() {
-		return queryTipoMoneda;
+	public String getQueryMonedaTipo() {
+		return queryMonedaTipo;
 	}
-	public void setQueryTipoMoneda(String queryTipoMoneda) {
-		this.queryTipoMoneda = queryTipoMoneda;
+	public void setQueryMonedaTipo(String queryMonedaTipo) {
+		this.queryMonedaTipo = queryMonedaTipo;
 	}
-	public String getQueryDescripcionMoneda() {
-		return queryDescripcionMoneda;
+	public String getQueryMonedaDescripcion() {
+		return queryMonedaDescripcion;
 	}
-	public void setQueryDescripcionMoneda(String queryDescripcionMoneda) {
-		this.queryDescripcionMoneda = queryDescripcionMoneda;
+	public void setQueryMonedaDescripcion(String queryMonedaDescripcion) {
+		this.queryMonedaDescripcion = queryMonedaDescripcion;
 	}
 	public String getAppUser() {
 		return appUser;

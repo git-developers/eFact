@@ -122,8 +122,8 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.setInt(9, paymentForm.getQueryFechaVencimiento());
             st.setInt(10, paymentForm.getQueryTotal());
             st.setString(11, paymentForm.getQueryTotalTexto());
-            st.setString(12, paymentForm.getQueryTipoMoneda());
-            st.setString(13, paymentForm.getQueryDescripcionMoneda());
+            st.setString(12, paymentForm.getQueryMonedaTipo());
+            st.setString(13, paymentForm.getQueryMonedaDescripcion());
             st.setString(14, paymentForm.getPaymentDetailProcessStr());
             st.setString(15, paymentForm.getAppUser());
             st.registerOutParameter(16, OracleTypes.VARCHAR);

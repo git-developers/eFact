@@ -44,7 +44,6 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	public String index() throws Exception {
 		
 		PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
-		
 		paymentHeader = daoPaymentVoucher.getHeader();
         
 		return SUCCESS;
@@ -53,8 +52,9 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	public String search() throws Exception {
 		
         String fields = request.getParameter("fields");
-        PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
         PaymentForm pp = gson.fromJson(serializeToJSON(fields), PaymentForm.class);
+        
+        PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
     	PaymentBody paymentBody = daoPaymentVoucher.search(pp);        
         paymentBodyJson = gson.toJson(paymentBody);
         
@@ -68,15 +68,8 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
         PaymentForm paymentForm = new Gson().fromJson(fields, listType);
         paymentForm.setAppUser("EZANABRIA");
 
-        int i = 0;
-        Object[] details = new Object[paymentForm.getPaymentDetailProcess().size()];
-        for (PaymentDetailProcess paymentDetailProcess : paymentForm.getPaymentDetailProcess()) {
-        	details[i] = paymentDetailProcess.getDetail();
-        	i++;
-        }
-        
         PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
-        paymentProcess = daoPaymentVoucher.process(paymentForm, details);
+        paymentProcess = daoPaymentVoucher.process(paymentForm);
         
 		return SUCCESS;
 	}

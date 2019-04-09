@@ -21,6 +21,7 @@ public class PaymentForm implements Serializable {
 	private String queryTipoMoneda;
 	private String queryDescripcionMoneda;
 	private String appUser;
+	private String paymentDetailProcessStr;
 	private List<PaymentDetailProcess> paymentDetailProcess;
 
 	private String numeroComprobante;
@@ -137,6 +138,21 @@ public class PaymentForm implements Serializable {
 	}
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
+	}
+	public String getPaymentDetailProcessStr() {
+		
+		StringBuilder sb = new StringBuilder();
+        
+		for (PaymentDetailProcess pdp : this.paymentDetailProcess) {
+			sb.append(pdp.getTableRow());
+		}
+		
+		this.paymentDetailProcessStr = sb.toString();
+		
+		return paymentDetailProcessStr;
+	}
+	public void setPaymentDetailProcessStr(String paymentDetailProcessStr) {
+		this.paymentDetailProcessStr = paymentDetailProcessStr;
 	}
 
 }

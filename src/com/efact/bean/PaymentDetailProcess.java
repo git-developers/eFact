@@ -13,9 +13,11 @@ public class PaymentDetailProcess implements Serializable {
 	private String gridAfecto;
 	private String gridIgv;
 	private String gridTotal;
-	private String detail;
+	private String tableColumn;
+	private String tableRow;
 	
-	public static final String SEPARATOR = "|";
+	public static final String SEPARATOR_COLUMN = "|";
+	public static final String SEPARATOR_ROW = "#";
 	
 	public String getGridRecaudo() {
 		return gridRecaudo;
@@ -56,22 +58,33 @@ public class PaymentDetailProcess implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public String getDetail() {
-
-		String detailConcat = StringUtil.implode(new String[] {
-			gridRecaudo,
-			gridConcepto,
-			gridNoAfecto,
-			gridAfecto,
-			gridTotal
-		}, SEPARATOR);
+	public String getTableColumn() {
 		
-		this.detail = detailConcat.substring(1);
+		this.tableColumn = StringUtil.implode(new String[] {
+			    gridRecaudo,
+			    gridConcepto,
+			    gridNoAfecto,
+			    gridAfecto,
+			    gridTotal
+			}, SEPARATOR_COLUMN).substring(1);
 		
-		return detail;
+		return tableColumn;
 	}
-	public void setDetail(String detail) {
-		this.detail = detail;
+	public void setTableColumn(String tableColumn) {
+		this.tableColumn = tableColumn;
 	}
+	public String getTableRow() {
+		
+		StringBuilder sb = new StringBuilder();
+        sb.append(this.tableColumn).append(SEPARATOR_ROW);
+		
+        this.tableRow = sb.toString();
+		
+		return tableRow;
+	}
+	public void setTableRow(String tableRow) {
+		this.tableRow = tableRow;
+	}
+	
 	
 }

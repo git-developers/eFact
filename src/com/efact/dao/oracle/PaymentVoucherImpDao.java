@@ -101,7 +101,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
 	}
 	
 	@Override
-	public PaymentForm process(PaymentForm paymentForm, Object[] details) throws Exception {
+	public PaymentForm process(PaymentForm paymentForm) throws Exception {
 		
 		PaymentForm objectOut = new PaymentForm();
 
@@ -124,17 +124,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.setString(11, paymentForm.getQueryTotalTexto());
             st.setString(12, paymentForm.getQueryTipoMoneda());
             st.setString(13, paymentForm.getQueryDescripcionMoneda());
-            
-            
-            
-            
-            Array array = connection.createArrayOf("VARCHAR", details);
-            st.setArray(14, array);
-            
-            
-            
-            
-            
+            st.setString(14, paymentForm.getPaymentDetailProcessStr());
             st.setString(15, paymentForm.getAppUser());
             st.registerOutParameter(16, OracleTypes.VARCHAR);
             st.registerOutParameter(17, OracleTypes.NUMBER);

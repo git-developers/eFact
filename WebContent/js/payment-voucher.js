@@ -223,6 +223,14 @@
         	
         	return false;
         }
+        
+        function validInt(number) {
+            if (typeof number == "undefined" || isNaN(number) || number == ""){
+                return 0;
+            }
+
+            return number;
+        }
 
         base.init();
     };

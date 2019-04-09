@@ -90,7 +90,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             rsDetail.close();
             st.close();
             
-        } catch (Exception e){
+        } catch (Exception e) {
         	e.getStackTrace();
         } finally {
             this.closeConnection();
@@ -151,7 +151,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
         	
             st.close();
             
-        } catch (Exception e){
+        } catch (Exception e) {
         	e.getStackTrace();
         } finally {
             this.closeConnection();
@@ -267,7 +267,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
 
             st.close();
             
-        } catch (Exception e){
+        } catch (Exception e) {
         	e.getStackTrace();
         } finally {
             this.closeConnection();

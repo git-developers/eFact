@@ -135,25 +135,17 @@
         base.rowAfecto = function(context) {
         	
             var value = validInt($(context).val());
-            //var igv = validInt($('input[name=igv]').val());
-            //var position = $(context).data('position');
             var newIgv = parseFloat(value) * 0.18;
-            
-            console.log("value::: " + value + " --- newIgv ::: " + newIgv);
 
             $(context).closest("tr").find("input[name=gridIgv]").val(newIgv.toFixed(2));
             
-            //sumRowSubTotal(position);
-            //sumTotalFooter();
+            sumRowSubTotal(context);
+            sumTotalHeader();
         };
         
         base.rowNoAfecto = function(context) {
-        	
-            var value = $(context).val();
-            var position = $(context).data('position');
-            
-            //sumRowSubTotal(position);
-            //sumTotalFooter();
+            sumRowSubTotal(context);
+            sumTotalHeader();
         };
 
         // Private Functions
@@ -230,6 +222,27 @@
             }
 
             return number;
+        }
+        
+        function sumRowSubTotal(context) {
+        	
+            var noAfecto = validInt( $(context).closest("tr").find("input[name=gridNoAfecto]").val() );
+            var afecto = validInt( $(context).closest("tr").find("input[name=gridAfecto]").val() );
+            var igv = validInt( $(context).closest("tr").find("input[name=gridIgv]").val() );
+            var newSubTotal = parseFloat(noAfecto) + parseFloat(afecto) + parseFloat(igv);
+            
+            $(context).closest("tr").find("input[name=gridTotal]").val(newSubTotal.toFixed(2));
+        }
+        
+        function sumTotalHeader() {
+
+        	var total = 0;
+
+			$(".row-total").each(function(index, value) {
+				total += parseFloat(validInt( value ));
+			});			
+
+        	$("input[name='queryTotal']").val(total.toFixed(2)).change();
         }
 
         base.init();

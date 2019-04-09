@@ -246,8 +246,7 @@
         	var total = 0;
 			var position = 0;
 
-			$(".row-checkbox").each(function()
-			{
+			$(".row-checkbox").each(function() {
 				position = position + 1;
 				
 				if(!$(this).prop('checked')) {

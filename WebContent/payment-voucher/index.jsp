@@ -361,7 +361,7 @@
 	         	<input type="text" class="form-control" name="gridIgv" readonly="readonly">
 	         </td>
 	         <td>
-	         	<input type="text" class="form-control" name="gridTotal" readonly="readonly">
+	         	<input type="text" class="form-control row-total" name="gridTotal" readonly="readonly">
 	         </td>
 	         <td class="text-center">
 	          <button type="button" class="btn btn-danger btn-sm remove-row">

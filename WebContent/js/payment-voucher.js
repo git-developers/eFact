@@ -223,9 +223,9 @@
         
         function sumRowSubTotal(context) {
         	
-            var noAfecto = validInt( $(context).closest("tr").find("input[name=gridNoAfecto]").val() );
-            var afecto = validInt( $(context).closest("tr").find("input[name=gridAfecto]").val() );
             var igv = validInt( $(context).closest("tr").find("input[name=gridIgv]").val() );
+            var afecto = validInt( $(context).closest("tr").find("input[name=gridAfecto]").val() );
+            var noAfecto = validInt( $(context).closest("tr").find("input[name=gridNoAfecto]").val() );
             var newSubTotal = parseFloat(noAfecto) + parseFloat(afecto) + parseFloat(igv);
             
             $(context).closest("tr").find("input[name=gridTotal]").val(newSubTotal.toFixed(2));
@@ -236,11 +236,8 @@
         	var total = 0;
 
 			$(".row-total").each(function(index, row) {
-				
-				console.log("XXXXXXXXXXXXXX::::: " + $(row).val());
-				
 				total += parseFloat(validInt( $(row).val() ));
-			});			
+			});
 
         	$("input[name='queryTotal']").val(total.toFixed(2)).change();
         }

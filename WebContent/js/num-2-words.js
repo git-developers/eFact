@@ -161,7 +161,7 @@
                 
                 $('input[name="queryMoneyIntoWords"]').val(currency);
                 
-                console.log("OUT :: " + currency);
+                //console.log("OUT :: " + currency);
             });
 
         });

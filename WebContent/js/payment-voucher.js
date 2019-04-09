@@ -175,9 +175,6 @@
         	
         	let row = data.listPaymentDetail.shift();
         	
-			console.log(" **** fillForm *** ");
-			console.dir(row);
-        	
         	$("input[name=queryTitular]").val(row.titular);
         	$("select[name=queryComprobante]").val(row.tipoComprobante);
         	$("input[name=querySerieNombre]").val(row.serieNombre);
@@ -238,8 +235,11 @@
 
         	var total = 0;
 
-			$(".row-total").each(function(index, value) {
-				total += parseFloat(validInt( value ));
+			$(".row-total").each(function(index, row) {
+				
+				console.log("XXXXXXXXXXXXXX::::: " + $(row).val());
+				
+				total += parseFloat(validInt( $(row).val() ));
 			});			
 
         	$("input[name='queryTotal']").val(total.toFixed(2)).change();

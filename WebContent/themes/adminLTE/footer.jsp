@@ -152,8 +152,8 @@
 </c:if>
 
 <c:if test="${fn:contains(pageContext.request.requestURI, 'payment-voucher')}">
-	<script src="js/num-2-words.js"></script>
 	<script src="js/payment-voucher.js"></script>
+	<script src="js/num-2-words.js"></script>
 	<link rel="stylesheet" href="css/payment-voucher.css">
 	
 	<script type="text/javascript">

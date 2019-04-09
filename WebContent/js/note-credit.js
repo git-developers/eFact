@@ -15,7 +15,7 @@
         base.el = el;
         base.$el.data('formNoteCredit', base);
 
-        base.init = function(){
+        base.init = function() {
             var totalButtons = 0;
         };
 
@@ -48,15 +48,15 @@
         base.process = function(context) {
         	
         	var row = {};			
-        	row ['queryVoucher'] = $('select[name="queryVoucher"]').val();
-		    row ['querySerie'] = $('select[name="querySerie"]').val();			
-        	row ['id'] = $('input[name="id"]').val();
-        	row ['bd'] = $('input[name="bd"]').val();
-        	row ['fechaEmision'] = $('input[name="fechaEmision"]').val();
-        	row ['fechaVencimiento'] = $('input[name="fechaVencimiento"]').val();
-        	row ['queryTotal'] = $('input[name="queryTotal"]').val();
-        	row ['queryMoneyIntoWords'] = $('input[name="queryMoneyIntoWords"]').val();
-        	row ['queryNoteCreditType'] = $('select[name="queryNoteCreditType"]').val();
+        	row.queryVoucher = $('select[name="queryVoucher"]').val();
+		    row.querySerie = $('select[name="querySerie"]').val();			
+        	row.id = $('input[name="id"]').val();
+        	row.bd = $('input[name="bd"]').val();
+        	row.fechaEmision = $('input[name="fechaEmision"]').val();
+        	row.fechaVencimiento = $('input[name="fechaVencimiento"]').val();
+        	row.queryTotal = $('input[name="queryTotal"]').val();
+        	row.queryMoneyIntoWords = $('input[name="queryMoneyIntoWords"]').val();
+        	row.queryNoteCreditType = $('select[name="queryNoteCreditType"]').val();
 
         	var position = 0;        	
 
@@ -185,8 +185,8 @@
         
         base.rowAfecto = function(context) {
         	
-            var value = validInt( $(context).val() );
-            var igv = validInt( $('input[name=igv]').val() );
+            var value = validInt($(context).val());
+            var igv = validInt($('input[name=igv]').val());
             var position = $(context).data('position');
             var newIgv = parseFloat(value) * 0.18;	
 
@@ -268,7 +268,7 @@
         }
         
         function validInt(number) {
-            if (typeof number == 'undefined' || isNaN(number) || number == ""){
+            if (typeof number == "undefined" || isNaN(number) || number == ""){
                 return 0;
             }
 

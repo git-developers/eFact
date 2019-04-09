@@ -17,7 +17,7 @@ public class PaymentForm implements Serializable {
 	private int queryFechaEmision;
 	private int queryFechaVencimiento;
 	private int queryTotal;
-	private String queryTotalTexto;
+	private String queryMoneyIntoWords;
 	private String queryMonedaTipo;
 	private String queryMonedaDescripcion;
 	private String appUser;
@@ -83,16 +83,16 @@ public class PaymentForm implements Serializable {
 		this.queryFechaVencimiento = queryFechaVencimiento;
 	}
 	public int getQueryTotal() {
-		return 222; //queryTotal;
+		return queryTotal;
 	}
 	public void setQueryTotal(int queryTotal) {
 		this.queryTotal = queryTotal;
 	}
-	public String getQueryTotalTexto() {
-		return "XXXXXXXXXX"; //queryTotalTexto;
+	public String getQueryMoneyIntoWords() {
+		return queryMoneyIntoWords;
 	}
-	public void setQueryTotalTexto(String queryTotalTexto) {
-		this.queryTotalTexto = queryTotalTexto;
+	public void setQueryMoneyIntoWords(String queryMoneyIntoWords) {
+		this.queryMoneyIntoWords = queryMoneyIntoWords;
 	}
 	public String getQueryMonedaTipo() {
 		return queryMonedaTipo;

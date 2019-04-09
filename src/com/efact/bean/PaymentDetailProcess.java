@@ -9,14 +9,14 @@ public class PaymentDetailProcess implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private int gridIndex;
+	private String gridIgv;
+	private String tableRow;
+	private String gridTotal;
+	private String gridAfecto;
+	private String tableColumn;
 	private String gridRecaudo;
 	private String gridConcepto;
 	private String gridNoAfecto;
-	private String gridAfecto;
-	private String gridIgv;
-	private String gridTotal;
-	private String tableColumn;
-	private String tableRow;
 	
 	public static final String SEPARATOR_COLUMN = "|";
 	public static final String SEPARATOR_ROW = "#";

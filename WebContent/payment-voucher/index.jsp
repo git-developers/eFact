@@ -274,7 +274,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-money"></i>
 					          </div>
-					          <input type="text" class="form-control" name="queryTotalTexto" readonly="readonly">
+					          <input type="text" class="form-control" name="queryMoneyIntoWords" readonly="readonly">
 					        </div>
 					    </div>
 					</div>
@@ -358,10 +358,10 @@
 	         	<input type="text" class="form-control" name="gridAfecto">
 	         </td>
 	         <td>
-	         	<input type="text" class="form-control" name="gridIgv">
+	         	<input type="text" class="form-control" name="gridIgv" readonly="readonly">
 	         </td>
 	         <td>
-	         	<input type="text" class="form-control" name="gridTotal">
+	         	<input type="text" class="form-control" name="gridTotal" readonly="readonly">
 	         </td>
 	         <td class="text-center">
 	          <button type="button" class="btn btn-danger btn-sm remove-row">

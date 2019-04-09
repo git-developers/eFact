@@ -4,7 +4,7 @@
     // Global Variables
     var MAX_HEIGHT = 100;
 
-    $.PaymentVoucher = function(el, options) {
+    $.paymentVoucher = function(el, options) {
 
         // Global Private Variables
         var MAX_WIDTH = 200;
@@ -13,7 +13,7 @@
 
         base.$el = $(el);
         base.el = el;
-        base.$el.data('PaymentVoucher', base);
+        base.$el.data('paymentVoucher', base);
 
         base.init = function(){
             var totalButtons = 0;
@@ -67,9 +67,9 @@
         	row.queryFechaEmision = parseInt($('input[name="queryFechaEmision"]').val().replace(/-/g, ""));
         	row.queryFechaVencimiento = parseInt($('input[name="queryFechaVencimiento"]').val().replace(/-/g, ""));
         	row.queryTotal = parseInt($('input[name="queryTotal"]').val());
-        	row.queryTotalTexto = $('input[name="queryTotalTexto"]').val();
+        	row.queryMoneyIntoWords = $('input[name="queryMoneyIntoWords"]').val().trim();
         	row.queryMonedaTipo = parseInt($('select[name="queryMoneda"]').val());
-        	row.queryMonedaDescripcion = $('select[name="queryMoneda"]').text();
+        	row.queryMonedaDescripcion = $('select[name="queryMoneda"]').text().trim();
 
         	var detail = new Array();
 			$("table.table-payment-voucher tbody tr").each(function(index, tr) {
@@ -88,8 +88,6 @@
 			
 			console.log(" **** process *** ");
 			console.dir(row);
-			
-			return false;
 
             $.ajax({
                 url: options.contextPath + '/payment-voucher-process',
@@ -132,6 +130,28 @@
         	select.prop('selectedIndex', 0);
         	select.find("option.grid-concepto").hide();
         	select.find('*[data-id-recaudo="' + idRecaudo + '"]').show();
+        };
+        
+        base.rowAfecto = function(context) {
+        	
+            var value = validInt($(context).val());
+            //var igv = validInt($('input[name=igv]').val());
+            //var position = $(context).data('position');
+            var newIgv = parseFloat(value) * 0.18;	
+
+            $(context).closest("tr").find("input[name=gridIgv]").val(newIgv.toFixed(2));
+            
+            //sumRowSubTotal(position);
+            //sumTotalFooter();
+        };
+        
+        base.rowNoAfecto = function(context) {
+        	
+            var value = $(context).val();
+            var position = $(context).data('position');
+            
+            //sumRowSubTotal(position);
+            //sumTotalFooter();
         };
 
         // Private Functions
@@ -205,11 +225,11 @@
         base.init();
     };
 
-    $.fn.PaymentVoucher = function(options){
+    $.fn.paymentVoucher = function(options){
 
         return this.each(function(){
 
-            var bp = new $.PaymentVoucher(this, options);
+            var bp = new $.paymentVoucher(this, options);
 
             $("table.table-payment-voucher span.add-row").click(function( event ) {          	
                 bp.addRow(this);
@@ -230,6 +250,14 @@
             
          	$(document).on('change', 'select[name=gridRecaudo]', function(event) {
                 bp.changeRecaudo(this, event);
+            });
+         	
+        	$(document).on('keyup', '.row-afecto', function(event) {
+                bp.rowAfecto(this);
+            });
+        	
+        	$(document).on('keyup', '.row-no-afecto', function(event) {
+                bp.rowNoAfecto(this);
             });
 
         });

@@ -66,8 +66,8 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             	o.setSerieNombre(rsDetail.getString("SERIENOMBRE"));
             	o.setMoneda(rsDetail.getInt("MONEDA"));
             	
-            	o.setFechaEmision(fechaEmisionStr);
-            	o.setFechaVencimiento(fechaVencimientoStr);
+            	//o.setFechaEmision(fechaEmisionStr);
+            	//o.setFechaVencimiento(fechaVencimientoStr);
             	
             	listPaymentDetail.add(o);
             }

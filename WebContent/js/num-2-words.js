@@ -77,6 +77,11 @@
             var word2 = '';
             var val2;
             var b = n.toString().split(".");
+            
+            console.log("******** numberToWords **********");
+            console.dir(b);
+            
+            
             n = b[0];
             d = b[1];
             dRaw = b[1];
@@ -124,9 +129,8 @@
                 i++;
             };
 
-            if (word!='') word = word.toUpperCase();
+            if (word!='') word = word.toUpperCase() + ' CON ' + dRaw + '/100';
             //if (word2!='') word2 = ' y ' + word2.toUpperCase() + ' CON ' + d + '/100';
-            if (word2!='') word2 = ' CON ' + dRaw + '/100';
 
             return word+word2;
         }

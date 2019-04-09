@@ -17,7 +17,7 @@ public class PaymentForm implements Serializable {
 	private int querySerieComprobante;
 	private int queryFechaEmision;
 	private int queryFechaVencimiento;
-	private BigDecimal queryTotal;
+	private float queryTotal;
 	private String queryMoneyIntoWords;
 	private String queryMonedaTipo;
 	private String queryMonedaDescripcion;
@@ -83,10 +83,10 @@ public class PaymentForm implements Serializable {
 	public void setQueryFechaVencimiento(int queryFechaVencimiento) {
 		this.queryFechaVencimiento = queryFechaVencimiento;
 	}
-	public BigDecimal getQueryTotal() {
+	public float getQueryTotal() {
 		return queryTotal;
 	}
-	public void setQueryTotal(BigDecimal queryTotal) {
+	public void setQueryTotal(float queryTotal) {
 		this.queryTotal = queryTotal;
 	}
 	public String getQueryMoneyIntoWords() {

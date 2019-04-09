@@ -240,7 +240,7 @@
 		                  <select class="form-control input-type-contract" name="queryMoneda" required="required">
 		                  	<s:iterator value="paymentHeader.listPaymentTipoMoneda" var="obj">
 		                  		<option value="<s:property value = "#obj.idMoneda"/>">
-		                  			<s:property value = "#obj.nombreCorto"/>
+		                  			<s:property value = "#obj.descripcion"/>
 	                  			</option>
 	                  		</s:iterator>
 		                  </select>

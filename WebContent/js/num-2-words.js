@@ -72,12 +72,14 @@
             
             var word = '';
             var d = '';
+            var dRaw = '';
             var val;
             var word2 = '';
             var val2;
             var b = n.toString().split(".");
             n = b[0];
             d = b[1];
+            dRaw = b[1];
             d = String (d);
             d = d.substr(0,2);
             
@@ -124,7 +126,7 @@
 
             if (word!='') word = word.toUpperCase();
             //if (word2!='') word2 = ' y ' + word2.toUpperCase() + ' CON ' + d + '/100';
-            if (word2!='') word2 = ' CON ' + d + '/100';
+            if (word2!='') word2 = ' CON ' + dRaw + '/100';
 
             return word+word2;
         }

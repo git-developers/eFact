@@ -77,7 +77,7 @@ public class PaymentDetailProcess implements Serializable {
 			    gridTotal
 			}, SEPARATOR_COLUMN);
 		 
-		this.tableColumn = tableColumnConcat.substring(1);
+		this.tableColumn = tableColumnConcat; //.substring(1);
 		
 		return tableColumn;
 	}

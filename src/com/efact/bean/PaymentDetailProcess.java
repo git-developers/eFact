@@ -72,10 +72,10 @@ public class PaymentDetailProcess implements Serializable {
 				Util.intToStr(gridIndex),
 				gridRecaudo,
 			    gridConcepto,
-			    gridNoAfecto,
-			    gridAfecto,
-			    gridIgv,
-			    gridTotal
+			    gridNoAfecto.replace('.', ','),
+			    gridAfecto.replace('.', ','),
+			    gridIgv.replace('.', ','),
+			    gridTotal.replace('.', ',')
 			}, SEPARATOR_COLUMN).substring(1);
 		
 		return tableColumn;

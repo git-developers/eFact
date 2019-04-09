@@ -83,13 +83,13 @@ public class PaymentForm implements Serializable {
 		this.queryFechaVencimiento = queryFechaVencimiento;
 	}
 	public int getQueryTotal() {
-		return queryTotal;
+		return 222; //queryTotal;
 	}
 	public void setQueryTotal(int queryTotal) {
 		this.queryTotal = queryTotal;
 	}
 	public String getQueryTotalTexto() {
-		return queryTotalTexto;
+		return "XXXXXXXXXX"; //queryTotalTexto;
 	}
 	public void setQueryTotalTexto(String queryTotalTexto) {
 		this.queryTotalTexto = queryTotalTexto;

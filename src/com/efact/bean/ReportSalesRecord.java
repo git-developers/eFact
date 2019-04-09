@@ -38,7 +38,7 @@ public class ReportSalesRecord implements Serializable {
     private int rvb_tipodev;
     private int rvb_seriedev;
     private int rvb_numerodev;
-    private int rvb_tipocambiodev;
+    private String rvb_tipocambiodev;
     private String totalafectas_sol;
     private String totalnoafectas_sol;
     private String totaligv_sol;
@@ -234,10 +234,10 @@ public class ReportSalesRecord implements Serializable {
 	public void setRvb_numerodev(int rvb_numerodev) {
 		this.rvb_numerodev = rvb_numerodev;
 	}
-	public int getRvb_tipocambiodev() {
+	public String getRvb_tipocambiodev() {
 		return rvb_tipocambiodev;
 	}
-	public void setRvb_tipocambiodev(int rvb_tipocambiodev) {
+	public void setRvb_tipocambiodev(String rvb_tipocambiodev) {
 		this.rvb_tipocambiodev = rvb_tipocambiodev;
 	}
 	public int getRvb_tdocumento() {

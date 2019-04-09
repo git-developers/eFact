@@ -28,7 +28,7 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 	private List<Sequence> listSequence;
 	//
 	private List<VoucherDropdown> listVoucherDropdown;
-	private List<Series> listSeries;
+	private List<Series> listSeries;	
 	//
 	private List<ReportSalesRecord> listReportSalesRecord;
 	private List<ReportSalesSummary> listReportSalesSummary;
@@ -58,14 +58,11 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 		SequenceDao sequenceDao = dao.getSequenceDao();
 		listSequence = sequenceDao.findAll();
 		
-		//
-		//ReportSalesRecordDao rsrDao = dao.getReportSalesRecordDao();
-		NoteCreditDao ncDao = dao.getNoteCreditDao();
-		VoucherDao voucherDao = dao.getVoucherDao();
+		ReportSalesRecordDao rsrDao  = dao.getReportSalesRecordDao();	
 		
-		listVoucherDropdown = voucherDao.listVoucherDropdown(Const.MODULE_REPORT_SALES_RECORD );
-		listSeries = ncDao.listSeries();
-		//
+		listVoucherDropdown = rsrDao.listVoucherDropdown(Const.MODULE_REPORT_SALES_RECORD);
+		listSeries = rsrDao.listSeries();
+		
 		currentDate = Dates.getCurrentDate();
 		currentDateFirstDayOfMonth = Dates.getCurrentDateFirstDayOfMonth();
 

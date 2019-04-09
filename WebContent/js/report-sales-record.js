@@ -102,6 +102,7 @@
             $('.voucher-' + id).show();
         };
         
+        
         // Private Functions
         function debug(e) {
           console.log(e);
@@ -140,6 +141,7 @@
             $(document).ready(function(){
             	bp.voucher(this);
             });
+
         });
     };
 

@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import java.sql.Connection;
@@ -75,6 +76,9 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
                 
                 list.add(obj);
             }
+            
+            
+            
             
             rs.close();
             st.close();
@@ -239,44 +243,48 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
     }
 
     @Override
-    public List<Voucher> generateVoucher(int nlote) throws Exception {
+    public List<Voucher> generateVoucher(int nlote, String fecProcess) throws Exception {
 
         List<Voucher> list = new ArrayList<>();
 
         try{
     		
-            String sql = "{ call FIN_PKG_REGISTROVENTASLOTE.P_GENERACOMPROBANTES(?, ?, ?, ?, ?) }"; 
+            String sql = "{ call FIN_PKG_REGISTROVENTASLOTE.P_GENERACOMPROBANTES(?, ?, ?, ?, ?, ?) }"; 
             
             Connection connection = OracleDaoFactory.getMainConnection();
 			CallableStatement st = connection.prepareCall(sql);         
             st.setInt(1, nlote);
             st.setString(2, "EFACT");
-            st.registerOutParameter(3, OracleTypes.CURSOR);
-            st.registerOutParameter(4, OracleTypes.VARCHAR);
-            st.registerOutParameter(5, OracleTypes.FLOAT);
+            st.setString(3, fecProcess);
+            st.registerOutParameter(4, OracleTypes.CURSOR);
+            st.registerOutParameter(5, OracleTypes.VARCHAR);
+            st.registerOutParameter(6, OracleTypes.FLOAT);
             st.execute();
             
-            ResultSet rs = (ResultSet) st.getObject(3);
+            ResultSet rs = (ResultSet) st.getObject(4);
             
-            if (Util.floatToBool(st.getFloat(5))) {
+            if (Util.floatToBool(st.getFloat(6))) {
                 while (rs.next()){
                 	Voucher obj = new Voucher();
                     obj.setLote(rs.getString("LOTE"));
                     obj.setTipo(rs.getString("TIPO"));
                     obj.setTotal(rs.getString("TOTAL"));
-                    obj.setResultado(st.getString(4));
-                    obj.setStatus(Util.floatToBool(st.getFloat(5)));
+                    obj.setResultado(st.getString(5));
+                    obj.setStatus(Util.floatToBool(st.getFloat(6)));
+                    
                     
                     list.add(obj);
                 }
             } else {
             	Voucher obj = new Voucher();
-                obj.setResultado(st.getString(4));
-                obj.setStatus(Util.floatToBool(st.getFloat(5)));
+                obj.setResultado(st.getString(5));
+                obj.setStatus(Util.floatToBool(st.getFloat(6)));
                 
                 list.add(obj);
             }
-        
+            
+            // System.out.print("search -- getQueryProcess ::::: " + fecProcess);
+            
             rs.close();
             st.close();
             
@@ -297,7 +305,7 @@ public class VoucherImpDao extends OracleDaoFactory implements VoucherDao  {
 
         try{
         	
-            String sql = "{ call P_LISTAR_COMPROBANTES(?, ?) }"; 
+            String sql = "{ call FIN_PKG_REGISTROVENTASLOTE.P_LISTA_TIPO_COMPROBANTES(?, ?) }"; 
             
             Connection connection = OracleDaoFactory.getMainConnection();
 			CallableStatement st = connection.prepareCall(sql);  

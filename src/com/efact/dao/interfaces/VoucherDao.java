@@ -11,7 +11,7 @@ public interface VoucherDao {
 	
 	public int insertVoucher(Voucher voucher, int nlote) throws Exception;
 	
-	public List<Voucher> generateVoucher(int nlote) throws Exception;
+	public List<Voucher> generateVoucher(int nlote, String fecProcess) throws Exception;
 	
 	public List<VoucherDropdown> listVoucherDropdown(int option) throws Exception;
 	

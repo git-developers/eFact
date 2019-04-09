@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
+import java.sql.Date;
 
 //https://www.journaldev.com/2203/get-servlet-session-request-response-context-attributes-struts-2-action
 
@@ -80,6 +81,8 @@ public class VoucherAction extends ActionSupportBase implements ServletRequestAw
 	public String process() throws Exception {
 		
         String fields = request.getParameter("fields");
+        String fecProcess = request.getParameter("fecProcess");
+        
         Type listType = new TypeToken<List<Voucher>>(){}.getType();
         List<Voucher> list = new Gson().fromJson(fields, listType);
         
@@ -90,7 +93,7 @@ public class VoucherAction extends ActionSupportBase implements ServletRequestAw
             voucherDao.insertVoucher(voucher, sequence); 
         }
         
-        listVoucherResult = voucherDao.generateVoucher(sequence);
+        listVoucherResult = voucherDao.generateVoucher(sequence, fecProcess);
         
 		return SUCCESS;
 	}

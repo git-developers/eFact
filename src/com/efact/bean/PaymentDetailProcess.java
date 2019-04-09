@@ -74,6 +74,7 @@ public class PaymentDetailProcess implements Serializable {
 			    gridConcepto,
 			    gridNoAfecto,
 			    gridAfecto,
+			    gridIgv,
 			    gridTotal
 			}, SEPARATOR_COLUMN).substring(1);
 		

@@ -144,6 +144,7 @@ public class PaymentForm implements Serializable {
 		StringBuilder sb = new StringBuilder();
         
 		for (PaymentDetailProcess pdp : this.paymentDetailProcess) {
+			pdp.getTableColumn();
 			sb.append(pdp.getTableRow());
 		}
 		

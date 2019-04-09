@@ -122,8 +122,9 @@
                 i++;
             };
 
-            if (word!='') word = word.toUpperCase() + ' SOLES';
-            if (word2!='') word2 = ' y ' + word2.toUpperCase() + ' CON ' + d + '/100';
+            if (word!='') word = word.toUpperCase();
+            //if (word2!='') word2 = ' y ' + word2.toUpperCase() + ' CON ' + d + '/100';
+            if (word2!='') word2 = ' CON ' + d + '/100';
 
             return word+word2;
         }

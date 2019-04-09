@@ -1,9 +1,7 @@
 package com.efact.bean;
 
 import java.io.Serializable;
-import java.util.List;
 
-import com.efact.util.Dates;
 
 public class PaymentDetail implements Serializable {
 

@@ -66,7 +66,7 @@
         	row.querySerieComprobante = parseInt($('input[name="querySerieNumero"]').val());
         	row.queryFechaEmision = parseInt($('input[name="queryFechaEmision"]').val().replace(/-/g, ""));
         	row.queryFechaVencimiento = parseInt($('input[name="queryFechaVencimiento"]').val().replace(/-/g, ""));
-        	row.queryTotal = $('input[name="queryTotal"]').val();
+        	row.queryTotal = $('input[name="queryTotal"]').val().replace(".", ",");
         	row.queryMoneyIntoWords = $('input[name="queryMoneyIntoWords"]').val().trim();
         	row.queryMonedaTipo = parseInt($('select[name="queryMoneda"]').val());
         	row.queryMonedaDescripcion = $('select[name="queryMoneda"] option:selected').text().trim();
@@ -77,10 +77,10 @@
 				obj.gridIndex = parseInt(index + 1);
 				obj.gridRecaudo = $(tr).find("td:eq(0)").find('select[name="gridRecaudo"] option:selected').text().trim();
 				obj.gridConcepto = $(tr).find("td:eq(1)").find('select[name="gridConcepto"] option:selected').text().trim();
-				obj.gridNoAfecto = $(tr).find("td:eq(2)").find('input[name="gridNoAfecto"]').val().trim();
-				obj.gridAfecto = $(tr).find("td:eq(3)").find('input[name="gridAfecto"]').val().trim();
-				obj.gridIgv = $(tr).find("td:eq(4)").find('input[name="gridIgv"]').val().trim();
-				obj.gridTotal = $(tr).find("td:eq(5)").find('input[name="gridTotal"]').val().trim();
+				obj.gridNoAfecto = $(tr).find("td:eq(2)").find('input[name="gridNoAfecto"]').val().trim().replace(".", ",");
+				obj.gridAfecto = $(tr).find("td:eq(3)").find('input[name="gridAfecto"]').val().trim().replace(".", ",");
+				obj.gridIgv = $(tr).find("td:eq(4)").find('input[name="gridIgv"]').val().trim().replace(".", ",");
+				obj.gridTotal = $(tr).find("td:eq(5)").find('input[name="gridTotal"]').val().trim().replace(".", ",");
 				detail.push(obj);
 			});
 			

@@ -69,7 +69,7 @@
         	row.queryTotal = $('input[name="queryTotal"]').val();
         	row.queryMoneyIntoWords = $('input[name="queryMoneyIntoWords"]').val().trim();
         	row.queryMonedaTipo = parseInt($('select[name="queryMoneda"]').val());
-        	row.queryMonedaDescripcion = $('select[name="queryMoneda"]').text().trim();
+        	row.queryMonedaDescripcion = $('select[name="queryMoneda"] option:selected').text().trim();
 
         	var detail = new Array();
 			$("table.table-payment-voucher tbody tr").each(function(index, tr) {

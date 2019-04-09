@@ -77,11 +77,6 @@
             var word2 = '';
             var val2;
             var b = n.toString().split(".");
-            
-            console.log("******** numberToWords **********");
-            console.dir(b);
-            
-            
             n = b[0];
             d = b[1];
             dRaw = b[1];
@@ -132,7 +127,8 @@
             if (word!='') word = word.toUpperCase() + ' CON ' + dRaw + '/100';
             //if (word2!='') word2 = ' y ' + word2.toUpperCase() + ' CON ' + d + '/100';
 
-            return word+word2;
+            //return word+word2;
+            return word;
         }
 
         base.num2Words = function(n) {

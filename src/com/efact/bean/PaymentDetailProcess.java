@@ -68,14 +68,16 @@ public class PaymentDetailProcess implements Serializable {
 	}
 	public String getTableColumn() {
 		
-		this.tableColumn = StringUtil.implode(new String[] {
+		String tableColumnConcat = StringUtil.implode(new String[] {
 				Util.intToStr(gridIndex),
 				gridRecaudo,
 			    gridConcepto,
 			    gridNoAfecto,
 			    gridAfecto,
 			    gridTotal
-			}, SEPARATOR_COLUMN).substring(1);
+			}, SEPARATOR_COLUMN);
+		 
+		this.tableColumn = tableColumnConcat.substring(1);
 		
 		return tableColumn;
 	}

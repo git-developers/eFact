@@ -52,7 +52,11 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             while (rsDetail.next()) {
             	
             	int fechaEmision = rsDetail.getInt("FECHAEMISION");
+            	String fechaEmisionStr = Dates.intToDate(fechaEmision);
+            	
+            	
             	int fechaVencimiento = rsDetail.getInt("FECHAVENCIMIENTO");
+            	String fechaVencimientoStr = Dates.intToDate(fechaVencimiento);
             	
             	PaymentDetail o = new PaymentDetail();
             	o.setTitular(rsDetail.getString("TITULAR"));
@@ -61,8 +65,10 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             	o.setSerie(rsDetail.getInt("SERIE"));
             	o.setSerieNombre(rsDetail.getString("SERIENOMBRE"));
             	o.setMoneda(rsDetail.getInt("MONEDA"));
-            	o.setFechaEmision(Dates.intToDate(fechaEmision));
-            	o.setFechaVencimiento(Dates.intToDate(fechaVencimiento));
+            	
+            	o.setFechaEmision(fechaEmisionStr);
+            	o.setFechaVencimiento(fechaVencimientoStr);
+            	
             	listPaymentDetail.add(o);
             }
             objectOut.setListPaymentDetail(listPaymentDetail);

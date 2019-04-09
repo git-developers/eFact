@@ -73,7 +73,7 @@
         	var detail = new Array();
 			$("table.table-payment-voucher tbody tr").each(function(index, tr) {
 				var obj = {};
-				obj.gridIndex = index;
+				obj.gridIndex = parseInt(index + 1);
 				obj.gridRecaudo = $(tr).find("td:eq(0)").find('select[name="gridRecaudo"] option:selected').text().trim();
 				obj.gridConcepto = $(tr).find("td:eq(1)").find('select[name="gridConcepto"] option:selected').text().trim();
 				obj.gridNoAfecto = $(tr).find("td:eq(2)").find('input[name="gridNoAfecto"]').val().trim();
@@ -87,8 +87,6 @@
 			
 			console.log(" **** process *** ");
 			console.dir(row);
-			
-			return false;
 
             $.ajax({
                 url: options.contextPath + '/payment-voucher-process',

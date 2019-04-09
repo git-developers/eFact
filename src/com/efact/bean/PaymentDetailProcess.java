@@ -3,10 +3,12 @@ package com.efact.bean;
 import java.io.Serializable;
 
 import com.efact.util.StringUtil;
+import com.efact.util.Util;
 
 public class PaymentDetailProcess implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private int gridIndex;
 	private String gridRecaudo;
 	private String gridConcepto;
 	private String gridNoAfecto;
@@ -19,6 +21,12 @@ public class PaymentDetailProcess implements Serializable {
 	public static final String SEPARATOR_COLUMN = "|";
 	public static final String SEPARATOR_ROW = "#";
 	
+	public int getGridIndex() {
+		return gridIndex;
+	}
+	public void setGridIndex(int gridIndex) {
+		this.gridIndex = gridIndex;
+	}
 	public String getGridRecaudo() {
 		return gridRecaudo;
 	}
@@ -61,7 +69,8 @@ public class PaymentDetailProcess implements Serializable {
 	public String getTableColumn() {
 		
 		this.tableColumn = StringUtil.implode(new String[] {
-			    gridRecaudo,
+				Util.intToStr(gridIndex),
+				gridRecaudo,
 			    gridConcepto,
 			    gridNoAfecto,
 			    gridAfecto,

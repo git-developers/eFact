@@ -79,19 +79,14 @@
         	
         	var table = $("table#note-debit-table tbody tr");
         	var origen = table.find('td:eq(0) input[name="origen"]').val();
-        	
-        	console.log("ORIGEN :: " + origen);
-        	console.log("Fields :: " + $("form[name='form-note-debit']").serialize());
-    		
+
             $.ajax({
                 url: options.contextPath + '/note-debit-process',
                 type: 'POST',
                 dataType: 'html',
                 data: {
-                	//fields: $(context).serialize() + '&' + $.param({ 'origen': origen })
                 	fields: $("form[name='form-note-debit']").serialize() + '&' + $.param({ 'origen': origen })
                 },
-                
                 beforeSend: function(jqXHR, settings) {
                 	$('#modal-process').find('.modal-body').html('<p><i class="fa fa-2x fa-refresh fa-spin"></i><span style="font-size: 16px; margin-left: 5px">Procesando...</span></p>');
                 	$('#modal-process').modal('show');

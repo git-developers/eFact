@@ -91,7 +91,12 @@ public class MySqlDaoFactory extends DaoFactory {
 	
 	@Override
 	public ExchangeRateDao getExchangeRateDao() {
-		return new ExchangeRateImpDao();
+		return null;
+	}
+
+	@Override
+	public PaymentVoucherDao getPaymentVoucherDao() {
+		return null;
 	}	
 		
 

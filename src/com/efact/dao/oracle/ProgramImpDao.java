@@ -41,8 +41,7 @@ public class ProgramImpDao extends OracleDaoFactory implements ProgramDao  {
             st.close();
 			
         } catch (Exception e){
-        	System.out.print("PROGRAMA findAll -- Exception ::::: " + e.getMessage());
-//            throw e;
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }

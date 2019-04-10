@@ -1,12 +1,18 @@
-## Welcome to Struts project
+<h1 align="center">
+    <a href="http://sylius.com" target="_blank">
+        <img src="http://www.fonbienes.com.pe/img/fondo-menu.png" />
+    </a>
+</h1>
+
+## Welcome to eFact project
 
 ### What Is It?
 
-xxxxxxxxxxx
+Electronic billing project.
 
 ### Documentation
 
-xxxxxxx
+You can find all the project documentation in the attached documents.
 
 ### Installation
 

@@ -37,8 +37,8 @@
         </li>
         
 		<li class="treeview 
-					<c:if test="${fn:contains(pageContext.request.requestURI, 'accrued/conciliation')}">active</c:if>
-					<c:if test="${fn:contains(pageContext.request.requestURI, 'accrued/issue')}">active</c:if>
+			<c:if test="${fn:contains(pageContext.request.requestURI, 'accrued/conciliation')}">active</c:if>
+			<c:if test="${fn:contains(pageContext.request.requestURI, 'accrued/issue')}">active</c:if>
 		  ">
 		  <a href="#">
 		    <i class="fa fa-exchange"></i>
@@ -90,8 +90,8 @@
                 
 
     	<li class="treeview 
-    				<c:if test="${fn:contains(pageContext.request.requestURI, 'report/sales-record')}">active</c:if>
-    				<c:if test="${fn:contains(pageContext.request.requestURI, 'report/sales-summary')}">active</c:if>
+ 				<c:if test="${fn:contains(pageContext.request.requestURI, 'report/sales-record')}">active</c:if>
+ 				<c:if test="${fn:contains(pageContext.request.requestURI, 'report/sales-summary')}">active</c:if>
  		">
 		  <a href="#">
 		    <i class="fa fa-bar-chart"></i>
@@ -114,6 +114,11 @@
 		  </ul>
 		</li>
 
+        <li class="<c:if test="${fn:contains(pageContext.request.requestURI, 'payment-voucher')}">active</c:if>" >	
+          <s:a href="payment-voucher" theme="simple">
+         	<i class="fa fa-fw fa-file-text-o"></i> <span>Comprobantes de Pago</span>
+          </s:a>
+        </li>
         
       </ul>
     </section>

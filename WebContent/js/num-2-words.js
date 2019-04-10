@@ -72,12 +72,14 @@
             
             var word = '';
             var d = '';
+            var dRaw = '';
             var val;
             var word2 = '';
             var val2;
             var b = n.toString().split(".");
             n = b[0];
             d = b[1];
+            dRaw = b[1];
             d = String (d);
             d = d.substr(0,2);
             
@@ -122,10 +124,11 @@
                 i++;
             };
 
-            if (word!='') word = word.toUpperCase() + ' SOLES';
-            if (word2!='') word2 = ' y ' + word2.toUpperCase() + ' CENTS';
+            if (word!='') word = word.toUpperCase() + ' CON ' + dRaw + '/100';
+            //if (word2!='') word2 = ' y ' + word2.toUpperCase() + ' CON ' + d + '/100';
 
-            return word+word2;
+            //return word+word2;
+            return word;
         }
 
         base.num2Words = function(n) {
@@ -161,7 +164,7 @@
                 
                 $('input[name="queryMoneyIntoWords"]').val(currency);
                 
-                console.log("OUT :: " + currency);
+                //console.log("OUT :: " + currency);
             });
 
         });

@@ -1,0 +1,33 @@
+.payment-voucher-search:hover{
+	background-color: #3c8dbc;
+    border-color: #367fa9;
+    color: white;
+}
+
+.payment-voucher-process:hover{
+	background-color: #00a65a;
+    border-color: #008d4c;
+    color: white;
+}
+
+table.table-payment-voucher thead tr th:nth-child(1),
+table.table-payment-voucher thead tr th:nth-child(2)
+{
+	width: 15% !important;
+}
+
+table.table-payment-voucher thead tr th:nth-child(7)
+{
+	width: 10% !important;
+}
+
+table.table-payment-voucher tbody tr td:nth-child(1)
+{
+	/* padding: 0 5px 0 5px !important; */
+}
+
+input[name=queryFechaEmision],
+input[name=queryFechaVencimiento]
+{
+	width: calc(100% - 15px);
+}

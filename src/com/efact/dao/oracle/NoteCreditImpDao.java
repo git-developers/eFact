@@ -62,8 +62,7 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             
             
         } catch (Exception e){
-        	System.out.print("HEADER -nota credito- Exception ::::: " + e.getMessage());
-//            throw e;
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -112,10 +111,7 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             	obj.setNCtotal(rs.getString("NC_RVB_TOTAL"));
             	
             	obj.setFlagUso(rs.getString("FLAG_USO"));
-            	
-            	System.out.print("FLAG_USO ::::: "+ rs.getString("FLAG_USO"));
-            	
-            	
+
             	afectoSum += rs.getFloat("CO_RVB_AFECTO");
             	igvSum += rs.getFloat("CO_RVB_IGV");
             	noAfectoSum += rs.getFloat("CO_RVB_NOAFECTO");
@@ -133,8 +129,7 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             st.close();
             
         } catch (Exception e){
-        	System.out.print("DETAIL -nota credito- Exception ::::: " + e.getMessage());
-//            throw e;
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -170,8 +165,7 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             st.close();
             
         } catch (Exception e){
-            System.out.println("listNoteCreditType -- Exception  :::: " + e.getMessage());
-//            throw e;
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -183,24 +177,6 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
 	public NoteCredit process(NoteCredit object) throws Exception {
 		
 		NoteCredit objectOut = new NoteCredit();
-		
-		
-        System.out.print("TIPO COMPROBANTE -- ::::: " + object.getQueryVoucher());
-        System.out.print("SERIE ORIGEN -- ::::: " + object.getQuerySerie());
-        
-        System.out.print("getFechaEmisionInt -- ::::: " + object.getFechaEmisionInt());
-        System.out.print("getFechaVencimientoInt -- ::::: " + object.getFechaVencimientoInt());
-        System.out.print("getQueryNoteCreditType -- ::::: " + object.getQueryNoteCreditType());
-        System.out.print("getQueryTotal -- ::::: " + object.getQueryTotal());
-        System.out.print("getQueryMoneyIntoWords -- ::::: " + object.getQueryMoneyIntoWords());
-        
-        System.out.print("getAfecto_1 -- ::::: " + object.getAfecto_1());
-        System.out.print("getNoAfecto_1 -- ::::: " + object.getNoAfecto_1());
-        System.out.print("getAfecto_2 -- ::::: " + object.getAfecto_2());
-        System.out.print("getNoAfecto_2 -- ::::: " + object.getNoAfecto_2());
-        System.out.print("getAfecto_3 -- ::::: " + object.getAfecto_3());
-        System.out.print("getNoAfecto_3 -- ::::: " + object.getNoAfecto_3());
-
 
         try{
     		
@@ -250,43 +226,26 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             st.setFloat(24, object.getNoAfecto_8());
             
             st.setInt(25, 0);
-            //st.setString(25, object.getQueryNoteCreditType());
             st.setString(26, "");
             st.setString(27, "EFACT");
-            
             st.setInt(28, Integer.parseInt( object.getQueryNoteCreditType()));
             
             st.registerOutParameter(29, OracleTypes.VARCHAR);
             st.registerOutParameter(30, OracleTypes.VARCHAR);
             st.registerOutParameter(31, OracleTypes.VARCHAR);                        
             st.registerOutParameter(32, OracleTypes.FLOAT);
-            
-            
-            
+
             st.execute();
             
             objectOut.setNumeroOut(st.getString(29));
             objectOut.setSerieOut(st.getString(30));
             objectOut.setResultado(st.getString(31));
-            
             objectOut.setStatus(Util.floatToBool(st.getFloat(32)));
-            
-            
-           // objectOut.setStatus(true);
-            
-            
-        	System.out.print("PROCESS OUT ::::: " + 
-        	st.getString(29) + "" + 
-			st.getString(30) + "" + 
-        	st.getString(31));
-            
-        	System.out.print("isStatus::::: "+ st.getFloat(32)); 
-        	
+
             st.close();
             
         } catch (Exception e){
-        	System.out.print("NOTA CREDITO :: process -- Exception ::::: " + e.getMessage());
-//            throw e;
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -322,8 +281,7 @@ public class NoteCreditImpDao extends OracleDaoFactory implements NoteCreditDao 
             }
         
         } catch (Exception e){
-            System.out.println("listSeries :: Exception :::: " + e.getMessage());
-//            throw e;
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }

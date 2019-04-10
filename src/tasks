@@ -1,8 +1,8 @@
 NOW := $(shell /bin/date "+%Y-%m-%d . %H:%M:%S")
-AUTHOR_EMAIL := "jafeth.bendezu.a@gmail.com"
+AUTHOR_EMAIL := "tianos@gmail.com"
 AUTHOR_NAME := "Tianos"
-HOST_PROJECT := Tianos.xyz
-REMOTE := bitbucket_http
+HOST_PROJECT := Tianos
+REMOTE := origin
 BRANCH_NAME := master
 
 perm:

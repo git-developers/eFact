@@ -95,4 +95,8 @@ public class OracleDaoFactory extends DaoFactory {
 		return new ExchangeRateImpDao();
 	}	
 	
+	@Override
+	public PaymentVoucherDao getPaymentVoucherDao() {
+		return new PaymentVoucherImpDao();
+	}	
 }

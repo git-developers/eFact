@@ -41,9 +41,8 @@
 
 <%-- page script --%>
 <script type="text/javascript">
-  // To make Pace works on Ajax calls
   $(document).ajaxStart(function () {
-    Pace.restart()
+	Pace.restart()
   });
 </script>
 	
@@ -141,7 +140,6 @@
 	</script>
 </c:if>
 
-
 <c:if test="${fn:contains(pageContext.request.requestURI, 'exchange-rate')}">
 	<script src="js/exchange-rate.js"></script>
 	<link rel="stylesheet" href="css/exchange-rate.css">
@@ -153,6 +151,21 @@
 	</script>
 </c:if>
 
+<c:if test="${fn:contains(pageContext.request.requestURI, 'payment-voucher')}">
+	<script src="js/payment-voucher.js"></script>
+	<script src="js/num-2-words.js"></script>
+	<link rel="stylesheet" href="css/payment-voucher.css">
+	
+	<script type="text/javascript">
+	    $("body").paymentVoucher({
+	    	contextPath: '${pageContext.request.contextPath}'
+	    });
+	    
+	    $("body").formNum2Words({
+	    	contextPath: '${pageContext.request.contextPath}'
+	    });
+	</script>
+</c:if>
 
 </body>
 </html>

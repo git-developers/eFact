@@ -122,8 +122,8 @@
         };
         
         base.removeRow = function(context) {
-        	sumTotalHeader();
         	$(context).closest('tr').remove();
+        	sumTotalHeader();
         };
         
         base.changeRecaudo = function(context, event) {

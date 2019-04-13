@@ -29,6 +29,7 @@
                 	fields: $(context).serialize()
                 },
                 beforeSend: function(jqXHR, settings) {
+                	cleanForm();
                 	$('div.content-body').hide();
                 	$('div.content-loading').show();
                 	$("button.payment-voucher-search").prop("disabled", true);
@@ -47,6 +48,7 @@
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: search");
                     
+                    cleanForm();
                 	$('div.content-body').show();
                 	$('div.content-loading').hide();
                 	$("button.payment-voucher-search").prop("disabled", false);
@@ -120,6 +122,7 @@
         };
         
         base.removeRow = function(context) {
+        	sumTotalHeader();
         	$(context).closest('tr').remove();
         };
         
@@ -163,6 +166,11 @@
         	$.each(data.listPaymentCuota, function(key, value) {
         		dropdown.append('<option value=' + value.recTipo + '>' + value.campo + '</option>');
         	});
+        }
+        
+        function cleanForm() {
+        	$("input[name=queryTotal]").val();
+        	$("input[name=queryMoneyIntoWords]").val();
         }
         
         function fillForm(data) {

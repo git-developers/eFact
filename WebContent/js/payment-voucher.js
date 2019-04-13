@@ -169,8 +169,8 @@
         }
         
         function cleanForm() {
-        	$("input[name=queryTotal]").val();
-        	$("input[name=queryMoneyIntoWords]").val();
+        	$("input[name=queryTotal]").val("");
+        	$("input[name=queryMoneyIntoWords]").val("");
         }
         
         function fillForm(data) {

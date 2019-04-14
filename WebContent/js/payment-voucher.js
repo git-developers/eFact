@@ -378,11 +378,9 @@
             
             $("button.payment-voucher-process").click(function(event) {
             	
-            	var xxx = bp.validateForm(this);
-            	
-            	console.log("validateForm :::: " + xxx);
-            	
-            	if (xxx) {
+            	var isValid = bp.validateForm(this);
+
+            	if (isValid) {
             		bp.process(this);
             	}
 

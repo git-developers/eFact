@@ -145,9 +145,10 @@
             var value = validInt($(context).val());
             var newIgv = parseFloat(value) * 0.18;
             
-            console.log("rowAfecto::: " + value);
+            setTimeout(function(){
+            	$(context).closest("tr").find("input[name=gridAfecto]").val(parseFloat(value).toFixed(2));
+        	}, 1000);
 
-            $(context).closest("tr").find("input[name=gridAfecto]").val(parseFloat(value).toFixed(2));
             $(context).closest("tr").find("input[name=gridIgv]").val(newIgv.toFixed(2));
             
             sumRowSubTotal(context);
@@ -158,7 +159,9 @@
         	
         	var value = validInt($(context).val());
         	
-        	$(context).closest("tr").find("input[name=gridNoAfecto]").val(parseFloat(value).toFixed(2));
+            setTimeout(function(){
+            	$(context).closest("tr").find("input[name=gridNoAfecto]").val(parseFloat(value).toFixed(2));
+        	}, 1000);
         	
             sumRowSubTotal(context);
             sumTotalHeader();

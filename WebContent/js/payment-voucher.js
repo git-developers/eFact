@@ -147,7 +147,7 @@
             
             console.log("rowAfecto::: " + value);
 
-            $(context).closest("tr").find("input[name=gridAfecto]").val(value.toFixed(2));
+            $(context).closest("tr").find("input[name=gridAfecto]").val(parseFloat(value).toFixed(2));
             $(context).closest("tr").find("input[name=gridIgv]").val(newIgv.toFixed(2));
             
             sumRowSubTotal(context);
@@ -158,7 +158,7 @@
         	
         	var value = validInt($(context).val());
         	
-        	$(context).closest("tr").find("input[name=gridNoAfecto]").val(value.toFixed(2));
+        	$(context).closest("tr").find("input[name=gridNoAfecto]").val(parseFloat(value).toFixed(2));
         	
             sumRowSubTotal(context);
             sumTotalHeader();

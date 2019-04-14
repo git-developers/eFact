@@ -170,14 +170,17 @@
         	
         	console.log("flagTipo::: " + flagTipo + " -- flagLongitud::: " + flagLongitud + " -- longitud::: " + longitud);
         	
+        	$("input[name=queryNumeroDoi]").val("");
         	$("input[name=queryNumeroDoi]").attr("maxlength", "");
         	$("input[name=queryNumeroDoi]").attr("onkeyup", "");
         	
         	if (flagLongitud == "1") {
+        		console.log("flagLongitud -> 1");
         		$("input[name=queryNumeroDoi]").attr('maxlength', longitud);
         	}
         	
         	if (flagTipo == "5") {
+        		console.log("flagTipo -> 5");
         		$("input[name=queryNumeroDoi]").attr('onkeyup', " this.value = /^\d*$/.test(this.value) ? this.value : '' ");
         	}
         	

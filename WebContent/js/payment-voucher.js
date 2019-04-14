@@ -167,12 +167,8 @@
         	var flagTipo = $(context).find(':selected').data("flag-tipo");
         	var flagLongitud = $(context).find(':selected').data("flag-longitud");
         	var longitud = $(context).find(':selected').data("longitud");
-        	
-        	console.log("flagTipo::: " + flagTipo + " -- flagLongitud::: " + flagLongitud + " -- longitud::: " + longitud);
-        	
-        	$("input[name=queryNumeroDoi]").val("");
-        	$("input[name=queryNumeroDoi]").attr("maxlength", "");
-        	$("input[name=queryNumeroDoi]").attr("onkeyup", "");
+
+        	$("input[name=queryNumeroDoi]").val("").attr("maxlength", "").attr("onkeyup", "");
         	
         	if (flagLongitud == "1") {
         		$("input[name=queryNumeroDoi]").attr("maxlength", longitud);

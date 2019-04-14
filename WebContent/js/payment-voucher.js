@@ -144,6 +144,8 @@
         	
             var value = validInt($(context).val());
             var newIgv = parseFloat(value) * 0.18;
+            
+            console.log("rowAfecto::: " + value);
 
             $(context).closest("tr").find("input[name=gridAfecto]").val(value.toFixed(2));
             $(context).closest("tr").find("input[name=gridIgv]").val(newIgv.toFixed(2));
@@ -206,7 +208,7 @@
         	
         	let tableRows = $("table.table-payment-voucher tbody tr").length;
         	
-        	console.log("tableRows::: " + tableRows)
+        	console.log("tableRows::: " + tableRows);
 
         	if (tableRows <= 0) {
             	$('#modal-warning').find('.modal-body').html("Ingrese al menos un registro en la tabla.");

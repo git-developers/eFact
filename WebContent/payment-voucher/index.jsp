@@ -383,6 +383,7 @@
      
 </section>
 
+<%@include file="../modal/warning-dialog.jsp" %>
 <%@include file="../modal/process-dialog.jsp" %>
 
 <%@include file="../themes/adminLTE/footer.jsp" %>

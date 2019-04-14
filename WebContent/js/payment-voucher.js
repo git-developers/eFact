@@ -207,6 +207,8 @@
             	
             	return false;
         	}
+        	
+        	return true;
 
         }
         
@@ -363,8 +365,13 @@
             });
             
             $("button.payment-voucher-process").click(function(event) {
-            	bp.validateForm(this);
-                bp.process(this);
+            	
+            	console.log("validateForm :::: " + bp.validateForm(this));
+            	
+            	if (bp.validateForm(this)) {
+            		bp.process(this);
+            	}
+
             });
             
             $("select[name=queryTipoDoi]").change(function(event) {

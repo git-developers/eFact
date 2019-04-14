@@ -290,11 +290,11 @@
         	if (isTypeContract(context)) {
         		$(".row-type-doi").hide();
         		$(".row-type-contract").show();
-        		$("select[name=queryMoneda]").prop("readonly", true);
+        		$("select[name=queryMoneda]").attr("disabled", true); 
         	} else {
         		$(".row-type-doi").show();
         		$(".row-type-contract").hide();
-        		$("select[name=queryMoneda]").prop("readonly", false);
+        		$("select[name=queryMoneda]").attr("disabled", false); 
         	}
         }
         

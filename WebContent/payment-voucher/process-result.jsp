@@ -7,7 +7,6 @@
 	<%@include file="../../modal/error.jsp" %>
 </s:else>
 
-
 <table class="table table-condensed">
      <thead>
 		<tr>
@@ -27,3 +26,13 @@
 		</tr>
    </tbody>
 </table>
+
+<script type="text/javascript">
+
+	<s:if test="%{paymentProcess.exito}">
+	
+		$('input[name="querySerieComprobante"]').val("<s:property value = "paymentProcess.numeroComprobante"/>");
+
+	</s:if>
+
+</script>

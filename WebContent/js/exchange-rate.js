@@ -25,16 +25,10 @@
         	var valueVenta  = parseFloat($('input[name="queryVenta"]').val());
         	        	        	
         	var row = {};			
-        	row ['fecha']  = $('input[name="queryFrom"]').val();		
-        	//row ['compra'] = $('input[name="queryCompra"]').val();
-        	//row ['venta']  = $('input[name="queryVenta"]').val();
-        	row ['compra'] = valueCompra.toFixed(3);        	
-        	row ['venta']  = valueVenta.toFixed(3);
-        	row ['userCreacion'] = 'EFACT';
-		    //row ['moneda'] = $('select[name="querySerie"]').val();        	
-
-      		
-        	console.log("ROWS ::: " + JSON.stringify(row));
+        	row.fecha = $('input[name="queryFrom"]').val();		
+        	row.compra = valueCompra.toFixed(3);        	
+        	row.venta = valueVenta.toFixed(3);
+        	row.userCreacion = 'EFACT';
 
             $.ajax({
                 url: options.contextPath + '/exchange-rate-process',
@@ -96,7 +90,6 @@
             $(".exchange-rate-process").click(function( event ) {          	
                 bp.process(this);
             });
-            
             
             $(".exchange-rate-new").click(function( event ) {          	
                 bp.news(this);

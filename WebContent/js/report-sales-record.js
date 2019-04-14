@@ -73,25 +73,26 @@
     	        downloadLink.click();
     	    }
     	};
-    	
-        base.queryToChange = function(context) {
-        	var queryTo = $(context).val(); 
-        	var queryFrom = $('input[name="queryFrom"]').val();
-        	
-        	if(new Date(queryTo) < new Date(queryFrom))
-        	{
-        		$('input[name="queryFrom"]').val(queryTo);
-        		alert("La fecha hasta no puede ser menor que la fecha Desde.");
-        	}
-        };
-        
+
         base.queryFromChange = function(context) {
         	var queryFrom = $(context).val();
         	var queryTo = $('input[name="queryTo"]').val();
         	
-        	if(new Date(queryFrom) > new Date(queryTo))
+        	if (new Date(queryFrom) > new Date(queryTo))
         	{
         		$('input[name="queryTo"]').val(queryFrom);
+        	}
+        };
+        
+        base.queryToChange = function(context) {
+        	var queryTo = $(context).val(); 
+        	var queryFrom = $('input[name="queryFrom"]').val();
+        	
+        	if (new Date(queryTo) < new Date(queryFrom))
+        	{
+        		$('input[name="queryFrom"]').val(queryTo);
+            	$('#modal-warning').find('.modal-body').html("La fecha hasta no puede ser menor que la fecha Desde.");
+            	$('#modal-warning').modal('show');
         	}
         };
         

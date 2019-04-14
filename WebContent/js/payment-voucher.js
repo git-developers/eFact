@@ -15,7 +15,7 @@
         base.el = el;
         base.$el.data('paymentVoucher', base);
 
-        base.init = function(){
+        base.init = function() {
             var totalButtons = 0;
         };
 
@@ -39,11 +39,11 @@
                 	hideShowForm(context);
                 	dropDownCuota(data);
                 	fillForm(data);
+                	requiredFieldsForm(context);
                 	
                 	$('div.content-body').show();
                 	$('div.content-loading').hide();
                 	$("button.payment-voucher-search").prop("disabled", false);
-                	$("table.table-payment-voucher tbody").empty();
                 },
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: search");
@@ -57,7 +57,7 @@
         };
         
         base.process = function(context) {
-        	
+
         	var row = {};		
         	row.queryContrato = $('input[name="queryContrato"]').val();
         	row.queryTipoDoi = parseInt($('select[name="queryTipoDoi"]').val());
@@ -65,7 +65,7 @@
         	row.queryTitular = $('input[name="queryTitular"]').val();
         	row.queryDireccion = $('input[name="queryDireccion"]').val();
         	row.queryComprobante = parseInt($('select[name="queryComprobante"]').val());
-        	row.querySerieComprobante = parseInt($('input[name="querySerieNumero"]').val());
+        	//row.querySerieComprobante = parseInt($('input[name="querySerieNumero"]').val());
         	row.queryFechaEmision = parseInt($('input[name="queryFechaEmision"]').val().replace(/-/g, ""));
         	row.queryFechaVencimiento = parseInt($('input[name="queryFechaVencimiento"]').val().replace(/-/g, ""));
         	row.queryTotal = parseFloat($('input[name="queryTotal"]').val());
@@ -107,6 +107,7 @@
             		$('#modal-process').modal('show');
             		$('#modal-process').find('.modal-body').html(data);
             		$("button.payment-voucher-process").prop("disabled", false);
+            		$("table.table-payment-voucher tbody").find("input, button, select").prop("disabled", true);
                 },
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: process");
@@ -150,6 +151,73 @@
             sumRowSubTotal(context);
             sumTotalHeader();
         };
+        
+        base.changeDoi = function(context) {
+
+        	var flagTipo = $(context).data("flag-tipo");
+        	var flagLongitud = $(context).data("flag-longitud");
+        	var longitud = $(context).data("longitud");
+        	
+        	console.log("flagTipo::: " + flagTipo + " -- flagLongitud::: " + flagLongitud + " -- longitud::: " + longitud);
+        	
+        	$("input[name=queryNumeroDoi]").attr("maxlength", "");
+        	$("input[name=queryNumeroDoi]").attr("onkeyup", "");
+        	
+        	if (flagLongitud == "1") {
+        		$("input[name=queryNumeroDoi]").attr('maxlength', longitud);
+        	}
+        	
+        	if (flagTipo == "5") {
+        		$("input[name=queryNumeroDoi]").attr('onkeyup', " this.value = /^\d*$/.test(this.value) ? this.value : '' ");
+        	}
+        	
+        };
+        
+        base.validateForm = function(context) {
+        	
+        	$('#modal-warning').find('.modal-body').html("");
+        	$('#modal-warning').modal('hide');
+
+        	let required = $(".required").length;
+        	var tableRows = $("table.table-payment-voucher tbody tr").length;
+        	
+        	if (required > 0) {
+            	$('#modal-warning').find('.modal-body').html("Llene los campos obligatorios.");
+            	$('#modal-warning').modal('show');
+            	
+            	return false;
+        	}
+        	
+        	if (tableRows > 0) {
+            	$('#modal-warning').find('.modal-body').html("Ingrese al menos un registro en la tabla.");
+            	$('#modal-warning').modal('show');
+            	
+            	return false;
+        	}
+
+        }
+        
+        base.queryFechaEmision = function(context) {
+        	var queryFechaEmision = $(context).val(); 
+        	var queryFechaVencimiento = $('input[name="queryFechaVencimiento"]').val();
+        	
+        	if (new Date(queryFechaEmision) > new Date(queryFechaVencimiento))
+        	{
+        		$('input[name="queryFechaVencimiento"]').val(queryFechaEmision);
+        	}
+        };
+        
+        base.queryFechaVencimiento = function(context) {
+        	var queryFechaVencimiento = $(context).val();
+        	var queryFechaEmision = $('input[name="queryFechaEmision"]').val();
+        	
+        	if (new Date(queryFechaVencimiento) < new Date(queryFechaEmision))
+        	{
+        		$('input[name="queryFechaEmision"]').val(queryFechaVencimiento);
+            	$('#modal-warning').find('.modal-body').html("La fecha Vencimiento no puede ser menor que la fecha Emision.");
+            	$('#modal-warning').modal('show');
+        	}
+        };
 
         // Private Functions
         function debug(e) {
@@ -171,6 +239,7 @@
         function cleanForm() {
         	$("input[name=queryTotal]").val("");
         	$("input[name=queryMoneyIntoWords]").val("");
+        	$("table.table-payment-voucher tbody").empty();
         }
         
         function fillForm(data) {
@@ -191,6 +260,18 @@
         	$("input[name=queryDireccion]").val(row.direccion);
         	$("input[name=queryFechaEmision]").val(row.fechaEmision);
         	$("input[name=queryFechaVencimiento]").val(row.fechaVencimiento);
+        }
+        
+        function requiredFieldsForm(context) {
+    		
+        	$("select[name=queryCuota]").removeClass("required");
+        	$("input[name=queryMoneda]").removeClass("required");
+        	
+        	if (isTypeContract(context)) {
+            	$("select[name=queryCuota]").addClass("required");
+        	} else {
+              	$("input[name=queryMoneda]").addClass("required");
+        	}
         }
         
         function hideShowForm(context) {
@@ -247,7 +328,7 @@
 				total += parseFloat(validInt( $(row).val() ));
 			});
 
-        	$("input[name='queryTotal']").val(total.toFixed(2)).change();
+        	$("input[name=queryTotal]").val(total.toFixed(2)).change();
         }
 
         base.init();
@@ -258,22 +339,35 @@
         return this.each(function(){
 
             var bp = new $.paymentVoucher(this, options);
-
-            $("table.table-payment-voucher span.add-row").click(function( event ) {          	
-                bp.addRow(this);
-            });
-            
-         	$(document).on('click', 'button.remove-row', function(event) {
-                bp.removeRow(this);
-            });
             
             $("form[name='form-payment-voucher']").submit(function(event) {
             	event.preventDefault();
                 bp.search(this);
             });
             
-            $("button.payment-voucher-process").click(function(event) {          	
+            $("table.table-payment-voucher button.add-row").click(function(event) {          	
+                bp.addRow(this);
+            });
+            
+            $("button.payment-voucher-process").click(function(event) {
+            	bp.validateForm(this);
                 bp.process(this);
+            });
+            
+            $("input[name=queryMoneda]").change(function(event) {
+            	bp.changeDoi(this);
+        	});
+            
+            $('input[name="queryFechaEmision"]').change(function(event) {
+            	bp.queryFechaEmision(this);
+        	});
+
+            $('input[name="queryFechaVencimiento"]').change(function(event) {
+            	bp.queryFechaVencimiento(this);
+        	});
+
+         	$(document).on('click', 'button.remove-row', function(event) {
+                bp.removeRow(this);
             });
             
          	$(document).on('change', 'select[name=gridRecaudo]', function(event) {

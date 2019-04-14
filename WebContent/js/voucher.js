@@ -66,7 +66,6 @@
                 data: {
                 	fields: JSON.stringify(rows)
                 },
-                
                 beforeSend: function(jqXHR, settings) {
                 	$('#modal-process').find('.modal-body').html('<p><i class="fa fa-2x fa-refresh fa-spin"></i><span style="font-size: 16px; margin-left: 5px">Procesando...</span></p>');
                 	$('#modal-process').modal('show');
@@ -93,7 +92,6 @@
                 data: {
                 	recId: recId
                 },
-                
                 beforeSend: function(jqXHR, settings) {
                 	$('#modal-info').find('.modal-body').html('<p><i class="fa fa-2x fa-refresh fa-spin"></i><span style="font-size: 16px; margin-left: 5px">Procesando...</span></p>');
                 	$('#modal-info').modal('show');
@@ -189,7 +187,7 @@
                 if (!$('.object-data').is(':checked')) {
                 	$('#modal-warning').find('.modal-body').html('Seleccione al menos un comprobante');
                 	$('#modal-warning').modal('show');
-                    return;
+                    return false;
                 }
             	
                 $('#modal-confirm-dialog').modal('show');

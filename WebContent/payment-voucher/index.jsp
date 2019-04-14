@@ -64,7 +64,12 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
 					          </div>
-					          <input type="text" class="form-control" name="queryNumeroDoi">
+					          <input 
+					          		type="text" 
+					          		maxlength="paymentHeader.listPaymentTipoDoi[0].longitud" 
+					          		onkeyup="this.value = ( isNaN(this.value) ? '' : this.value);" 
+					          		class="form-control" 
+					          		name="queryNumeroDoi">
 					        </div>
 					    </div>
 					</div>

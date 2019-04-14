@@ -175,13 +175,11 @@
         	$("input[name=queryNumeroDoi]").attr("onkeyup", "");
         	
         	if (flagLongitud == "1") {
-        		console.log("flagLongitud -> 1");
-        		$("input[name=queryNumeroDoi]").attr('maxlength', longitud);
+        		$("input[name=queryNumeroDoi]").attr("maxlength", longitud);
         	}
         	
         	if (flagTipo == "5") {
-        		console.log("flagTipo -> 5");
-        		$("input[name=queryNumeroDoi]").attr('onkeyup', " console.log(  isNaN(this.value) ); this.value = ( isNaN(this.value) ? '' : this.value);  ");
+        		$("input[name=queryNumeroDoi]").attr("onkeyup", " this.value = ( isNaN(this.value) ? '' : this.value);  ");
         	}
         	
         };

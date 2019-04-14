@@ -362,9 +362,11 @@
             
             $("button.payment-voucher-process").click(function(event) {
             	
-            	console.log("validateForm :::: " + bp.validateForm(this));
+            	var xxx = bp.validateForm(this);
             	
-            	if (bp.validateForm(this)) {
+            	console.log("validateForm :::: " + xxx);
+            	
+            	if (xxx) {
             		bp.process(this);
             	}
 

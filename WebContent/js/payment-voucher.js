@@ -184,19 +184,24 @@
         	
         	$('#modal-warning').find('.modal-body').html("");
         	$('#modal-warning').modal('hide');
-
-        	let required = $(".required").length;
+        	
+    		$(".required").each(function (index, value) {
+        		
+        	    console.log(index + ':' + value); 
+        	    
+            	if (value == "") {
+                	$('#modal-warning').find('.modal-body').html("Llene los campos obligatorios.");
+                	$('#modal-warning').modal('show');
+                	
+                	return false;
+            	}
+        	});
+        	
+        	
         	let tableRows = $("table.table-payment-voucher tbody tr").length;
         	
-        	console.log("required::: " + required + " -- tableRows::: " + tableRows)
-        	
-        	if (required > 0) {
-            	$('#modal-warning').find('.modal-body').html("Llene los campos obligatorios.");
-            	$('#modal-warning').modal('show');
-            	
-            	return false;
-        	}
-        	
+        	console.log("tableRows::: " + tableRows)
+
         	if (tableRows > 0) {
             	$('#modal-warning').find('.modal-body').html("Ingrese al menos un registro en la tabla.");
             	$('#modal-warning').modal('show');

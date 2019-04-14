@@ -185,17 +185,23 @@
         	$('#modal-warning').find('.modal-body').html("");
         	$('#modal-warning').modal('hide');
         	
+        	let required = 0;
+        	
     		$(".required").each(function (index, value) {
         		
         	    console.log(index + ':' + $(value).val()); 
         	    
-            	if ($(value).val() == null) {
-                	$('#modal-warning').find('.modal-body').html("Llene los campos obligatorios.");
-                	$('#modal-warning').modal('show');
-                	
-                	return false;
-            	}
+        	    if ($(value).val() == null) {
+        	    	required++;
+        	    }
         	});
+    		
+        	if (required > 0) {
+            	$('#modal-warning').find('.modal-body').html("Llene los campos obligatorios.");
+            	$('#modal-warning').modal('show');
+            	
+            	return false;
+        	}
         	
         	
         	let tableRows = $("table.table-payment-voucher tbody tr").length;

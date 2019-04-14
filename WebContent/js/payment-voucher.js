@@ -354,7 +354,7 @@
                 bp.process(this);
             });
             
-            $("select[name=queryMoneda]").change(function(event) {
+            $("select[name=queryTipoDoi]").change(function(event) {
             	bp.changeDoi(this);
         	});
             

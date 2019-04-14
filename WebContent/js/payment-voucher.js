@@ -147,7 +147,7 @@
             
             setTimeout(function(){
             	$(context).closest("tr").find("input[name=gridAfecto]").val(parseFloat(value).toFixed(2));
-        	}, 1000);
+        	}, 1500);
 
             $(context).closest("tr").find("input[name=gridIgv]").val(newIgv.toFixed(2));
             
@@ -161,7 +161,7 @@
         	
             setTimeout(function(){
             	$(context).closest("tr").find("input[name=gridNoAfecto]").val(parseFloat(value).toFixed(2));
-        	}, 1000);
+        	}, 1500);
         	
             sumRowSubTotal(context);
             sumTotalHeader();

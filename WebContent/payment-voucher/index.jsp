@@ -303,7 +303,7 @@
 			                  <th class="text-center"><i class="fa fa-money"></i> Total</th>
 			                  <th class="text-center">
 			                  		<button class="btn btn-success btn-sm add-row">
-			                  			<i class="fa fa-fw fa-2x fa-plus"></i>
+			                  			<i class="fa fa-fw fa-plus"></i>
 		                  			</button>
 	                  		  </th>
 			                </tr>

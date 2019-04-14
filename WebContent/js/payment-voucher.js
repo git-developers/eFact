@@ -44,6 +44,8 @@
                 	$('div.content-body').show();
                 	$('div.content-loading').hide();
                 	$("button.payment-voucher-search").prop("disabled", false);
+                	$("button.payment-voucher-process").prop("disabled", false);
+                	$("table.table-payment-voucher").find("input, button, select").prop("disabled", false);
                 },
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: search");
@@ -52,6 +54,7 @@
                 	$('div.content-body').show();
                 	$('div.content-loading').hide();
                 	$("button.payment-voucher-search").prop("disabled", false);
+                	$("button.payment-voucher-process").prop("disabled", false);
                 }
             });
         };
@@ -102,16 +105,17 @@
                 	$('#modal-process').find('.modal-body').html('<p><i class="fa fa-2x fa-refresh fa-spin"></i><span style="font-size: 16px; margin-left: 5px">Procesando...</span></p>');
                 	$('#modal-process').modal('show');
                 	$("button.payment-voucher-process").prop("disabled", true);
+                	$("table.table-payment-voucher").find("input, button, select").prop("disabled", true);
                 },
                 success: function(data, textStatus, jqXHR) {
             		$('#modal-process').modal('show');
             		$('#modal-process').find('.modal-body').html(data);
             		$("button.payment-voucher-process").prop("disabled", false);
-            		$("table.table-payment-voucher tbody").find("input, button, select").prop("disabled", true);
                 },
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: process");
                     
+                    $("table.table-payment-voucher").find("input, button, select").prop("disabled", false);
                     $("button.payment-voucher-process").prop("disabled", false);
                 }
             });
@@ -141,6 +145,7 @@
             var value = validInt($(context).val());
             var newIgv = parseFloat(value) * 0.18;
 
+            $(context).closest("tr").find("input[name=gridAfecto]").val(value.toFixed(2));
             $(context).closest("tr").find("input[name=gridIgv]").val(newIgv.toFixed(2));
             
             sumRowSubTotal(context);
@@ -148,15 +153,20 @@
         };
         
         base.rowNoAfecto = function(context) {
+        	
+        	var value = validInt($(context).val());
+        	
+        	$(context).closest("tr").find("input[name=gridNoAfecto]").val(value.toFixed(2));
+        	
             sumRowSubTotal(context);
             sumTotalHeader();
         };
         
         base.changeDoi = function(context) {
 
-        	var flagTipo = $(context).data("flag-tipo");
-        	var flagLongitud = $(context).data("flag-longitud");
-        	var longitud = $(context).data("longitud");
+        	var flagTipo = $(context).find(':selected').data("flag-tipo");
+        	var flagLongitud = $(context).find(':selected').data("flag-longitud");
+        	var longitud = $(context).find(':selected').data("longitud");
         	
         	console.log("flagTipo::: " + flagTipo + " -- flagLongitud::: " + flagLongitud + " -- longitud::: " + longitud);
         	
@@ -179,7 +189,9 @@
         	$('#modal-warning').modal('hide');
 
         	let required = $(".required").length;
-        	var tableRows = $("table.table-payment-voucher tbody tr").length;
+        	let tableRows = $("table.table-payment-voucher tbody tr").length;
+        	
+        	console.log("required::: " + required + " -- tableRows::: " + tableRows)
         	
         	if (required > 0) {
             	$('#modal-warning').find('.modal-body').html("Llene los campos obligatorios.");

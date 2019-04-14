@@ -17,19 +17,19 @@ public abstract class DaoFactory {
 	public static final int SQLSERVER = 2;
 	public static final int ORACLE 	  = 3;
 
-	public abstract UserDao getUserDao();
-	public abstract ProgramDao getProgramDao();
-	public abstract GroupDao getGroupDao();
 	public abstract BankDao getBankDao();
+	public abstract UserDao getUserDao();
+	public abstract GroupDao getGroupDao();
+	public abstract ProgramDao getProgramDao();
 	public abstract VoucherDao getVoucherDao();
 	public abstract AccruedDao getAccruedDao();
 	public abstract SequenceDao getSequenceDao();
-	public abstract NoteCreditDao getNoteCreditDao();
 	public abstract NoteDebitDao getNoteDebitDao();
+	public abstract NoteCreditDao getNoteCreditDao();
+	public abstract ExchangeRateDao getExchangeRateDao();
+	public abstract PaymentVoucherDao getPaymentVoucherDao();
 	public abstract ReportSalesRecordDao getReportSalesRecordDao();
 	public abstract ReportSalesSummaryDao getReportSalesSummaryDao();	
-	public abstract ExchangeRateDao getExchangeRateDao();
-	
 	
     public DaoFactory() {
     	

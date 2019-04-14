@@ -95,10 +95,8 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
             rs.close();
             st.close();
             
-            
         } catch (Exception e){
-        	System.out.print("salesRecordSearch ::: Exception ::: " + e.getMessage());
-//            throw e;
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -138,16 +136,14 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
                 list.add(obj);
             }
         
-        } catch (Exception e){
-            System.out.println("listVoucherDropdown :::: Exception :: " + e.getMessage());
+        } catch (Exception e) {
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
         
         return list;
 	}
-	
-	
 
 	@Override
 	public List<Series> listSeries() throws Exception {
@@ -177,7 +173,7 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
 	            }
 	        
 	        } catch (Exception e){
-	            System.out.println("listSeries :: Exception :::: " + e.getMessage());
+	        	e.getStackTrace();
 	        } finally {
 	            this.closeConnection();
 	        }

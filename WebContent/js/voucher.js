@@ -106,8 +106,6 @@
 
         	var recId = $(context).data('rec-id');
         	
-        	console.log("recId ::: " + recId);
-        	
             $.ajax({
                 url: options.contextPath + '/voucher-view-tr-data',
                 type: 'POST',

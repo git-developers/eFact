@@ -55,8 +55,7 @@ public class AccruedImpDao extends OracleDaoFactory implements AccruedDao  {
             st.close();
             
         } catch (Exception e){
-        	System.out.print("conciliationSearch -- Exception ::::: " + e.getMessage());
-//            throw e;
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -87,8 +86,7 @@ public class AccruedImpDao extends OracleDaoFactory implements AccruedDao  {
             st.close();
         
         } catch (Exception e){
-            System.out.println("processAccruedConciliation ::Exception:: " + e.getMessage());
-//            throw e;
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -124,8 +122,7 @@ public class AccruedImpDao extends OracleDaoFactory implements AccruedDao  {
             }
         
         } catch (Exception e){
-            System.out.println(":::: listAccruedIssueDropdown ::::Exception::" + e.getMessage());
-//            throw e;
+        	e.getStackTrace();
         } finally {
             this.closeConnection();
         }
@@ -139,8 +136,6 @@ public class AccruedImpDao extends OracleDaoFactory implements AccruedDao  {
         List<AccruedIssue> list = new ArrayList<>();
 
         try{
-        	
-//        	System.out.println("queryDateTo ::: " + object.getQueryDateTo());
 	        	
 	        String sql = "{ ? = call FIN_PKG_REGISTRODEVENGADOS.F_PREVIEW_EMITE_DEVENGADO(?, ?, ?) } "; 
 	        
@@ -177,8 +172,7 @@ public class AccruedImpDao extends OracleDaoFactory implements AccruedDao  {
 	        st.close();
 
 	    } catch (Exception e){
-	    	System.out.print("issueSearch -- Exception ::::: " + e.getMessage());
-//	        throw e;
+	    	e.getStackTrace();
 	    } finally {
 	        this.closeConnection();
 	    }
@@ -209,11 +203,7 @@ public class AccruedImpDao extends OracleDaoFactory implements AccruedDao  {
           st.registerOutParameter(7, OracleTypes.VARCHAR);
           st.registerOutParameter(8, OracleTypes.FLOAT);
           st.execute();
-          
-//        System.out.println(":::: POLLO MENSAJE OUT :::: " + st.getString(5));
-          
-											
-														  
+										  
           
           ResultSet rs = (ResultSet) st.getObject(6);
           
@@ -247,8 +237,7 @@ public class AccruedImpDao extends OracleDaoFactory implements AccruedDao  {
           st.close();
           
       } catch (Exception e){
-          System.out.println(":::: processAccruedIssue :::: " + e.getMessage());
-//          throw e;
+    	  e.getStackTrace();
       } finally {
           this.closeConnection();
       }

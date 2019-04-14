@@ -20,7 +20,6 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.sql.Date;
 
-//https://www.journaldev.com/2203/get-servlet-session-request-response-context-attributes-struts-2-action
 
 public class VoucherAction extends ActionSupportBase implements ServletRequestAware, ServletResponseAware  {
 

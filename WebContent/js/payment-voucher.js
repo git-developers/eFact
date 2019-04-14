@@ -187,9 +187,9 @@
         	
     		$(".required").each(function (index, value) {
         		
-        	    console.log(index + ':' + $(value).val()); 
+        	    console.log(index + ':' + $(value).val().length); 
         	    
-            	if ($(value).val() == "") {
+            	if ($(value).val().length <= 0) {
                 	$('#modal-warning').find('.modal-body').html("Llene los campos obligatorios.");
                 	$('#modal-warning').modal('show');
                 	

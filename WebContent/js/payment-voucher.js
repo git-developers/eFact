@@ -208,7 +208,7 @@
         	
         	console.log("tableRows::: " + tableRows)
 
-        	if (parseInt(tableRows) > 0) {
+        	if (tableRows <= 0) {
             	$('#modal-warning').find('.modal-body').html("Ingrese al menos un registro en la tabla.");
             	$('#modal-warning').modal('show');
             	

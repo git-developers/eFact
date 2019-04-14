@@ -66,7 +66,7 @@
 					          </div>
 					          <input 
 					          		type="text" 
-					          		maxlength="paymentHeader.listPaymentTipoDoi[0].longitud" 
+					          		maxlength="<s:property value = "paymentHeader.listPaymentTipoDoi[0].longitud"/>" 
 					          		onkeyup="this.value = ( isNaN(this.value) ? '' : this.value);" 
 					          		class="form-control" 
 					          		name="queryNumeroDoi">

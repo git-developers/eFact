@@ -110,6 +110,7 @@
                 i++;
             };
             
+            /*
             var i = 0;
             while (d > 0) {
                 if (i == othersArr.length - 1) {
@@ -123,6 +124,7 @@
                 };
                 i++;
             };
+            */
 
             if (word!='') word = word.toUpperCase() + ' CON ' + dRaw + '/100';
             //if (word2!='') word2 = ' y ' + word2.toUpperCase() + ' CON ' + d + '/100';

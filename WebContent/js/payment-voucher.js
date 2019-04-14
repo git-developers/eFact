@@ -181,7 +181,7 @@
         	
         	if (flagTipo == "5") {
         		console.log("flagTipo -> 5");
-        		$("input[name=queryNumeroDoi]").attr('onkeyup', " this.value = /^\d*$/.test(this.value) ? this.value : ''; console.log(/^\d*$/.test(this.value)); ");
+        		$("input[name=queryNumeroDoi]").attr('onkeyup', " console.log(/^\d*$/.test(this.value)); this.value = /^\d*$/.test(this.value) ? this.value : '';  ");
         	}
         	
         };

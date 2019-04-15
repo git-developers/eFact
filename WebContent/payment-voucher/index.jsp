@@ -134,6 +134,8 @@
             </div>
             <div class="box-body">
             
+            	<input type="hidden" name="querySerieNumero">
+            
             
             	<!-- FIRST ROW -->
                 <div class="row">

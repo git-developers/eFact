@@ -1,24 +1,17 @@
 package com.efact.dao.oracle;
 
-import java.sql.Array;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 
 import com.efact.bean.*;
 import com.efact.dao.interfaces.*;
 import com.efact.util.Dates;
 import com.efact.dao.factory.OracleDaoFactory;
 import oracle.jdbc.OracleTypes;
-import oracle.jdbc.driver.OracleConnection;
-import oracle.jdbc.pool.OracleDataSource;
-import oracle.sql.ARRAY;
-import oracle.sql.ArrayDescriptor;
 
 
 public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVoucherDao  {

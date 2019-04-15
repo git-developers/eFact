@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@include file="../themes/adminLTE/header.jsp" %>
+<%@ include file="../themes/adminLTE/header.jsp" %>
 
     <section class="content-header">
       <h1>
@@ -45,7 +45,11 @@
 		                  <label for="">Tipo Doi</label>
 		                  <select class="form-control" id="tipoDoi" name="queryTipoDoi">
 		                  	<s:iterator value="paymentHeader.listPaymentTipoDoi" var="obj">
-		                  		<option value="<s:property value = "#obj.idEquivalencia"/>">
+		                  		<option 
+		                  			value="<s:property value = "#obj.idEquivalencia"/>" 
+		                  			data-longitud="<s:property value = "#obj.longitud"/>" 
+		                  			data-flag-tipo="<s:property value = "#obj.flagTipo"/>" 
+		                  			data-flag-longitud="<s:property value = "#obj.flagLongitud"/>" >
 		                  			<s:property value = "#obj.nombreCorto"/>
 	                  			</option>
 	                  		</s:iterator>
@@ -60,7 +64,12 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
 					          </div>
-					          <input type="number" class="form-control" name="queryNumeroDoi">
+					          <input 
+					          		type="text" 
+					          		maxlength="<s:property value = "paymentHeader.listPaymentTipoDoi[0].longitud"/>" 
+					          		onkeyup="this.value = ( isNaN(this.value) ? '' : this.value);" 
+					          		class="form-control" 
+					          		name="queryNumeroDoi">
 					        </div>
 					    </div>
 					</div>
@@ -174,7 +183,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-qrcode"></i>
 					          </div>
-					          <input type="number" class="form-control" name="querySerieNumero" readonly="readonly">
+					          <input type="text" class="form-control" name="querySerieComprobante" readonly="readonly">
 					        </div>
 					    </div>
 					</div>
@@ -217,7 +226,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-calendar"></i>
 					          </div>
-					          <input type="date" class="form-control" name="queryFechaEmision">
+					          <input type="date" class="form-control required" name="queryFechaEmision">
 					        </div>
 					    </div>
 					</div>
@@ -229,7 +238,7 @@
 					          <div class="input-group-addon">
 					            <i class="fa fa-calendar"></i>
 					          </div>
-					          <input type="date" class="form-control" name="queryFechaVencimiento">
+					          <input type="date" class="form-control required" name="queryFechaVencimiento">
 					        </div>
 					    </div>
 					</div>
@@ -237,7 +246,7 @@
 					<div class="col-md-2">
 					    <div class="form-group">
 					      <label for="">Moneda</label>
-		                  <select class="form-control input-type-contract" name="queryMoneda" required="required">
+		                  <select class="form-control input-type-contract" name="queryMoneda">
 		                  	<s:iterator value="paymentHeader.listPaymentTipoMoneda" var="obj">
 		                  		<option value="<s:property value = "#obj.idMoneda"/>">
 		                  			<s:property value = "#obj.descripcion"/>
@@ -291,16 +300,16 @@
 					<table class="table table-bordered table-striped table-payment-voucher">
 						<thead class="bg-light-blue-active">
 			                <tr>
-			                  <th>Recaudo</th>
-			                  <th>Concepto</th>
-			                  <th>No afecto</th>
-			                  <th>Afecto</th>
-			                  <th>IGV</th>
-			                  <th><i class="fa fa-money"></i> Total</th>
+			                  <th class="text-center">Recaudo</th>
+			                  <th class="text-center">Concepto</th>
+			                  <th class="text-center">No afecto</th>
+			                  <th class="text-center">Afecto</th>
+			                  <th class="text-center">IGV</th>
+			                  <th class="text-center"><i class="fa fa-money"></i> Total</th>
 			                  <th class="text-center">
-			                  		<span class="badge bg-green add-row x-hand">
-			                  			<i class="fa fa-fw fa-plus"></i> agregar
-		                  			</span>
+			                  		<button class="btn btn-success btn-sm add-row">
+			                  			<i class="fa fa-fw fa-plus"></i>
+		                  			</button>
 	                  		  </th>
 			                </tr>
 						</thead>
@@ -328,7 +337,7 @@
 	   <tbody>
 	     <tr>
 	       <td>
-		        <select class="form-control" name="gridRecaudo" required="required">
+		        <select class="form-control" name="gridRecaudo">
 		        	<option value="">[ seleccionar ]</option>
 		        	<s:iterator value="paymentHeader.listPaymentRecaudo" var="obj">
 		        		<option value="<s:property value = "#obj.idRecaudo"/>">
@@ -338,7 +347,7 @@
 		        </select>
 	        </td>
 	       <td>
-		        <select class="form-control" name="gridConcepto" required="required">
+		        <select class="form-control" name="gridConcepto">
 	        		<option value="">[ seleccionar ]</option>
 		        	<s:iterator value="paymentHeader.listPaymentConcepto" var="obj">
 		        		<option 
@@ -352,16 +361,16 @@
 		        </select>
 	        </td>
 	         <td>
-	         	<input type="text" class="form-control row-no-afecto" name="gridNoAfecto">
+	         	<input type="text" class="form-control text-right row-no-afecto" name="gridNoAfecto">
 	         </td>
 	         <td>
-	         	<input type="text" class="form-control row-afecto" name="gridAfecto">
+	         	<input type="text" class="form-control text-right row-afecto" name="gridAfecto">
 	         </td>
 	         <td>
-	         	<input type="text" class="form-control" name="gridIgv" readonly="readonly">
+	         	<input type="text" class="form-control text-right" name="gridIgv" readonly="readonly">
 	         </td>
 	         <td>
-	         	<input type="text" class="form-control row-total" name="gridTotal" readonly="readonly">
+	         	<input type="text" class="form-control text-right row-total" name="gridTotal" readonly="readonly">
 	         </td>
 	         <td class="text-center">
 	          <button type="button" class="btn btn-danger btn-sm remove-row">
@@ -372,12 +381,10 @@
 	   </tbody>
 	</table>
      
-
 </section>
-     
 
+<%@include file="../modal/warning-dialog.jsp" %>
 <%@include file="../modal/process-dialog.jsp" %>
 
-     
 <%@include file="../themes/adminLTE/footer.jsp" %>
 

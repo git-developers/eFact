@@ -127,7 +127,7 @@
                 	
                 	$('#modal-warning').find('.modal-body').html('Seleccione al menos un comprobante');
                 	$('#modal-warning').modal('show');
-                    return;
+                    return false;
                 }
             	
                 bp.process(this);

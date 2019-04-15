@@ -68,7 +68,7 @@
         	row.queryTitular = $('input[name="queryTitular"]').val();
         	row.queryDireccion = $('input[name="queryDireccion"]').val();
         	row.queryComprobante = parseInt($('select[name="queryComprobante"]').val());
-        	//row.querySerieComprobante = parseInt($('input[name="querySerieNumero"]').val());
+        	row.querySerieComprobante = parseInt($('input[name="querySerieComprobante"]').val());
         	row.queryFechaEmision = parseInt($('input[name="queryFechaEmision"]').val().replace(/-/g, ""));
         	row.queryFechaVencimiento = parseInt($('input[name="queryFechaVencimiento"]').val().replace(/-/g, ""));
         	row.queryTotal = parseFloat($('input[name="queryTotal"]').val());

@@ -10,6 +10,7 @@ import java.sql.Connection;
 import com.efact.bean.*;
 import com.efact.dao.interfaces.*;
 import com.efact.util.Dates;
+import com.efact.util.Util;
 import com.efact.dao.factory.OracleDaoFactory;
 import oracle.jdbc.OracleTypes;
 
@@ -17,12 +18,14 @@ import oracle.jdbc.OracleTypes;
 public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVoucherDao  {
 	
 	@Override
-	public PaymentBody search(PaymentForm paymentForm) throws Exception {
+	public Response search(PaymentForm paymentForm) throws Exception {
 		
-		PaymentBody objectOut = new PaymentBody();
-
-        try{
+		Response response = new Response();
+		
+        try {
     		
+        	PaymentBody objectOut = new PaymentBody();
+        	
             String sql = "{ call FIN_PKG_COMPROBANTEMANUAL.USP_LISTAR_DETALLE(?, ?, ?, ?, ?, ?, ?) } "; 
             
             Connection connection = OracleDaoFactory.getMainConnection();
@@ -36,11 +39,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.registerOutParameter(7, OracleTypes.VARCHAR);
             st.execute();
         	
-            
-            int exito = st.getInt(6);
-            String mensaje = st.getString(7);
-            
-            
+
             /**
              * Cursor: Detail
              */
@@ -69,8 +68,6 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             	listPaymentDetail.add(o);
             }
             objectOut.setListPaymentDetail(listPaymentDetail);
-            rsDetail.close();
-            
             
             /**
              * Cursor: Cuota
@@ -90,26 +87,35 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             	listPaymentCuota.add(o);
             }
             objectOut.setListPaymentCuota(listPaymentCuota);
-            rsCuota.close();
             
             st.close();
+            rsCuota.close();
+            rsDetail.close();
             
+            response.setObject(objectOut);
+            response.setStatus(Util.intToBool(st.getInt(6)));
+            response.setMessage(st.getString(7));
+
         } catch (Exception e) {
         	e.getStackTrace();
+        	
+            response.setStatus(false);
+            response.setMessage(e.getMessage());
         } finally {
             this.closeConnection();
         }
         
-        return objectOut;
-		
+        return response;
 	}
 	
 	@Override
-	public PaymentForm process(PaymentForm paymentForm) throws Exception {
+	public Response process(PaymentForm paymentForm) throws Exception {
 		
-		PaymentForm objectOut = new PaymentForm();
+		Response response = new Response();
 
-        try{
+        try {
+        	
+        	PaymentForm objectOut = new PaymentForm();
     		
             String sql = "{ call FIN_PKG_COMPROBANTEMANUAL.USP_EMITIR_COMPROBANTEMANUAL(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) } "; 
             
@@ -135,31 +141,34 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.registerOutParameter(18, OracleTypes.VARCHAR);  
             st.execute();
             
-            String xxx = st.getString(16);
-            int aaaaa = st.getInt(17);
-            String bbbb = st.getString(18);
+            objectOut.setNumeroComprobante(st.getString(16));
             
-            objectOut.setNumeroComprobante(xxx);
-            objectOut.setExito(aaaaa);
-            objectOut.setMensaje(bbbb);
-        	
+            response.setObject(objectOut);
+            response.setStatus(Util.intToBool(st.getInt(17)));
+            response.setMessage(st.getString(18));
+            
             st.close();
             
         } catch (Exception e) {
         	e.getStackTrace();
+        	
+            response.setStatus(false);
+            response.setMessage(e.getMessage());
         } finally {
             this.closeConnection();
         }
         
-        return objectOut;
+        return response;
 	}
 
 	@Override
-	public PaymentHeader getHeader() throws Exception {	
+	public Response getHeader() throws Exception {	
 		
-		PaymentHeader objectOut = new PaymentHeader();
+		Response response = new Response();
 
-        try{
+        try {
+        	
+        	PaymentHeader objectOut = new PaymentHeader();
     		
             String sql = "{ call FIN_PKG_COMPROBANTEMANUAL.USP_LISTAR_CABECERA(?, ?, ?, ?, ?, ?, ?) } "; 
             
@@ -249,6 +258,10 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             	listConcepto.add(o);
             }                
             objectOut.setListPaymentConcepto(listConcepto);  
+
+            response.setObject(objectOut);
+            response.setStatus(Util.intToBool(st.getInt(6)));
+            response.setMessage(st.getString(7));
             
             /**
              * Close
@@ -258,15 +271,17 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             rsTipoComprobante.close();
             rsTipoMoneda.close();
             rsConcepto.close();
-
             st.close();
             
         } catch (Exception e) {
         	e.getStackTrace();
+        	
+            response.setStatus(false);
+            response.setMessage(e.getMessage());
         } finally {
             this.closeConnection();
         }
         
-        return objectOut;
+        return response;
 	}
 }

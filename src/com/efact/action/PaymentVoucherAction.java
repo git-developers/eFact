@@ -52,7 +52,7 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
         PaymentForm pp = gson.fromJson(serializeToJSON(fields), PaymentForm.class);
         
         PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
-    	PaymentBody paymentBody = daoPaymentVoucher.search(pp);        
+        Response paymentBody = daoPaymentVoucher.search(pp);        
         paymentBodyJson = gson.toJson(paymentBody);
         
         return SUCCESS;

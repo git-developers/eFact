@@ -21,8 +21,8 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	private static final long serialVersionUID = 1L;
 	private DaoFactory dao;
 	private Gson gson;
-	private PaymentHeader paymentHeader;
-	private PaymentForm paymentProcess;
+	private Response paymentHeader;
+	private Response paymentProcess;
 	private String paymentBodyJson;
 	
 	private HttpServletRequest request = null;
@@ -85,19 +85,19 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 		return serialVersionUID;
 	}
 
-	public PaymentHeader getPaymentHeader() {
+	public Response getPaymentHeader() {
 		return paymentHeader;
 	}
 
-	public void setPaymentHeader(PaymentHeader paymentHeader) {
+	public void setPaymentHeader(Response paymentHeader) {
 		this.paymentHeader = paymentHeader;
 	}
 
-	public PaymentForm getPaymentProcess() {
+	public Response getPaymentProcess() {
 		return paymentProcess;
 	}
 
-	public void setPaymentProcess(PaymentForm paymentProcess) {
+	public void setPaymentProcess(Response paymentProcess) {
 		this.paymentProcess = paymentProcess;
 	}
 

@@ -37,26 +37,26 @@
                 },
                 success: function(data, textStatus, jqXHR) {
 
-                	var response = JSON.parse(data);
+                	var response = JSON.parse(data.object);
                 	
                 	console.log(" ********* search ********* ");
                 	console.dir(response);
                 	
-                	
+                	$('div.content-loading').hide();
                 	
                 	if (!response.status) {
+                    	$('#modal-warning').find('.modal-body').html(response.message);
+                    	$('#modal-warning').modal('show');
+                    	
                 		return false;
                 	}
-                	
-                	
-                	
+            		
                 	hideShowForm(context);
                 	dropDownCuota(data);
                 	fillForm(data);
                 	requiredFieldsForm(context);
                 	
                 	$('div.content-body').show();
-                	$('div.content-loading').hide();
                 	$("button.payment-voucher-search").prop("disabled", false);
                 	$("button.payment-voucher-process").prop("disabled", false);
                 	$("div.box-body").find("input, button, select").prop("disabled", false);
@@ -268,7 +268,7 @@
         	dropdown.append('<option selected="true" disabled>[ seleccionar ]</option>');
         	dropdown.prop('selectedIndex', 0);
         	
-        	data = JSON.parse(data);
+        	data = JSON.parse(data.object);
         	$.each(data.listPaymentCuota, function(key, value) {
         		dropdown.append('<option value=' + value.recTipo + '>' + value.campo + '</option>');
         	});
@@ -292,7 +292,7 @@
         
         function fillForm(data) {
         	
-        	data = JSON.parse(data);
+        	data = JSON.parse(data.object);
         	
         	if (typeof data.listPaymentDetail === "undefined" || data.listPaymentDetail.length <= 0) {
         		return false;

@@ -132,6 +132,7 @@
                 	if (!response.status) {
                 		
                     	$('#modal-warning').find('.modal-body').html(response.message);
+                    	$('#modal-process').modal('hide');
                     	$('#modal-warning').modal('show');
                     	
                 		return false;

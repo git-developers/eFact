@@ -44,7 +44,7 @@
                 
 	        		<div class="col-md-2">
 		                <div class="form-group">
-		                  <label for="">Fecha de emision (Desde)</label>
+		                  <label for="">Fecha de emision Desde</label>
 							<div class="input-group">
 			                  <div class="input-group-addon">
 			                    <i class="fa fa-calendar"></i>
@@ -74,13 +74,13 @@
 			                  		value="<s:property value="currentDate"/>">
 			                </div>
 		                </div>
-	        		</div>
+	        		</div>	        		
 	        		
 	        		<div class="col-md-2">
 		                <div class="form-group">
 		                  <label for="exampleInputEmail1">Comprobante</label>
             		      <select class="form-control" id="select-voucher" name="queryVoucher">
-		                 	<option value="0">Todos</option> 
+		                 	<option value="0">[Todos]</option> 
 		                  	<s:iterator value="listVoucherDropdown" var="voucher">
 		                  		<option value="<s:property value = "#voucher.id"/>">
 		                  			<s:property value = "#voucher.name"/>
@@ -94,7 +94,7 @@
 		                <div class="form-group">
 		                  <label for="">Serie</label>
 				         <select class="form-control" id="select-series" name="querySerie">
-				         	<option value="0">[seleccione]</option>
+				         	<option value="0">[Todos]</option>
 		                  	<s:iterator value="listSeries" var="series">
 		                  		<option 
 		                  			value="<s:property value = "#series.id"/>"
@@ -105,7 +105,7 @@
 		                  </select>
 		                </div>
 	        		</div>
-	        		
+	        			        			        			        		
 	        		<div class="col-md-1">
 		                <div class="form-group pull-right">
 		                  <label for="">&nbsp;</label>
@@ -124,6 +124,25 @@
 		                </div>
 	        		</div>
 
+	        		<div class="col-md-2">
+		                <div class="form-group">
+		                  <label for="exampleInputEmail1">Tipo DOI</label>
+            		      <select class="form-control" id="select-tipodoi" name="queryTipoDoi">
+		                  	<s:iterator value="listTipoDoiDropdown" var="tipodoi">
+		                  		<option value="<s:property value = "#tipodoi.id"/>">
+		                  			<s:property value = "#tipodoi.name"/>
+	                 			</option>
+	                 		</s:iterator>
+		                  </select>
+		                </div>
+	        		</div>	        		       			        		
+	        		
+	        		<div class="col-md-2">
+		                <div class="form-group">
+		                  <label for="">Número DOI</label>
+		                  <input type="text" class="form-control" name="queryNumberDoi" required="required">
+		                </div>
+	        		</div>
         		</div>
         		
 				<div class="row">

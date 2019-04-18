@@ -1,7 +1,9 @@
 package com.efact.dao.factory;
 
+import java.util.List;
 import java.util.ResourceBundle;
 
+import com.efact.bean.Voucher;
 import com.efact.dao.interfaces.*;
 
 public abstract class DaoFactory {

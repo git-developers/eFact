@@ -72,6 +72,8 @@ public class Voucher implements Serializable {
     private String queryStatus; 
     private String queryFrom;    
     private String queryTo;
+    private String queryProcess;
+    
     
 	public long getLcs_id() {
 		return lcs_id;
@@ -421,13 +423,21 @@ public class Voucher implements Serializable {
 	public void setFrom(String from) {
 		this.queryFrom = from;
 	}
+	
 	public Date getQueryTo() {
 		return Util.strToDate(queryTo);
 	}
-	
 	public void setTo(String to) {
 		this.queryTo = to;
 	}
+	
+	public Date getQueryProcess() {
+		return Util.strToDate(queryProcess);
+	}
+	public void setProcess(String process) {
+		this.queryProcess = process;
+	}
+	
 	public String getResultado() {
 		return resultado;
 	}

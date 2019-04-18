@@ -64,7 +64,8 @@
                 type: 'POST',
                 dataType: 'html',
                 data: {
-                	fields: JSON.stringify(rows)
+                	fields: JSON.stringify(rows), fecProcess: $('input[name="queryProcess"]').val()
+                	
                 },
                 beforeSend: function(jqXHR, settings) {
                 	$('#modal-process').find('.modal-body').html('<p><i class="fa fa-2x fa-refresh fa-spin"></i><span style="font-size: 16px; margin-left: 5px">Procesando...</span></p>');
@@ -80,6 +81,25 @@
                 }
             });
         };
+        
+
+        base.queryFromChange = function(context) {
+        	var queryFrom = $(context).val(); 
+        	var queryTo = $('input[name="queryTo"]').val();
+        	
+        	if(new Date(queryFrom) > new Date(queryTo))
+        	{
+        		$('input[name="queryFrom"]').val(queryTo);
+        		alert("La fecha de depósito DESDE no puede ser mayor a la fecha de HASTA.");
+        	}
+        };
+        
+        
+        base.queryToChange = function(context) {
+        	var queryTo = $(context).val(); 
+        	$('input[name="queryProcess"]').val(queryTo);
+        };
+        
         
         base.viewTrData = function(context) {
 
@@ -203,7 +223,15 @@
                 	bp.viewTrData(this);
                 }
             });
+        	
+        	$(document).on('change', 'input[name="queryFrom"]', function(event) {
+                bp.queryFromChange(this);
+            });
 
+        	$(document).on('change', 'input[name="queryTo"]', function(event) {
+                bp.queryToChange(this);
+            });
+        	
         });
     };
 

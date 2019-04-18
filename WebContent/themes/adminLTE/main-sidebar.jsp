@@ -30,11 +30,38 @@
           </s:a>
         </li>
         
-        <li class="<c:if test="${fn:contains(pageContext.request.requestURI, 'voucher')}">active</c:if>" >	
+<%--         <li class="<c:if test="${fn:contains(pageContext.request.requestURI, 'voucher')}">active</c:if>" >	
           <s:a href="comprobante-por-lote" theme="simple">
             <i class="fa fa-hand-peace-o"></i> <span>Comprobante por Lote</span>
           </s:a>
         </li>
+ --%>
+
+		<li class="treeview 
+			<c:if test="${fn:contains(pageContext.request.requestURI, 'voucher')}">active</c:if>
+			<c:if test="${fn:contains(pageContext.request.requestURI, 'payment-voucher')}">active</c:if>
+		  ">
+		  <a href="#">
+		    <i class="fa fa-fw fa-file-text-o"></i>
+		    <span>Comprobantes</span>
+		    <span class="pull-right-container">
+		      <i class="fa fa-angle-left pull-right"></i>
+		    </span>
+		  </a>
+		  <ul class="treeview-menu">
+	        <li class="<c:if test="${fn:contains(pageContext.request.requestURI, 'voucher')}">active</c:if>" >	
+	          <s:a href="comprobante-por-lote" theme="simple">
+	            <i class="fa fa-circle-o text-blue"></i> <span>Por Lote</span>
+	          </s:a>
+	        </li>
+	        <li class="<c:if test="${fn:contains(pageContext.request.requestURI, 'payment-voucher')}">active</c:if>" >	
+	          <s:a href="payment-voucher" theme="simple">
+	         	<i class="fa fa-circle-o text-green"></i> <span>Manual</span>
+	          </s:a>
+	        </li>
+		  </ul>
+		</li>
+
         
 		<li class="treeview 
 			<c:if test="${fn:contains(pageContext.request.requestURI, 'accrued/conciliation')}">active</c:if>
@@ -114,11 +141,11 @@
 		  </ul>
 		</li>
 
-        <li class="<c:if test="${fn:contains(pageContext.request.requestURI, 'payment-voucher')}">active</c:if>" >	
+<%--         <li class="<c:if test="${fn:contains(pageContext.request.requestURI, 'payment-voucher')}">active</c:if>" >	
           <s:a href="payment-voucher" theme="simple">
          	<i class="fa fa-fw fa-file-text-o"></i> <span>Comprobantes de Pago</span>
           </s:a>
-        </li>
+        </li> --%>
         
       </ul>
     </section>

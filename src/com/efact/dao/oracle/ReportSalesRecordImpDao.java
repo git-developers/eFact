@@ -35,6 +35,16 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
             st.setString(7, "EFACT");
             st.execute();
 
+            
+            /*
+            System.out.print(object.getQueryFrom());
+            System.out.print(object.getQueryTo());
+            
+            System.out.print("getQueryVoucher::"+object.getQueryVoucher());
+            System.out.print("getQuerySerie::"+object.getQuerySerie());
+            */
+            
+            
             ResultSet rs = (ResultSet) st.getObject(1);
             
             while (rs.next()){
@@ -63,17 +73,22 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
             	obj.setOtros(rs.getString("OTROS")); 
             	obj.setRvb_imptotal(rs.getString("RVB_IMPTOTAL")); 
             	obj.setTcd_venta(rs.getString("TCD_VENTA")); 
-            	obj.setRvb_femisiondev(rs.getInt("RVB_FEMISIONDEV"));
+            	
+            	obj.setRvb_femisiondev(rs.getInt("RVB_FEMISIONDEV"));            	            
             	obj.setRvb_tipodev(rs.getInt("RVB_TIPODEV")); 
-            	obj.setRvb_seriedev(rs.getInt("RVB_SERIEDEV")); 
+            	obj.setRvb_seriedev(rs.getInt("RVB_SERIEDEV"));             	            	
             	obj.setRvb_numerodev(rs.getInt("RVB_NUMERODEV")); 
-            	obj.setRvb_tipocambiodev(rs.getInt("RVB_TIPOCAMBIODEV")); 
+            	
+            	//obj.setRvb_tipocambiodev(rs.getInt("RVB_TIPOCAMBIODEV")); 
+            	obj.setRvb_tipocambiodev(rs.getString("RVB_TIPOCAMBIODEV"));
+            	
             	obj.setTotalafectas_sol(rs.getString("TOTALAFECTAS_SOL")); 
             	obj.setTotalnoafectas_sol(rs.getString("TOTALNOAFECTAS_SOL")); 
             	obj.setTotaligv_sol(rs.getString("TOTALIGV_SOL")); 
             	obj.setTotaltotal_sol(rs.getString("TOTALTOTAL_SOL")); 
             	obj.setRvb_tdocumento(rs.getInt("RVB_TDOCUMENTO")); 
             	obj.setRvb_id(rs.getInt("RVB_ID")); 
+            	
 
                 list.add(obj);
             }
@@ -102,15 +117,15 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
 
         try{
         	
-            String sql = "{ call P_LISTAR_COMPROBANTES(?, ?) }"; 
+            String sql = "{ call FIN_PKG_REPORTES.P_LISTA_TIPO_COMPROBANTES(?) }"; 
             
             Connection connection = OracleDaoFactory.getMainConnection();
 			CallableStatement st = connection.prepareCall(sql);  
-            st.setInt(1, option);
-            st.registerOutParameter(2, OracleTypes.CURSOR);
+
+			st.registerOutParameter(1, OracleTypes.CURSOR);
             st.execute();
             
-            ResultSet rs = (ResultSet) st.getObject(2);
+            ResultSet rs = (ResultSet) st.getObject(1);
             
             while (rs.next()){
             	
@@ -122,7 +137,7 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
                 list.add(obj);
             }
         
-        } catch (Exception e){
+        } catch (Exception e) {
         	e.getStackTrace();
         } finally {
             this.closeConnection();
@@ -138,15 +153,15 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
 
 	        try{
 	        	
-	            String sql = "{ call P_LISTAR_SERIE_COMPRO(?, ?) }"; 
+	            String sql = "{ call FIN_PKG_REPORTES.P_LISTA_SERIES(?) }"; 
 	            
 	            Connection connection = OracleDaoFactory.getMainConnection();
 				CallableStatement st = connection.prepareCall(sql);  
-	            st.setInt(1, 4);
-	            st.registerOutParameter(2, OracleTypes.CURSOR);
+
+				st.registerOutParameter(1, OracleTypes.CURSOR);
 	            st.execute();
-	            
-	            ResultSet rs = (ResultSet) st.getObject(2);
+	            	            
+	            ResultSet rs = (ResultSet) st.getObject(1);
 	            
 	            while (rs.next()){
 	            	

@@ -153,6 +153,7 @@
             $(document).ready(function(){
             	bp.voucher(this);
             });
+
         });
     };
 

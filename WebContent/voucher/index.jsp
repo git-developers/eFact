@@ -126,7 +126,19 @@
 					        </div>
 					    </div>
 					</div>
-									
+
+					<div class="col-md-2">
+					    <div class="form-group">
+					      <label for="exampleInputEmail1">Fecha de Proceso</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-calendar"></i>
+					          </div>
+					          <input type="date" class="form-control" name="queryProcess" value="<s:property value="currentDate"/>">
+					        </div>
+					    </div>
+					</div>
+														
 					<div class="col-md-2">
 					    <div class="form-group pull-right">
 					      <label for="">&nbsp;</label>
@@ -185,7 +197,7 @@
 						   <th class="text-center">Cuota</th>
 						   <th class="text-center">Datos</th>
 						   <th class="text-center"><i class="fa fa-fw fa-calendar"></i> Fecha</th>
-						   <th class="text-center"><i class="fa fa-fw fa-money"></i> Monto</th>
+						   <th class="text-center"><i class="fa fa-fw fa-money"></i> Abono</th>
 						   <th class="text-center">Conciliado</th>
 						   <th class="text-center">Diferencia</th>
 						   <th class="text-center">Devengado</th>

@@ -126,18 +126,24 @@
                 	console.log(" ********* process - success ********* ");
                 	console.dir(response);
                 	
-            		$("button.payment-voucher-process").prop("disabled", true);
+            		$("button.payment-voucher-process").prop("disabled", false);
             		$("button.payment-voucher-search").prop("disabled", false);
                 	
                 	if (!response.status) {
-                		$("button.payment-voucher-process").prop("disabled", false);
-                		$("div.payment-form").find("input, button, select").prop("disabled", false);
-                	} else {
-                		$('input[name="querySerieComprobante"]').val(response.object.numeroComprobante);
+                		
+                    	$('#modal-warning').find('.modal-body').html(response.message);
+                    	$('#modal-warning').modal('show');
+                    	
+                		return false;
                 	}
+                	
+            		$("button.payment-voucher-process").prop("disabled", true);
+            		$("div.payment-form").find("input, button, select").prop("disabled", true);
+                	$('input[name="querySerieComprobante"]').val(response.object.numeroComprobante);
             		
+                	let html = '<table class="table table-condensed"><thead><tr><th><i class="fa fa-fw fa-align-justify"></i> Resultado</th></tr></thead><tbody><tr><td>' + response.object.numeroComprobante + '</td></tr></tbody></table>';
+            		$('#modal-process').find('.modal-body').html(html);
             		$('#modal-process').modal('show');
-            		$('#modal-process').find('.modal-body').html(data);
                 },
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: process");

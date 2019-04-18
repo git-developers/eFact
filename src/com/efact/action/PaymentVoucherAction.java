@@ -22,7 +22,7 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 	private DaoFactory dao;
 	private Gson gson;
 	private Response paymentHeader;
-	private Response paymentProcess;
+	private String paymentProcessJson;
 	private String paymentBodyJson;
 	
 	private HttpServletRequest request = null;
@@ -66,7 +66,8 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
         paymentForm.setAppUser("EZANABRIA");
 
         PaymentVoucherDao daoPaymentVoucher = dao.getPaymentVoucherDao();
-        paymentProcess = daoPaymentVoucher.process(paymentForm);
+        Response paymentProcess = daoPaymentVoucher.process(paymentForm);
+        paymentProcessJson = gson.toJson(paymentProcess);
         
 		return SUCCESS;
 	}
@@ -93,12 +94,12 @@ public class PaymentVoucherAction extends ActionSupportBase implements ServletRe
 		this.paymentHeader = paymentHeader;
 	}
 
-	public Response getPaymentProcess() {
-		return paymentProcess;
+	public String getPaymentProcessJson() {
+		return paymentProcessJson;
 	}
 
-	public void setPaymentProcess(Response paymentProcess) {
-		this.paymentProcess = paymentProcess;
+	public void setPaymentProcessJson(String paymentProcessJson) {
+		this.paymentProcessJson = paymentProcessJson;
 	}
 
 	public String getPaymentBodyJson() {

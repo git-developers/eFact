@@ -211,9 +211,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             	listPaymentCuota.add(o);
             }
             objectOut.setListPaymentCuota(listPaymentCuota);
-
-            int xxx = st.getInt(6);
-            
+        	
             response.setObject(objectOut);
             response.setStatus(Util.intToBool(st.getInt(6)));
             response.setMessage(st.getString(7));

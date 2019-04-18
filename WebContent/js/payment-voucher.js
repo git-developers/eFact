@@ -120,10 +120,24 @@
                 	$("div.payment-form").find("input, button, select").prop("disabled", true);
                 },
                 success: function(data, textStatus, jqXHR) {
-            		$('#modal-process').modal('show');
-            		$('#modal-process').find('.modal-body').html(data);
+                	
+                	var response = JSON.parse(data);
+                	
+                	console.log(" ********* process - success ********* ");
+                	console.dir(response);
+                	
             		$("button.payment-voucher-process").prop("disabled", true);
             		$("button.payment-voucher-search").prop("disabled", false);
+                	
+                	if (!response.status) {
+                		$("button.payment-voucher-process").prop("disabled", false);
+                		$("div.payment-form").find("input, button, select").prop("disabled", false);
+                	} else {
+                		$('input[name="querySerieComprobante"]').val(response.object.numeroComprobante);
+                	}
+            		
+            		$('#modal-process').modal('show');
+            		$('#modal-process').find('.modal-body').html(data);
                 },
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: process");

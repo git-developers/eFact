@@ -27,16 +27,4 @@
    </tbody>
 </table>
 
-<script type="text/javascript">
 
-	$("table.table-payment-voucher").find("input, button, select").prop("disabled", false);
-
-	<s:if test="%{paymentProcess.exito}">
-	
-		$("button.payment-voucher-process").prop("disabled", true);
-		$("table.table-payment-voucher").find("input, button, select").prop("disabled", true);
-		$('input[name="querySerieComprobante"]').val("<s:property value = "paymentProcess.object.numeroComprobante"/>");
-
-	</s:if>
-
-</script>

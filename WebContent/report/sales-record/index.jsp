@@ -132,7 +132,7 @@
 		                <div class="form-group">
 		                  <label for="">Tipo Doi</label>
 		                  <select class="form-control" id="tipoDoi" name="queryTipoDoi">
-		                  	<s:iterator value="paymentHeader.object.listPaymentTipoDoi" var="obj">
+		                  	<s:iterator value="listarTipoDoi.object.listPaymentTipoDoi" var="obj">
 		                  		<option 
 		                  			value="<s:property value = "#obj.idEquivalencia"/>" 
 		                  			data-longitud="<s:property value = "#obj.longitud"/>" 
@@ -154,7 +154,7 @@
 					          </div>
 					          <input 
 					          		type="text" 
-					          		maxlength="<s:property value = "paymentHeader.object.listPaymentTipoDoi[0].longitud"/>" 
+					          		maxlength="<s:property value = "listarTipoDoi.object.listPaymentTipoDoi[0].longitud"/>" 
 					          		onkeyup="this.value = ( isNaN(this.value) ? '' : this.value);" 
 					          		class="form-control" 
 					          		name="queryNumeroDoi">

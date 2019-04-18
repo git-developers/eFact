@@ -26,10 +26,9 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 	private Gson gson;
 	private InputStream excelStream;
 	private List<Sequence> listSequence;
-
 	private List<VoucherDropdown> listVoucherDropdown;
 	private List<Series> listSeries;
-	
+	private Response listarTipoDoi;
 	private List<ReportSalesRecord> listReportSalesRecord;
 	private List<ReportSalesSummary> listReportSalesSummary;
 	private String currentDate, currentDateFirstDayOfMonth;
@@ -55,13 +54,16 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 		
 		SequenceDao sequenceDao = dao.getSequenceDao();
 		listSequence = sequenceDao.findAll();
+
+		VoucherDao voucherDao = dao.getVoucherDao();
+		listVoucherDropdown = voucherDao.listVoucherDropdown(Const.MODULE_REPORT_SALES_RECORD);
 		
 		NoteCreditDao ncDao = dao.getNoteCreditDao();
-		VoucherDao voucherDao = dao.getVoucherDao();
-		
-		listVoucherDropdown = voucherDao.listVoucherDropdown(Const.MODULE_REPORT_SALES_RECORD);
 		listSeries = ncDao.listSeries();
-
+		
+		ReportSalesRecordDao rsDao = dao.getReportSalesRecordDao();
+		listarTipoDoi = rsDao.listarTipoDoi();
+		
 		currentDate = Dates.getCurrentDate();
 		currentDateFirstDayOfMonth = Dates.getCurrentDateFirstDayOfMonth();
 
@@ -196,6 +198,14 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 
 	public void setCurrentDateFirstDayOfMonth(String currentDateFirstDayOfMonth) {
 		this.currentDateFirstDayOfMonth = currentDateFirstDayOfMonth;
+	}
+
+	public Response getListarTipoDoi() {
+		return listarTipoDoi;
+	}
+
+	public void setListarTipoDoi(Response listarTipoDoi) {
+		this.listarTipoDoi = listarTipoDoi;
 	}
 	
 }

@@ -9,6 +9,7 @@ import java.sql.Connection;
 
 import com.efact.bean.*;
 import com.efact.dao.interfaces.*;
+import com.efact.util.Util;
 import com.efact.dao.factory.OracleDaoFactory;
 import oracle.jdbc.OracleTypes;
 
@@ -156,6 +157,9 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
 	                
 	                list.add(obj);
 	            }
+	            
+	            rs.close();
+	            st.close();
 	        
 	        } catch (Exception e){
 	        	e.getStackTrace();
@@ -164,6 +168,55 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
 	        }
 	        
 	        return list;
+	}
+	
+	@Override
+	public Response listarTipoDoi() throws Exception {
+			
+		Response response = new Response();
+
+        try{
+
+            String sql = "{ call FIN_PKG_REPORTES.P_LISTAR_TIPO_DOI() }"; 
+            
+            Connection connection = OracleDaoFactory.getMainConnection();
+			CallableStatement st = connection.prepareCall(sql);  
+            st.registerOutParameter(1, OracleTypes.CURSOR);
+            st.registerOutParameter(2, OracleTypes.NUMBER);
+            st.registerOutParameter(3, OracleTypes.VARCHAR);
+            st.execute();
+            
+            ResultSet rsTipoDoi = (ResultSet) st.getObject(1);
+            List<PaymentTipoDoi> listTipoDoi = new ArrayList<PaymentTipoDoi>();
+            
+            while (rsTipoDoi.next()) {
+            	PaymentTipoDoi o = new PaymentTipoDoi();
+            	o.setIdTipoDoi(rsTipoDoi.getInt("ID_TIPO_DOI"));
+            	o.setNombreCorto(rsTipoDoi.getString("NOMBRE_CORTO"));    		    
+            	o.setFlagTipo(rsTipoDoi.getInt("FLAG_TIPO"));
+            	o.setLongitud(rsTipoDoi.getInt("LONGITUD"));
+                o.setFlagLongitud(rsTipoDoi.getInt("FLAG_LONGITUD"));    		    
+                o.setIdEquivalencia(rsTipoDoi.getInt("ID_EQUIVALENCIA"));
+                listTipoDoi.add(o);
+            }
+            
+            response.setObjectList(listTipoDoi);
+            response.setStatus(Util.intToBool(st.getInt(2)));
+            response.setMessage(st.getString(3));
+            
+            rsTipoDoi.close();
+            st.close();
+        
+        } catch (Exception e){
+        	e.getStackTrace();
+        	
+            response.setStatus(false);
+            response.setMessage(e.getMessage());
+        } finally {
+            this.closeConnection();
+        }
+        
+        return response;
 	}
 
 }

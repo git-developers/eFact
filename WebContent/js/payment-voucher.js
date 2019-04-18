@@ -128,6 +128,10 @@
                 	
             		$("button.payment-voucher-process").prop("disabled", false);
             		$("button.payment-voucher-search").prop("disabled", false);
+            		$("table.table-payment-voucher").find("select, button").prop("disabled", false);
+            		$("input[name=gridNoAfecto]").prop("disabled", false);
+            		$("input[name=gridAfecto]").prop("disabled", false);
+            		$("select[name=queryMoneda]").prop("disabled", false);
                 	
                 	if (!response.status) {
                 		
@@ -325,7 +329,7 @@
         	$("select[name=queryComprobante]").val(row.tipoComprobante);
         	$("input[name=querySerieNombre]").val(row.serieNombre);
         	$("input[name=querySerieNumero]").val(row.serie);
-        	$("input[name=queryMoneda]").val(row.moneda);
+        	$("select[name=queryMoneda]").val(row.moneda);
         	$("input[name=queryDireccion]").val(row.direccion);
         	$("input[name=queryFechaEmision]").val(row.fechaEmision);
         	$("input[name=queryFechaVencimiento]").val(row.fechaVencimiento);
@@ -334,12 +338,12 @@
         function requiredFieldsForm(context) {
     		
         	$("select[name=queryCuota]").removeClass("required");
-        	$("input[name=queryMoneda]").removeClass("required");
+        	$("select[name=queryMoneda]").removeClass("required");
         	
         	if (isTypeContract(context)) {
             	$("select[name=queryCuota]").addClass("required");
         	} else {
-              	$("input[name=queryMoneda]").addClass("required");
+              	$("select[name=queryMoneda]").addClass("required");
         	}
         }
         

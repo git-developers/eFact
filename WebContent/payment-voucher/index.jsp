@@ -132,7 +132,7 @@
 	              	Detalle
 				  </h3>
             </div>
-            <div class="box-body">
+            <div class="payment-form box-body">
             
             	<input type="hidden" name="querySerieNumero">
             

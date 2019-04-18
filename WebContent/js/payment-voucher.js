@@ -59,7 +59,7 @@
                 	
                 	$('div.content-body').show();
                 	$("button.payment-voucher-process").prop("disabled", false);
-                	$("div.box-body").find("input, button, select").prop("disabled", false);
+                	$("div.payment-form").find("input, button, select").prop("disabled", false);
                 },
                 error: function(jqXHR, exception) {
                     console.log("error :: ajax :: search");
@@ -117,7 +117,7 @@
                 	$('#modal-process').modal('show');
                 	$("button.payment-voucher-process").prop("disabled", true);
                 	$("button.payment-voucher-search").prop("disabled", true);
-                	$("div.box-body").find("input, button, select").prop("disabled", true);
+                	$("div.payment-form").find("input, button, select").prop("disabled", true);
                 },
                 success: function(data, textStatus, jqXHR) {
             		$('#modal-process').modal('show');
@@ -130,7 +130,7 @@
                     
                     $("button.payment-voucher-process").prop("disabled", false);
                     $("button.payment-voucher-search").prop("disabled", false);
-                    $("div.box-body").find("input, button, select").prop("disabled", false);
+                    $("div.payment-form").find("input, button, select").prop("disabled", false);
                 }
             });
         };

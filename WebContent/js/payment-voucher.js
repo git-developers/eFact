@@ -37,14 +37,14 @@
                 },
                 success: function(data, textStatus, jqXHR) {
 
-                	var response = JSON.parse(data.object);
+                	var response = JSON.parse(data);
                 	
                 	console.log(" ********* search ********* ");
                 	console.dir(response);
                 	
                 	$('div.content-loading').hide();
                 	
-                	if (!response.status) {
+                	if (!response.object.status) {
                     	$('#modal-warning').find('.modal-body').html(response.message);
                     	$('#modal-warning').modal('show');
                     	
@@ -161,7 +161,7 @@
             
             setTimeout(function(){
             	$(context).closest("tr").find("input[name=gridAfecto]").val(parseFloat(value).toFixed(2));
-        	}, 2500);
+        	}, 3500);
 
             $(context).closest("tr").find("input[name=gridIgv]").val(newIgv.toFixed(2));
             
@@ -175,7 +175,7 @@
         	
             setTimeout(function(){
             	$(context).closest("tr").find("input[name=gridNoAfecto]").val(parseFloat(value).toFixed(2));
-        	}, 2500);
+        	}, 3500);
         	
             sumRowSubTotal(context);
             sumTotalHeader();
@@ -268,8 +268,8 @@
         	dropdown.append('<option selected="true" disabled>[ seleccionar ]</option>');
         	dropdown.prop('selectedIndex', 0);
         	
-        	data = JSON.parse(data.object);
-        	$.each(data.listPaymentCuota, function(key, value) {
+        	data = JSON.parse(data);
+        	$.each(data.object.listPaymentCuota, function(key, value) {
         		dropdown.append('<option value=' + value.recTipo + '>' + value.campo + '</option>');
         	});
         }
@@ -292,13 +292,13 @@
         
         function fillForm(data) {
         	
-        	data = JSON.parse(data.object);
+        	data = JSON.parse(data);
         	
-        	if (typeof data.listPaymentDetail === "undefined" || data.listPaymentDetail.length <= 0) {
+        	if (typeof data.object.listPaymentDetail === "undefined" || data.object.listPaymentDetail.length <= 0) {
         		return false;
         	}
         	
-        	let row = data.listPaymentDetail.shift();
+        	let row = data.object.listPaymentDetail.shift();
         	
         	$("input[name=queryTitular]").val(row.titular);
         	$("select[name=queryComprobante]").val(row.tipoComprobante);

@@ -17,7 +17,7 @@
 		<tr>
 			<td>
 				<s:if test="%{paymentProcess.exito}">
-					<s:property value = "paymentProcess.numeroComprobante"/>
+					<s:property value = "paymentProcess.object.numeroComprobante"/>
 				</s:if>
 				<s:else>
 					<s:property value = "paymentProcess.mensaje"/>
@@ -35,7 +35,7 @@
 	
 		$("button.payment-voucher-process").prop("disabled", true);
 		$("table.table-payment-voucher").find("input, button, select").prop("disabled", true);
-		$('input[name="querySerieComprobante"]').val("<s:property value = "paymentProcess.numeroComprobante"/>");
+		$('input[name="querySerieComprobante"]').val("<s:property value = "paymentProcess.object.numeroComprobante"/>");
 
 	</s:if>
 

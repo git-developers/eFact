@@ -43,8 +43,9 @@
                 	console.dir(response);
                 	
                 	$('div.content-loading').hide();
+                	$("button.payment-voucher-search").prop("disabled", false);
                 	
-                	if (!response.object.status) {
+                	if (!response.status) {
                     	$('#modal-warning').find('.modal-body').html(response.message);
                     	$('#modal-warning').modal('show');
                     	
@@ -57,7 +58,6 @@
                 	requiredFieldsForm(context);
                 	
                 	$('div.content-body').show();
-                	$("button.payment-voucher-search").prop("disabled", false);
                 	$("button.payment-voucher-process").prop("disabled", false);
                 	$("div.box-body").find("input, button, select").prop("disabled", false);
                 },
@@ -104,9 +104,6 @@
 			});
 			
 			row.paymentDetailProcess = detail;
-			
-			console.log(" **** process *** ");
-			console.dir(row);
 
             $.ajax({
                 url: options.contextPath + '/payment-voucher-process',

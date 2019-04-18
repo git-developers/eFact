@@ -1,6 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<s:property value="paymentProcess" escapeHtml="false" />
+<s:property value="paymentProcessJson" escapeHtml="false" />
  
 
 

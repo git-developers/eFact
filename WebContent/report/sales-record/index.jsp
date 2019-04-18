@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%@include file="../../themes/adminLTE/header.jsp" %>
+<%@ include file="../../themes/adminLTE/header.jsp" %>
 
     <section class="content-header">
       <h1>
@@ -12,7 +12,6 @@
         <li class="active">Dashboard</li>
       </ol>
     </section>
-
 
     <section class="content">
     
@@ -40,17 +39,6 @@
 	                  			</option>
 	                  		</s:iterator>
 		                  </select>
-		                  
-		                  
-		                  <!-- 
-		                  <s:select 
-		                  	name="querySequencexxxx" 
-		                  	list="listSequence" 
-		                  	listKey="id" 
-		                  	listValue="name" 
-		                  	headerKey="-1" 
-		                  	headerValue="[Seleccione]"/>
-	                  	 -->
 		                </div>
 	        		</div>
                 
@@ -137,7 +125,46 @@
 	        		</div>
 
         		</div>
+        		
+				<div class="row">
+                
+	        		<div class="col-md-2">
+		                <div class="form-group">
+		                  <label for="">Tipo Doi</label>
+		                  <select class="form-control" id="tipoDoi" name="queryTipoDoi">
+		                  	<s:iterator value="paymentHeader.object.listPaymentTipoDoi" var="obj">
+		                  		<option 
+		                  			value="<s:property value = "#obj.idEquivalencia"/>" 
+		                  			data-longitud="<s:property value = "#obj.longitud"/>" 
+		                  			data-flag-tipo="<s:property value = "#obj.flagTipo"/>" 
+		                  			data-flag-longitud="<s:property value = "#obj.flagLongitud"/>" >
+		                  			<s:property value = "#obj.nombreCorto"/>
+	                  			</option>
+	                  		</s:iterator>
+		                  </select>
+		                </div>
+	        		</div>
 
+					<div class="col-md-2">
+					    <div class="form-group">
+					      <label for="">Numero DOI</label>
+					        <div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-qrcode"></i>
+					          </div>
+					          <input 
+					          		type="text" 
+					          		maxlength="<s:property value = "paymentHeader.object.listPaymentTipoDoi[0].longitud"/>" 
+					          		onkeyup="this.value = ( isNaN(this.value) ? '' : this.value);" 
+					          		class="form-control" 
+					          		name="queryNumeroDoi">
+					        </div>
+					    </div>
+					</div>
+	        		
+				</div>
+
+				
               </div>
 
 				<%--
@@ -148,9 +175,8 @@
           </div>
           </div>
           </div>
-    
-    
-    
+
+	
       <div class="row">
         <div class="col-md-12">
 		<div class="box box-primary">
@@ -201,7 +227,7 @@
      </div>
      </section>
      
-<%@include file="../../modal/process-dialog.jsp" %>
+<%@ include file="../../modal/process-dialog.jsp" %>
      
-<%@include file="../../themes/adminLTE/footer.jsp" %>
+<%@ include file="../../themes/adminLTE/footer.jsp" %>
 

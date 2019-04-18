@@ -26,10 +26,10 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 	private Gson gson;
 	private InputStream excelStream;
 	private List<Sequence> listSequence;
-	//
+
 	private List<VoucherDropdown> listVoucherDropdown;
 	private List<Series> listSeries;
-	//
+	
 	private List<ReportSalesRecord> listReportSalesRecord;
 	private List<ReportSalesSummary> listReportSalesSummary;
 	private String currentDate, currentDateFirstDayOfMonth;
@@ -44,12 +44,10 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 	
 	@Override
 	public String execute() throws Exception {
-
 		return SUCCESS;
 	}
 	
 	public String index() throws Exception {
-		        
 		return SUCCESS;
 	}
 	
@@ -58,14 +56,12 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 		SequenceDao sequenceDao = dao.getSequenceDao();
 		listSequence = sequenceDao.findAll();
 		
-		//
-		//ReportSalesRecordDao rsrDao = dao.getReportSalesRecordDao();
 		NoteCreditDao ncDao = dao.getNoteCreditDao();
 		VoucherDao voucherDao = dao.getVoucherDao();
 		
-		listVoucherDropdown = voucherDao.listVoucherDropdown(Const.MODULE_REPORT_SALES_RECORD );
+		listVoucherDropdown = voucherDao.listVoucherDropdown(Const.MODULE_REPORT_SALES_RECORD);
 		listSeries = ncDao.listSeries();
-		//
+
 		currentDate = Dates.getCurrentDate();
 		currentDateFirstDayOfMonth = Dates.getCurrentDateFirstDayOfMonth();
 
@@ -97,7 +93,6 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 	}
 	
 	public String salesSummary() throws Exception {
-		
         return SUCCESS;
 	}
 	
@@ -140,7 +135,6 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 	public void setExcelStream(InputStream excelStream) {
 		this.excelStream = excelStream;
 	}
-	
 	
 	@Override
 	public void setServletResponse(HttpServletResponse httpServletResponse) {
@@ -203,6 +197,5 @@ public class ReportAction extends ActionSupportBase implements ServletRequestAwa
 	public void setCurrentDateFirstDayOfMonth(String currentDateFirstDayOfMonth) {
 		this.currentDateFirstDayOfMonth = currentDateFirstDayOfMonth;
 	}
-	
 	
 }

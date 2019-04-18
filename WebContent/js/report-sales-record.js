@@ -87,7 +87,7 @@
         };
         
         base.voucher = function(context) {
-            var id = $('#select-voucher').val();  
+            var id = $('select#select-voucher').val();  
             $('#select-series').prop('selectedIndex',0);
             $('.select-series').hide();
             $('.voucher-' + id).show();
@@ -130,7 +130,7 @@
                 bp.search(this);
             });
             
-            $(".report-export-excel").click(function( event ) {
+            $("button.report-export-excel").click(function( event ) {
                 bp.exportExcel(this);
             });
             
@@ -142,7 +142,7 @@
             	bp.queryFromChange(this);
         	});
             
-            $("#select-voucher").change(function(event) {
+            $("select#select-voucher").change(function(event) {
             	bp.voucher(this);
         	});
             

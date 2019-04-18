@@ -22,6 +22,7 @@ import java.io.InputStream;
 public class ReportAction extends ActionSupportBase implements ServletRequestAware, ServletResponseAware  {
 	
 	private static final long serialVersionUID = 1L;
+	
 	private DaoFactory dao;
 	private Gson gson;
 	private InputStream excelStream;

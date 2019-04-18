@@ -124,25 +124,6 @@
 		                </div>
 	        		</div>
 
-	        		<div class="col-md-2">
-		                <div class="form-group">
-		                  <label for="exampleInputEmail1">Tipo DOI</label>
-            		      <select class="form-control" id="select-tipodoi" name="queryTipoDoi">
-		                  	<s:iterator value="listTipoDoiDropdown" var="tipodoi">
-		                  		<option value="<s:property value = "#tipodoi.id"/>">
-		                  			<s:property value = "#tipodoi.name"/>
-	                 			</option>
-	                 		</s:iterator>
-		                  </select>
-		                </div>
-	        		</div>	        		       			        		
-	        		
-	        		<div class="col-md-2">
-		                <div class="form-group">
-		                  <label for="">Número DOI</label>
-		                  <input type="text" class="form-control" name="queryNumberDoi" required="required">
-		                </div>
-	        		</div>
         		</div>
         		
 				<div class="row">
@@ -151,7 +132,7 @@
 		                <div class="form-group">
 		                  <label for="">Tipo Doi</label>
 		                  <select class="form-control" id="tipoDoi" name="queryTipoDoi">
-		                  	<s:iterator value="listarTipoDoi.object.listPaymentTipoDoi" var="obj">
+		                  	<s:iterator value="listarTipoDoi.objectList" var="obj">
 		                  		<option 
 		                  			value="<s:property value = "#obj.idEquivalencia"/>" 
 		                  			data-longitud="<s:property value = "#obj.longitud"/>" 
@@ -173,8 +154,8 @@
 					          </div>
 					          <input 
 					          		type="text" 
-					          		maxlength="<s:property value = "listarTipoDoi.object.listPaymentTipoDoi[0].longitud"/>" 
-					          		onkeyup="this.value = ( isNaN(this.value) ? '' : this.value);" 
+					          		maxlength="<s:property value = "listarTipoDoi.objectList[0].longitud"/>" 
+					          		onkeyup="this.value = ( isNaN(this.value) ? '' : this.value );" 
 					          		class="form-control" 
 					          		name="queryNumeroDoi">
 					        </div>

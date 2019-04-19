@@ -176,7 +176,7 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
 			
 		Response response = new Response();
 
-        try{
+        try {
 
             String sql = "{ call FIN_PKG_REPORTES.USP_LISTA_INICIAL() }"; 
             
@@ -208,7 +208,7 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
             rsTipoDoi.close();
             st.close();
         
-        } catch (Exception e){
+        } catch (Exception e) {
         	e.getStackTrace();
         	
             response.setStatus(false);

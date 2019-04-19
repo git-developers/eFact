@@ -163,6 +163,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.registerOutParameter(7, OracleTypes.VARCHAR);
             st.execute();
         	
+            boolean xxxx = st.getMoreResults();
 
             /**
              * Cursor: Detail
@@ -196,6 +197,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             
             
             ResultSet xxxxxxx = (ResultSet) st.getObject(5);
+            xxxxxxx.get
             
             /**
              * Cursor: Cuota

@@ -192,10 +192,10 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             	listPaymentDetail.add(o);
             }
             objectOut.setListPaymentDetail(listPaymentDetail);
+            rsDetail.close();
             
             
-            
-            Integer foo = (Integer) st.getObject(5);
+            ResultSet xxxxxxx = (ResultSet) st.getObject(5);
             
             /**
              * Cursor: Cuota
@@ -224,7 +224,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             response.setMessage(st.getString(7));
             
             st.close();
-            rsDetail.close();
+            
 
         } catch (Exception e) {
         	e.getStackTrace();

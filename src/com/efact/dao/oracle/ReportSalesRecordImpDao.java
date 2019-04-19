@@ -20,9 +20,9 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
 		
         List<ReportSalesRecord> list = new ArrayList<>();
 
-        try{
+        try {
 
-            String sql = "{ ? = call FIN_PKG_REPORTES.F_REPORTE_VENTAS(?, ?, ?, ?, ?, ?) }"; 
+            String sql = "{ ? = call FIN_PKG_REPORTES.F_REPORTE_VENTAS(?, ?, ?, ?, ?, ?, ?, ?) }"; 
             
             Connection connection = OracleDaoFactory.getMainConnection();
 			CallableStatement st = connection.prepareCall(sql);
@@ -33,17 +33,9 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
             st.setInt(5, object.getQueryVoucher());
             st.setInt(6, object.getQuerySerie());
             st.setString(7, "EFACT");
+            st.setInt(8, object.getQueryTipoDoi());
+            st.setString(9, object.getQueryNumeroDoi());
             st.execute();
-
-            
-            /*
-            System.out.print(object.getQueryFrom());
-            System.out.print(object.getQueryTo());
-            
-            System.out.print("getQueryVoucher::"+object.getQueryVoucher());
-            System.out.print("getQuerySerie::"+object.getQuerySerie());
-            */
-            
             
             ResultSet rs = (ResultSet) st.getObject(1);
             
@@ -73,15 +65,11 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
             	obj.setOtros(rs.getString("OTROS")); 
             	obj.setRvb_imptotal(rs.getString("RVB_IMPTOTAL")); 
             	obj.setTcd_venta(rs.getString("TCD_VENTA")); 
-            	
             	obj.setRvb_femisiondev(rs.getInt("RVB_FEMISIONDEV"));            	            
             	obj.setRvb_tipodev(rs.getInt("RVB_TIPODEV")); 
             	obj.setRvb_seriedev(rs.getInt("RVB_SERIEDEV"));             	            	
             	obj.setRvb_numerodev(rs.getInt("RVB_NUMERODEV")); 
-            	
-            	//obj.setRvb_tipocambiodev(rs.getInt("RVB_TIPOCAMBIODEV")); 
             	obj.setRvb_tipocambiodev(rs.getString("RVB_TIPOCAMBIODEV"));
-            	
             	obj.setTotalafectas_sol(rs.getString("TOTALAFECTAS_SOL")); 
             	obj.setTotalnoafectas_sol(rs.getString("TOTALNOAFECTAS_SOL")); 
             	obj.setTotaligv_sol(rs.getString("TOTALIGV_SOL")); 
@@ -89,7 +77,6 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
             	obj.setRvb_tdocumento(rs.getInt("RVB_TDOCUMENTO")); 
             	obj.setRvb_id(rs.getInt("RVB_ID")); 
             	
-
                 list.add(obj);
             }
             

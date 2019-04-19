@@ -195,6 +195,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             objectOut.setListPaymentDetail(listPaymentDetail);
             rsDetail.close();
             
+            boolean eeeeeee = st.getMoreResults();
             
             ResultSet xxxxxxx = (ResultSet) st.getObject(5);
             

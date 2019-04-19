@@ -144,7 +144,6 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
 	            
 	            Connection connection = OracleDaoFactory.getMainConnection();
 				CallableStatement st = connection.prepareCall(sql);  
-
 				st.registerOutParameter(1, OracleTypes.CURSOR);
 	            st.execute();
 	            	            

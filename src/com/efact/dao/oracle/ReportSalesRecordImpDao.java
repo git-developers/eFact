@@ -178,7 +178,7 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
 
         try {
 
-            String sql = "{ call FIN_PKG_REPORTES.P_LISTA_INICIAL() }"; 
+            String sql = "{ call FIN_PKG_REPORTES.P_LISTA_INICIAL(?, ?, ?) }"; 
             
             Connection connection = OracleDaoFactory.getMainConnection();
 			CallableStatement st = connection.prepareCall(sql);

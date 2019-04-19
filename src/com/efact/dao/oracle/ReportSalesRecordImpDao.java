@@ -182,12 +182,12 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
             
             Connection connection = OracleDaoFactory.getMainConnection();
 			CallableStatement st = connection.prepareCall(sql);  
-            st.registerOutParameter(1, OracleTypes.CURSOR);
-            st.registerOutParameter(2, OracleTypes.NUMBER);
-            st.registerOutParameter(3, OracleTypes.VARCHAR);
+            st.registerOutParameter(1, OracleTypes.NUMBER);
+            st.registerOutParameter(2, OracleTypes.VARCHAR);
+            st.registerOutParameter(3, OracleTypes.CURSOR);
             st.execute();
             
-            ResultSet rsTipoDoi = (ResultSet) st.getObject(1);
+            ResultSet rsTipoDoi = (ResultSet) st.getObject(3);
             List<PaymentTipoDoi> listTipoDoi = new ArrayList<PaymentTipoDoi>();
             
             while (rsTipoDoi.next()) {

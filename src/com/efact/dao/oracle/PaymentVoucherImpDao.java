@@ -163,7 +163,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             st.registerOutParameter(7, OracleTypes.VARCHAR);
             st.execute();
         	
-            boolean xxxx = st.getMoreResults();
+            boolean xxxx = connection.isClosed();
 
             /**
              * Cursor: Detail
@@ -195,7 +195,7 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             objectOut.setListPaymentDetail(listPaymentDetail);
             rsDetail.close();
             
-            boolean eeeeeee = st.getMoreResults();
+            boolean eeeeeee = connection.isClosed();
             
             ResultSet xxxxxxx = (ResultSet) st.getObject(5);
             

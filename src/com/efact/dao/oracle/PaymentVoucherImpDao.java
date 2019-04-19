@@ -197,7 +197,6 @@ public class PaymentVoucherImpDao extends OracleDaoFactory implements PaymentVou
             
             
             ResultSet xxxxxxx = (ResultSet) st.getObject(5);
-            xxxxxxx.get
             
             /**
              * Cursor: Cuota

@@ -178,16 +178,16 @@ public class ReportSalesRecordImpDao extends OracleDaoFactory implements ReportS
 
         try{
 
-            String sql = "{ call FIN_PKG_REPORTES.P_LISTAR_TIPO_DOI() }"; 
+            String sql = "{ call FIN_PKG_REPORTES.USP_LISTA_INICIAL() }"; 
             
             Connection connection = OracleDaoFactory.getMainConnection();
-			CallableStatement st = connection.prepareCall(sql);  
-            st.registerOutParameter(1, OracleTypes.NUMBER);
-            st.registerOutParameter(2, OracleTypes.VARCHAR);
-            st.registerOutParameter(3, OracleTypes.CURSOR);
+			CallableStatement st = connection.prepareCall(sql);
+			st.registerOutParameter(1, OracleTypes.CURSOR);
+            st.registerOutParameter(2, OracleTypes.NUMBER);
+            st.registerOutParameter(3, OracleTypes.VARCHAR);
             st.execute();
             
-            ResultSet rsTipoDoi = (ResultSet) st.getObject(3);
+            ResultSet rsTipoDoi = (ResultSet) st.getObject(1);
             List<PaymentTipoDoi> listTipoDoi = new ArrayList<PaymentTipoDoi>();
             
             while (rsTipoDoi.next()) {
